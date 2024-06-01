@@ -1,0 +1,10 @@
+﻿class Unformatted
+{
+    void MethodName()
+    {
+        // csharpier-ignore
+        CallMethod(manyArgs,manyArgs,manyArgs,manyArgs,manyArgs,manyArgs,manyArgs,manyArgs,manyArgs,manyArgs)
+            .Should()
+            .BeNull();
+    }
+}

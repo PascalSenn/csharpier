@@ -64,19 +64,19 @@ internal static class InvocationExpression
                 .Any(o =>
                     o.Node
                         is LiteralExpressionSyntax
-                            {
-                                Token.RawKind: (int)SyntaxKind.MultiLineRawStringLiteralToken
-                            }
+                        {
+                            Token.RawKind: (int)SyntaxKind.MultiLineRawStringLiteralToken
+                        }
                             or InterpolatedStringExpressionSyntax
-                            {
-                                StringStartToken.RawKind: (int)
+                        {
+                            StringStartToken.RawKind: (int)
                                     SyntaxKind.InterpolatedMultiLineRawStringStartToken
-                            }
+                        }
                     || o.Node
                         is LiteralExpressionSyntax
-                        {
-                            Token.Text.Length: > 0
-                        } literalExpressionSyntax
+                    {
+                        Token.Text.Length: > 0
+                    } literalExpressionSyntax
                         && literalExpressionSyntax.Token.Text.Contains('\n')
                 )
         )
@@ -317,13 +317,30 @@ internal static class InvocationExpression
                 hasSeenNodeThatRequiresBreak = false;
             }
 
-            if (
-                printedNodes[index].Node
-                is (InvocationExpressionSyntax or ElementAccessExpressionSyntax)
-            )
+            if (printedNodes[index].Node is InvocationExpressionSyntax 
+                //  We dont want to do it if it's just the last element in the chain
+                && index + 1 < printedNodes.Count)
+            {
+                // walk current group backwards to find the last member access expression or conditional access expression
+                var memberAccessFound = false;
+                for (var i = currentGroup.Count - 1; i >= 0; i--)
+                {
+                    if (currentGroup[i].Node is MemberAccessExpressionSyntax or ConditionalAccessExpressionSyntax &&
+                        !memberAccessFound)
+                    {
+                        memberAccessFound = true;
+                        continue;
+                    }
+                    groups.Add(currentGroup.Take(i + 1).ToList());
+                    currentGroup = currentGroup.Skip(i + 1).ToList();
+                }
+                hasSeenNodeThatRequiresBreak = true;
+            }
+            else if (printedNodes[index].Node is ElementAccessExpressionSyntax)
             {
                 hasSeenNodeThatRequiresBreak = true;
             }
+
             currentGroup.Add(printedNodes[index]);
         }
 

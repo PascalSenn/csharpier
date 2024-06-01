@@ -40,4 +40,109 @@ internal class LineEndingEdgeCase
             .Code.Should()
             .Be(unformattedCode.ReplaceLineEndings(endOfLine == EndOfLine.LF ? "\n" : "\r\n"));
     }
+
+    [TestCase]
+    public async Task PushDownChain()
+    {
+        var unformattedCode = @"class Unformatted
+{
+    void MethodName()
+    {
+        tree.Root
+            .Traverse()
+            .Traverse()
+            .Traverse()
+            .Traverse()
+            .Traverse()
+            .Traverse()
+            .ToList()
+            .MatchSnapshot();
+    }
+}
+";
+
+        var result = await CSharpFormatter.FormatAsync(
+            unformattedCode,
+            new PrinterOptions { Width = 100 },
+            CancellationToken.None
+        );
+
+        result.Code.Should().Be(unformattedCode);
+    }
+
+    [TestCase]
+    public async Task MethodGroup()
+    {
+        var unformattedCode = @"class Unformatted
+{
+    private string GetTypeName(
+        OperationGenerationSelectionVisitorContext context,
+        IType type,
+        string modelName)
+    {
+    }
+}
+";
+
+        var result = await CSharpFormatter.FormatAsync(
+            unformattedCode,
+            new PrinterOptions { Width = 100 },
+            CancellationToken.None
+        );
+
+        result.Code.Should().Be(unformattedCode);
+    }
+    [TestCase]
+    public async Task LongProperyChain()
+    {
+        var unformattedCode = @"class Unformatted
+{
+    private string GetTypeName()
+    {
+        objectModel
+            .ThisIsAVeryLongPropertyChain
+            .ThisIsAVeryLongPropertyChain
+            .ThisIsAVeryLongPropertyChain
+            .Add(new Field
+            {
+                Name = field.Name,
+                Type = GetType(context, field.Type, currentModel.Name)
+            });
+    }
+}
+";
+
+        var result = await CSharpFormatter.FormatAsync(
+            unformattedCode,
+            new PrinterOptions { Width = 100 },
+            CancellationToken.None
+        );
+
+        result.Code.Should().Be(unformattedCode);
+    }
+
+    [TestCase]
+    public async Task NewInMethodCall()
+    {
+        var unformattedCode = @"class Unformatted
+{
+    private string GetTypeName()
+    {
+        objectModel.Fields.Add(new Field
+        {
+            Name = field.Name,
+            Type = GetType(context, field.Type, currentModel.Name)
+        });
+    }
+}
+";
+
+        var result = await CSharpFormatter.FormatAsync(
+            unformattedCode,
+            new PrinterOptions { Width = 100 },
+            CancellationToken.None
+        );
+
+        result.Code.Should().Be(unformattedCode);
+    }
 }

@@ -11,9 +11,9 @@ internal static class Block
         )
         {
             return Doc.Concat(
-                " ",
+                Doc.HardLine,
                 Token.Print(node.OpenBraceToken, context),
-                " ",
+                Doc.HardLine,
                 Token.Print(node.CloseBraceToken, context)
             );
         }

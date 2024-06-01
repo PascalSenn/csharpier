@@ -17,7 +17,7 @@ internal static class ParameterList
                             context
                         )
                     ),
-                    Doc.SoftLine
+                    Doc.Null
                 )
                 : Doc.Null,
             Token.Print(node.CloseParenToken, context)
