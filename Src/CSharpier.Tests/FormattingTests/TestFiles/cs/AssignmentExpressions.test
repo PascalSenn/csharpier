@@ -42,31 +42,29 @@ class ClassName
             anotherVariable2 =
                 "someValue____________________________________________";
 
-        var nonChainFormatting = anotherVariable1 = CallMethod(
-            parameter________________________________,
-            parameter________________________________
-        );
+        var nonChainFormatting = anotherVariable1 =
+            CallMethod(
+                parameter________________________________,
+                parameter________________________________);
 
-        nonChainFormatting = anotherVariable1 = CallMethod(
-            parameter________________________________,
-            parameter________________________________
-        );
+        nonChainFormatting = anotherVariable1 =
+            CallMethod(
+                parameter________________________________,
+                parameter________________________________);
 
         var chainFormatting =
             anotherVariable1 =
             anotherVariable2 =
                 CallMethod(
                     parameter________________________________,
-                    parameter________________________________
-                );
+                    parameter________________________________);
 
         chainFormatting =
             anotherVariable1 =
             anotherVariable2 =
                 CallMethod(
                     parameter________________________________,
-                    parameter________________________________
-                );
+                    parameter________________________________);
     }
 
     public SomeExpressionBodyMethod() =>

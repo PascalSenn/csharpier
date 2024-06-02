@@ -189,48 +189,54 @@ class ClassName
 
         var someObject = new SomeObject
         {
-            SomeArray = new SomeOtherObject[]
-            {
-                new SomeOtherObject { SomeProperty = 1 },
-                new SomeOtherObject()
-            }
-                .CallMethod()
-                .CallMethod()
+            SomeArray =
+                new SomeOtherObject[]
+                {
+                    new SomeOtherObject { SomeProperty = 1 },
+                    new SomeOtherObject()
+                }
+                    .CallMethod()
+                    .CallMethod()
         };
 
-        var result = SomeType
-            .CallMethod()
-            .CallOtherMethod(someParameter, new SomeObjectType().SomeProperty.SomeOtherProperty);
+        var result =
+            SomeType
+                .CallMethod()
+                .CallOtherMethod(
+                    someParameter,
+                    new SomeObjectType().SomeProperty.SomeOtherProperty);
 
         var someObject = new SomeObject
         {
-            SomeArray = new SomeOtherObject
-            {
-                new SomeOtherObject { SomeProperty = 1 },
-                new SomeOtherObject()
-            }
-                .CallMethod()
-                .CallMethod()
-        };
-
-        var someObject = new SomeObject
-        {
-            SomeArray = new SomeOtherObject[]
-            {
-                new SomeOtherObject { SomeProperty = 1 },
-                new SomeOtherObject()
-            }
+            SomeArray =
+                new SomeOtherObject
+                {
+                    new SomeOtherObject { SomeProperty = 1 },
+                    new SomeOtherObject()
+                }
+                    .CallMethod()
+                    .CallMethod()
         };
 
         var someObject = new SomeObject
         {
             SomeArray = new SomeOtherObject[]
             {
-                new SomeOtherObject_________________________________(),
-                new SomeOtherObject_________________________________()
+                new SomeOtherObject { SomeProperty = 1 },
+                new SomeOtherObject()
             }
-                .CallMethod()
-                .CallMethod()
+        };
+
+        var someObject = new SomeObject
+        {
+            SomeArray =
+                new SomeOtherObject[]
+                {
+                    new SomeOtherObject_________________________________(),
+                    new SomeOtherObject_________________________________()
+                }
+                    .CallMethod()
+                    .CallMethod()
         };
     }
 

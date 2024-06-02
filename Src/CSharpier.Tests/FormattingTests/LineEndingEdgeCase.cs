@@ -142,4 +142,126 @@ internal class LineEndingEdgeCase
 
         result.Code.Should().Be(unformattedCode);
     }
+
+    [TestCase]
+    public async Task FormatParameters()
+    {
+        var unformattedCode = @"class Unformatted
+{
+    void MethodName()
+    {
+        var (foo, bar) = await FetchFooBar.Parameter(
+            thisIsAVeryLongParameter,
+            thisIsAVeryLongParameter);
+    }
+}
+";
+
+        var result = await CSharpFormatter.FormatAsync(
+            unformattedCode,
+            new PrinterOptions { Width = 100 },
+            CancellationToken.None
+        );
+
+        result.Code.Should().Be(unformattedCode);
+    }
+
+    [TestCase]
+    public async Task MultiNewInMethodCall()
+    {
+        var unformattedCode = @"class Unformatted
+{
+    private string GetTypeName()
+    {
+        objectModel.Fields.Add(
+            new Field
+            {
+                Name = field.Name,
+                Type = GetTypeLoooong(context, field.Type, currentModel.Name)
+            },
+            new Field
+            {
+                Name = field.Name,
+                Type = GetType(context, field.Type, currentModel.Name)
+            });
+    }
+}
+";
+
+        var result = await CSharpFormatter.FormatAsync(
+            unformattedCode,
+            new PrinterOptions { Width = 100 },
+            CancellationToken.None
+        );
+
+        result.Code.Should().Be(unformattedCode);
+    }
+
+    [TestCase]
+    public async Task ManyImplements()
+    {
+        var unformattedCode = @"class Unformatted
+    : FooBar1
+    , FooBar2
+    , FooBar3
+    , FooBar4
+    , FooBar4
+    , FooBar4
+    , FooBar4
+    , FooBar4
+    , FooBar4
+    , FooBar4
+    , FooBar4
+{
+}
+";
+
+        var result = await CSharpFormatter.FormatAsync(
+            unformattedCode,
+            new PrinterOptions { Width = 100 },
+            CancellationToken.None
+        );
+
+        result.Code.Should().Be(unformattedCode);
+    }
+
+    [TestCase]
+    public async Task SomeImplements()
+    {
+        var unformattedCode = @"class Unformatted : FooBar1, FooBar2
+{
+}
+";
+
+        var result = await CSharpFormatter.FormatAsync(
+            unformattedCode,
+            new PrinterOptions { Width = 100 },
+            CancellationToken.None
+        );
+
+        result.Code.Should().Be(unformattedCode);
+    }
+
+
+    [TestCase]
+    public async Task BreakBeforeAssigment()
+    {
+        var unformattedCode = @"class Unformatted
+{
+    private Task Foobar()
+    {
+        _abcdFetchTask =
+            service.GetABCDsByTraceIdAsync(AAAA, AAAAA, AAAAA, AAAAA, AAAA, BBBB, ABCDId);
+    }
+}
+";
+
+        var result = await CSharpFormatter.FormatAsync(
+            unformattedCode,
+            new PrinterOptions { Width = 100 },
+            CancellationToken.None
+        );
+
+        result.Code.Should().Be(unformattedCode);
+    }
 }

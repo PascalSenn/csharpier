@@ -11,8 +11,7 @@ class ClassName
     > KeyedItemInfoDictionaryPool { get; } =
         new StackObjectPool<Dictionary<object, KeyedItemInfo>>(
             maxPreservedItems: 10,
-            () => new Dictionary<object, KeyedItemInfo>()
-        );
+            () => new Dictionary<object, KeyedItemInfo>());
 
     RenderFragment<AuthenticationState> customNotAuthorized = state =>
         builder => builder.AddContent(0, $"Go away, {state.User.Identity.Name}");
@@ -32,8 +31,7 @@ class ClassName
         LoggerMessage.Define<string, string>(
             LogLevel.Debug,
             new EventId(1, "DisplayingNotFound"),
-            $"Displaying {nameof(NotFound)} because path '{{Path}}' with base URI '{{BaseUri}}' does not match any component route"
-        );
+            $"Displaying {nameof(NotFound)} because path '{{Path}}' with base URI '{{BaseUri}}' does not match any component route");
 
     private static readonly Action<
         ILogger,
@@ -41,11 +39,11 @@ class ClassName
         string,
         string,
         Exception
-    > _navigatingToComponent = LoggerMessage.Define<Type, string, string>(
-        LogLevel.Debug,
-        new EventId(2, "NavigatingToComponent"),
-        "Navigating to component {ComponentType} in response to path '{Path}' with base URI '{BaseUri}'"
-    );
+    > _navigatingToComponent =
+        LoggerMessage.Define<Type, string, string>(
+            LogLevel.Debug,
+            new EventId(2, "NavigatingToComponent"),
+            "Navigating to component {ComponentType} in response to path '{Path}' with base URI '{BaseUri}'");
 
     public void MethodName()
     {
@@ -89,22 +87,18 @@ class ClassName
     }
 
     public void Condition(
-        Func<ConditionParameters<TSource, TDestination, TMember>, bool> condition
-    ) =>
+        Func<ConditionParameters<TSource, TDestination, TMember>, bool> condition) =>
         PathMapActions.Add(pm =>
         {
             Expression<
                 Func<TSource, TDestination, TMember, TMember, ResolutionContext, bool>
             > expr = (src, dest, srcMember, destMember, ctxt) =>
-                condition(
-                    new ConditionParameters<TSource, TDestination, TMember>(
-                        src,
-                        dest,
-                        srcMember,
-                        destMember,
-                        ctxt
-                    )
-                );
+                condition(new ConditionParameters<TSource, TDestination, TMember>(
+                    src,
+                    dest,
+                    srcMember,
+                    destMember,
+                    ctxt));
             pm.Condition = expr;
         });
 
@@ -125,8 +119,7 @@ class ClassName
     public static Expression IfNullElse(
         this Expression expression,
         Expression then,
-        Expression @else
-    ) =>
+        Expression @else) =>
         expression.Type.IsValueType
             ? (
                 expression.Type.IsNullableType()
@@ -150,10 +143,10 @@ class ClassName
                                 ? r
                                 : 0
                                 != (
-                                    r = comparer.Compare(
-                                        tuple.Item1.NamespaceURI,
-                                        tuple.Item2.NamespaceURI
-                                    )
+                                    r =
+                                        comparer.Compare(
+                                            tuple.Item1.NamespaceURI,
+                                            tuple.Item2.NamespaceURI)
                                 )
                                     ? r
                                     : 0

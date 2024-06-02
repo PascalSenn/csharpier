@@ -6,8 +6,7 @@ class Test
     }
 
     public static implicit operator Test(
-        OtherPerson someReallyLongNameThatWillMakeThisBreak_________________
-    )
+        OtherPerson someReallyLongNameThatWillMakeThisBreak_________________)
     {
         return new Test();
     }
@@ -18,6 +17,5 @@ class Test
     public static implicit operator Test(int x) => new Test(x);
 
     public static implicit operator Test(
-        bool reallyLongNameThatWillMakeThisBreak________________
-    ) => new Test(x);
+        bool reallyLongNameThatWillMakeThisBreak________________) => new Test(x);
 }

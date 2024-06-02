@@ -52,12 +52,15 @@ internal static class ArgumentListLike
                     ),
                     Doc.IfBreak(Doc.SoftLine, Doc.Null, $"LambdaArguments{lambdaId}")
                 ),
+
+            [{ Expression: ObjectCreationExpressionSyntax lambda } arg] 
+                => SeparatedSyntaxList.Print(arguments, Argument.Print, Doc.Line, context),
             [_, ..]
                 => Doc.Concat(
-                    // Doc.Indent(
-                        // Doc.SoftLine,
+                    Doc.Indent(
+                        Doc.SoftLine,
                         SeparatedSyntaxList.Print(arguments, Argument.Print, Doc.Line, context)
-                    // )
+                    )
                 ),
             _ => Doc.Null
         };

@@ -16,8 +16,7 @@ class ClassName
 
     public HashSet<string> TheArrayShouldNotBreak = new HashSet<string>(
         new[] { ".dll", "exe", ".winmd" },
-        StringComparer.OrdinalIgnoreCase
-    );
+        StringComparer.OrdinalIgnoreCase);
 
     void MethodName()
     {
@@ -30,7 +29,6 @@ class ClassName
 
         return TheArrayInHereShouldAlsoNotBreak(
             SomeLongThing__________,
-            new[] { one, two, three, found }
-        );
+            new[] { one, two, three, found });
     }
 }

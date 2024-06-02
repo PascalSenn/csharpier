@@ -5,7 +5,9 @@ public class Unformatted     { }
 public class Unformatted     { }
 
 // csharpier-ignore-not ignored
-public class Unformatted { }
+public class Unformatted
+{
+}
 
 public class ClassName
 {
@@ -152,12 +154,16 @@ public class AttributesAndMethods
     // csharpier-ignore - only the first attribute
     [Attribute          ]
     [Attribute]
-    public void MethodThatShouldFormat() { }
+    public void MethodThatShouldFormat()
+    {
+    }
 
     [Attribute]
     // csharpier-ignore - only the second attribute
     [Attribute         ]
-    public void MethodThatShouldFormat() { }
+    public void MethodThatShouldFormat()
+    {
+    }
 
     [Attribute]
     [Attribute]

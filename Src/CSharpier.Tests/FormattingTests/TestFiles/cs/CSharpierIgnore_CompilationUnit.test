@@ -3,6 +3,8 @@ namespace Namespace
     // csharpier-ignore-start
     public class    Unformatted { }
     // csharpier-ignore-end
-    
-    public class    FormatMe { }
+
+    public class FormatMe
+    {
+    }
 }

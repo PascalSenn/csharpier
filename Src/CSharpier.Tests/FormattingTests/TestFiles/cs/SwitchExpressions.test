@@ -37,8 +37,7 @@ class ClassName
                 => CallSomeMethod(
                     someValue,
                     andOtherParameters,
-                    thatMakeThisLongEnoughToBreak___________________
-                ),
+                    thatMakeThisLongEnoughToBreak___________________),
             VeryLongObject_______________________________________________________________
                 when count > 0
                 => CallSomeMethod(someValue),

@@ -34,8 +34,7 @@ items.AddRange(
         "are added here",
         "and something bad",
         "happens"
-    ]
-);
+    ]);
 
 someObject = new SomeObject
 {
@@ -62,22 +61,19 @@ CallMethod(
     [
         LongValue________________________________________________,
         LongValue________________________________________________
-    ]
-);
+    ]);
 
 CallMethod(
     [
         // some comment
-    ]
-);
+    ]);
 
 CallMethod(
     [
         1,
         // some comment
         // and more
-    ]
-);
+    ]);
 
 int[] someArray =
 [
@@ -156,4 +152,6 @@ class MyClass
         someValue,
     ]
 )]
-class ClassName { }
+class ClassName
+{
+}

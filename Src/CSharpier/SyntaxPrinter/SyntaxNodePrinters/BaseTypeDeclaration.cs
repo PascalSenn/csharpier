@@ -103,26 +103,29 @@ internal static class BaseTypeDeclaration
 
         if (node.BaseList != null)
         {
-            var baseListDoc = Doc.Concat(
-                Token.Print(node.BaseList.ColonToken, context),
-                " ",
-                Node.Print(node.BaseList.Types.First(), context),
-                node.BaseList.Types.Count > 1
-                    ? Doc.Indent(
-                        Token.Print(node.BaseList.Types.GetSeparator(0), context),
-                        Doc.Line,
-                        SeparatedSyntaxList.Print(
-                            node.BaseList.Types,
-                            Node.Print,
-                            Doc.Line,
-                            context,
-                            startingIndex: 1
-                        )
-                    )
-                    : Doc.Null
-            );
+            var baseListDoc =
+                    Doc.Concat(
+                        Doc.IfBreak("", " "),
+                        Token.Print(node.BaseList.ColonToken, context),
+                        " ",
+                        Node.Print(node.BaseList.Types.First(), context),
+                        node.BaseList.Types.Count > 1
+                            ? Doc.Group(
+                                Doc.SoftLine,
+                                Token.Print(node.BaseList.Types.GetSeparator(0), context),
+                                " ",
+                                InterfaceList.Print(
+                                    node.BaseList.Types,
+                                    Node.Print,
+                                    Doc.SoftLine,
+                                    context,
+                                    startingIndex: 1
+                                )
+                            )
+                            : Doc.Null
+                    );
 
-            docs.Add(Doc.Group(Doc.Indent(Doc.Line, baseListDoc)));
+            docs.Add(Doc.Group(Doc.Indent(Doc.SoftLine, baseListDoc)));
         }
 
         docs.Add(ConstraintClauses.Print(constraintClauses, context));
@@ -147,7 +150,7 @@ internal static class BaseTypeDeclaration
                 o.RawSyntaxKind() is not (SyntaxKind.WhitespaceTrivia or SyntaxKind.EndOfLineTrivia)
             )
                 ? Doc.Line
-                : " ";
+                : Doc.Line;
 
             docs.Add(
                 separator,
@@ -163,5 +166,40 @@ internal static class BaseTypeDeclaration
         }
 
         return Doc.Concat(docs);
+    }
+}
+
+internal static class InterfaceList
+{
+    public static Doc Print<T>(
+        SeparatedSyntaxList<T> list,
+        Func<T, FormattingContext, Doc> printFunc,
+        Doc afterSeparator,
+        FormattingContext context,
+        int startingIndex = 0
+    )
+        where T : SyntaxNode
+    {
+        var docs = new List<Doc>();
+        for (var x = startingIndex; x < list.Count; x++)
+        {
+            docs.Add(printFunc(list[x], context));
+
+            if (x >= list.SeparatorCount)
+            {
+                continue;
+            }
+
+            var isTrailingSeparator = x == list.Count - 1;
+
+            if (!isTrailingSeparator)
+            {
+                docs.Add(afterSeparator);
+            }
+            docs.Add(Token.Print(list.GetSeparator(x), context));
+            docs.Add(" ");
+        }
+
+        return docs.Count == 0 ? Doc.Null : Doc.Concat(docs);
     }
 }

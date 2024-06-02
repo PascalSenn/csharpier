@@ -83,11 +83,11 @@ internal static class RightHandSide
             )
             || rightNode
                 is ObjectCreationExpressionSyntax
-                {
-                    Type: GenericNameSyntax,
-                    ArgumentList: { Arguments: { Count: 0 } },
-                    Initializer: null
-                }
+            {
+                Type: GenericNameSyntax,
+                ArgumentList: { Arguments: { Count: 0 } },
+                Initializer: null
+            }
         )
         {
             return Layout.BreakAfterOperator;
@@ -114,11 +114,11 @@ internal static class RightHandSide
             or ImplicitObjectCreationExpressionSyntax { Parent: EqualsValueClauseSyntax }
             or InterpolatedStringExpressionSyntax
             // TODO ditch fluid?
-            // or InvocationExpressionSyntax
+            or InvocationExpressionSyntax
             or IsPatternExpressionSyntax
             or LiteralExpressionSyntax
             // TODO ditch fluid?
-            // or MemberAccessExpressionSyntax
+            or MemberAccessExpressionSyntax
             or StackAllocArrayCreationExpressionSyntax
             or QueryExpressionSyntax
                 => Layout.BreakAfterOperator,

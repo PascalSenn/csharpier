@@ -82,8 +82,7 @@ public class ClassName
         foreach (
             (
                 (int l2, int l3),
-                (int longName________________________, string[] anotherLongName___________)
-            ) in (
+                (int longName________________________, string[] anotherLongName___________)) in (
                 from l2 in Enumerable.Range(1, 7)
                 from l3 in Enumerable.Range(1, 7)
                 select (l2, l3)

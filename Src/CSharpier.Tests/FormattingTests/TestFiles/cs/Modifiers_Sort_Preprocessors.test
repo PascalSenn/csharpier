@@ -7,10 +7,14 @@ public class DontReorderThis
 #if !SILVERLIGHT
     unsafe
 #endif
-    static String Method() { }
+    static String Method()
+    {
+    }
 
 #if MONO
-    public void NewSymbolSet() { }
+    public void NewSymbolSet()
+    {
+    }
 #endif
 
 #if !SILVERLIGHT
@@ -23,5 +27,7 @@ public class DontReorderThis
     string Field;
 
     // comment should not reorder modifiers
-    static public void Method() { }
+    static public void Method()
+    {
+    }
 }

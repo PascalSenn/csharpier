@@ -17,10 +17,10 @@ public class ClassName
     public string ForceFlatInString =
         $"{SomeValue}{CallSomeLongMethodWithBiParameters(jlkasdfkljasdflkaskdf, jkasdflkjasdfsdkaljfasdkjf)}";
 
-    public string Test2 = CallSomeLongMethodWithBiParameters(
-        $"some super long interpolated string with some substitions like {jkasdflkjasdfsdkaljfasdkjf}",
-        $"another long interpolated string with some substitions like {jlkasdfkljasdflkaskdf}"
-    );
+    public string Test2 =
+        CallSomeLongMethodWithBiParameters(
+            $"some super long interpolated string with some substitions like {jkasdflkjasdfsdkaljfasdkjf}",
+            $"another long interpolated string with some substitions like {jlkasdfkljasdflkaskdf}");
 
     void AlignmentAndFormat()
     {

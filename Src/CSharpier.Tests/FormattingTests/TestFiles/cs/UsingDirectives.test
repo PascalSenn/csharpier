@@ -9,5 +9,7 @@ namespace Namespace
     using One.Two.Three;
     using Third;
 
-    public class ClassName { }
+    public class ClassName
+    {
+    }
 }

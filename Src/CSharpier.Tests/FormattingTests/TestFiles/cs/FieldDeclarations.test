@@ -11,13 +11,11 @@ public class ClassName
         RegexOptions.Compiled
             | RegexOptions.CultureInvariant
             | RegexOptions.IgnoreCase
-            | RegexOptions.MakeThisBreak
-    );
+            | RegexOptions.MakeThisBreak);
 
     private SomeObject SomeLongerName = new SomeObject(
         "lkjasdflkjasdfkljaskldjf",
-        "klasldkfaksdfasdfkjasdklf"
-    )
+        "klasldkfaksdfasdfkjasdklf")
     {
         Property1 = 1,
         Property2 = 2
@@ -27,16 +25,14 @@ public class ClassName
         "someValue",
         "someOtherValue",
         "anotherValue",
-        "yetAnotherValue"
-    );
+        "yetAnotherValue");
 
     private SomeReallyLongObjectName SomeReallyLongFieldName_____________ =
         new SomeReallyLongObjectName("someValue", "someOtherValue");
 
     private SomeReallyLongObjectName LongFieldNameAndLongParameters = new SomeReallyLongObjectName(
         "someValue___________________",
-        "someOtherValue_____________________________________"
-    );
+        "someOtherValue_____________________________________");
 
     public ClassName Value = new ClassName
     {
@@ -76,8 +72,7 @@ public class ClassName
         >();
 
     private static readonly Func<SyntaxTrivia, bool> s_isVisualBasicCommentTrivia = (
-        syntaxTrivia
-    ) => syntaxTrivia.IsKind(VisualBasic.SyntaxKind.CommentTrivia);
+        syntaxTrivia) => syntaxTrivia.IsKind(VisualBasic.SyntaxKind.CommentTrivia);
 
     private Func<SomeObjectIn, bool> SomeFieldFunc = (someValue) => true;
 

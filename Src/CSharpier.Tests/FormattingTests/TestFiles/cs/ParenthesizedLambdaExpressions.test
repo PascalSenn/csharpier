@@ -3,8 +3,7 @@ public class ClassName
     public static readonly EventCallback Empty = new EventCallback(null, (Action)(() => { }));
     public static readonly EventCallback<TValue> Empty = new EventCallback<TValue>(
         null,
-        (Action)(() => { })
-    );
+        (Action)(() => { }));
     private static readonly Action _callbackCompleted = () => { };
 
     public void MethodName()
@@ -17,25 +16,20 @@ public class ClassName
         this.Where(static async () => true);
         this.SomeMethod(
             (longParameter__________________, longParameter_________________) =>
-                longParameter________________
-        );
+                longParameter________________);
 
         this.SomeMethod(
             (
                 longerParameter_________________________,
                 longerParameter_________________________,
-                longerParameter_________________________
-            ) => evenLongerParameter
-        );
+                longerParameter_________________________) => evenLongerParameter);
 
         this.SomeMethod(
             [Attribute]
             (
                 longerParameter_________________________,
                 longerParameter_________________________,
-                longerParameter_________________________
-            ) => evenLongerParameter
-        );
+                longerParameter_________________________) => evenLongerParameter);
 
         CallMethod(() =>
         {
@@ -43,15 +37,14 @@ public class ClassName
         });
 
         CallMethod(
-            () => CallOtherMethod___________________________________________________________()
-        );
+            () => CallOtherMethod___________________________________________________________());
 
-        var task = Task.Factory.StartNew(async () =>
-        {
-            return await new WebClient().DownloadStringTaskAsync____________________(
-                "http://example.com"
-            );
-        });
+        var task =
+            Task.Factory.StartNew(async () =>
+            {
+                return await new WebClient().DownloadStringTaskAsync____________________(
+                    "http://example.com");
+            });
 
         Action find = () =>
             EntryPointDiscoverer.FindStaticEntryMethod(typeof(IEnumerable<>).Assembly);
@@ -69,20 +62,19 @@ public class ClassName
 
         var reusedCommand = new Command("reused")
         {
-            Handler = CommandHandler.Create(() =>
-            {
-                doSomething();
-            })
+            Handler =
+                CommandHandler.Create(() =>
+                {
+                    doSomething();
+                })
         };
 
         CallSomeMethod(
             () =>
                 CallAnotherMethodWithParameters(
                     someParameter,
-                    someParameter___________________________________
-                ) > someValue,
-            anotherParameter
-        );
+                    someParameter___________________________________) > someValue,
+            anotherParameter);
 
         var returnType = object (bool o) => o ? 1 : "two";
         var returnTypeWithAsync = async object (bool o) => o ? 1 : "two";

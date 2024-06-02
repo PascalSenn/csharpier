@@ -73,8 +73,7 @@ public class ClassName
         this.Select_________________________________(
             selector: static longName__________________ => new Entity(
                 LongArgument_______________________,
-                LongArgument_______________________
-            )
+                LongArgument_______________________)
             {
                 Prop__________ = longName__________________
             }
@@ -98,8 +97,7 @@ public class ClassName
         this.Where(x => x.IsSomeThing)
             .Select(selector: static o => new Entity(
                 LongArgument_______________________,
-                LongArgument_______________________
-            )
+                LongArgument_______________________)
             {
                 o.LongName_______________________,
                 o.LongName_______________________

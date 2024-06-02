@@ -1,2 +1,5 @@
 namespace Namespace;
-public class ClassName { }
+
+public class ClassName
+{
+}

@@ -11,8 +11,7 @@ public class ClassName
             string one,
             string two,
             string three,
-            string four_______________
-        )
+            string four_______________)
         {
             return;
         }

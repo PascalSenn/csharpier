@@ -2,4 +2,6 @@
 #r "Microsoft.WindowsAzure.Storage"
 #load "mylogger.csx"
 
-public static void Run() { }
+public static void Run()
+{
+}

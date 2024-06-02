@@ -72,6 +72,7 @@ public class BaseTest
 
         if (normalizedCode != expectedCode && !BuildServerDetector.Detected)
         {
+            DiffTools.UseOrder(DiffTool.VisualStudioCode);
             await DiffRunner.LaunchAsync(filePathToChange, actualFilePath);
         }
         normalizedCode.Should().Be(expectedCode);

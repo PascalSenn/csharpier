@@ -12,18 +12,15 @@ public class ClassName
 
         this.ToDictionary_____________(
             o => o.VeryLongKey_________________________,
-            o => new { o.Prop }
-        );
+            o => new { o.Prop });
 
         this.ToDictionary_____________(
             o => o.VeryLongKey_________________________,
-            o => new Entity { o.Prop }
-        );
+            o => new Entity { o.Prop });
 
         this.ToDictionary_____________(
             keySelector: static o => o.Key,
-            elementSelector: static o => new Entity { o.Prop }
-        );
+            elementSelector: static o => new Entity { o.Prop });
 
         this.ToDictionary_____________(
             keySelector: static o => o.Key,
@@ -31,8 +28,7 @@ public class ClassName
             {
                 o.LongName_______________________,
                 o.LongName_______________________
-            }
-        );
+            });
 
         this.GroupBy_____________(
             keySelector: static o => new Entity
@@ -44,7 +40,6 @@ public class ClassName
             {
                 o.LongName_______________________,
                 o.LongName_______________________
-            }
-        );
+            });
     }
 }

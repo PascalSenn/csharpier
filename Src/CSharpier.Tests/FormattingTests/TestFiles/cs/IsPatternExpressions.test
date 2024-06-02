@@ -29,13 +29,11 @@ class ClassName
             return;
         }
 
-        if (
-            expr is
+        if (expr is
             {
                 SomeProperty: "someValue________________",
                 SomeOtherProperty: "someOtherValue______________"
-            }
-        )
+            })
         {
             return;
         }
@@ -48,10 +46,8 @@ class ClassName
                     or SyntaxKind.AmpersandToken
                     or SyntaxKind.PlusToken;
 
-        if (
-            someRandomValue___________________ is SomeRandomType someRandomType
-            && someRandomType.IsEnum
-        )
+        if (someRandomValue___________________ is SomeRandomType someRandomType
+            && someRandomType.IsEnum)
         {
             return;
         }
@@ -66,10 +62,8 @@ class ClassName
             return;
         }
 
-        if (
-            someValue_________________________ is SomeType_________________ someType
-            && someType.SomeProperty
-        ) { }
+        if (someValue_________________________ is SomeType_________________ someType
+            && someType.SomeProperty) { }
 
         var value = someOtherValue is { Property: true };
 
@@ -119,134 +113,108 @@ class ClassName
             return;
         }
 
-        if (
-            someOtherValue_____________
-            is (SomeLongType_____________ or SomeOtherLongType_____________)
-        )
+        if (someOtherValue_____________
+            is (SomeLongType_____________ or SomeOtherLongType_____________))
         {
             return;
         }
 
-        if (
-            someOtherValue_____________
-            is not (SomeLongType_____________ or SomeOtherLongType_____________)
-        )
+        if (someOtherValue_____________
+            is not (SomeLongType_____________ or SomeOtherLongType_____________))
         {
             return;
         }
 
-        if (
-            someOtherValue_____________
+        if (someOtherValue_____________
             is (
                 SomeLongType_____________________________________
                 or SomeLongType_____________________________________
-            )
-        )
+            ))
         {
             return;
         }
 
-        if (
-            node is SomeType_______________
+        if (node is SomeType_______________
             {
                 SomeProperty: SomeOtherType_____________________________
-            }
-        )
+            })
         {
             return;
         }
 
-        if (
-            node is PrefixUnaryExpressionSyntax
+        if (node is PrefixUnaryExpressionSyntax
             {
                 Operand: ParenthesizedExpressionSyntax
                 {
                     Expression: IsPatternExpressionSyntax or IsPatternExpressionSyntax
                 },
-            }
-        )
+            })
         {
             return;
         }
 
-        if (
-            node is PrefixUnaryExpressionSyntax
+        if (node is PrefixUnaryExpressionSyntax
             {
                 Operand:
                 {
                     Expression: IsPatternExpressionSyntax or IsPatternExpressionSyntax______________
                 },
-            }
-        )
+            })
         {
             return;
         }
 
-        if (
-            !(
+        if (!(
                 node is PrefixUnaryExpressionSyntax
                 {
                     Operand: ParenthesizedExpressionSyntax or IsPatternExpressionSyntax
                 }
-            )
-        )
+            ))
         {
             return;
         }
 
-        if (
-            someLongName____________________________________________________ is
-            { } anotherLongName______________________
-        )
+        if (someLongName____________________________________________________ is
+            { } anotherLongName______________________)
         {
             return;
         }
 
-        if (
-            someLongVariableName____________
-            is SomeLongTypeName______________________________ someOtherLongVariableName_____________
-        )
+        if (someLongVariableName____________
+            is SomeLongTypeName______________________________ someOtherLongVariableName_____________)
         {
             return;
         }
 
-        if (
-            someArray[index]
-            is SomeLongTypeName______________________________ someOtherLongVariableName_____________
-        )
+        if (someArray[index]
+            is SomeLongTypeName______________________________ someOtherLongVariableName_____________)
         {
             return;
         }
 
-        if (
-            someLongName_____________
+        if (someLongName_____________
             is SomeObjectType
                 or SomeOtherObjectType
-                or YetAnotherObjectType
-        )
+                or YetAnotherObjectType)
         {
             return;
         }
 
-        if (
-            someCondition
+        if (someCondition
             && someLongName_____________
-                is { Kind: SomeObjectType, Value: "___________________________________" }
-        ) { }
+                is { Kind: SomeObjectType, Value: "___________________________________" }) { }
 
         if (expr is { Property.Length: 5 })
         {
             return;
         }
 
-        if (
-            e is
+        if (e is
 #pragma warning disable CS0618
             BadHttpRequestException
 #pragma warning restore CS0618
             {
                 Message: "______________________________________________________________________________________________________________"
-            }
-        ) { }
+            }) { }
     }
 }

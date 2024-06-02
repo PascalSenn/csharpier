@@ -23,7 +23,9 @@ class ClassName<T>
 
     public static ReturnType<T> MethodName<T, U>()
         where T : class
-        where U : class { }
+        where U : class
+    {
+    }
 
     public static ReturnType<T> MethodName<T, U>(string parameter)
         where T : class
@@ -34,8 +36,7 @@ class ClassName<T>
 
     public static ReturnType<T> MethodName<T, U>(
         string longParameter_______________________,
-        string longParameter_______________________
-    )
+        string longParameter_______________________)
         where T : class
     {
         return;
@@ -43,14 +44,14 @@ class ClassName<T>
 
     public static ReturnType<T> MethodName<T, U>(
         string longParameter_______________________,
-        string longParameter_______________________
-    )
-        where T : class { }
+        string longParameter_______________________)
+        where T : class
+    {
+    }
 
     public static ReturnType<T> MethodName<T, U>(
         string longParameter_______________________,
-        string longParameter_______________________
-    )
+        string longParameter_______________________)
         where T : class
         where U : class
     {
@@ -59,17 +60,22 @@ class ClassName<T>
 
     public static ReturnType<T> MethodName<T, U>(
         string longParameter_______________________,
-        string longParameter_______________________
-    )
+        string longParameter_______________________)
         where T : class
-        where U : class { }
+        where U : class
+    {
+    }
 }
 
 interface InterfaceName<T>
-    where T : class { }
+    where T : class
+{
+}
 
 struct Struct<T>
-    where T : class { }
+    where T : class
+{
+}
 
 class ClassName<N, C, T, TT, L>
     where N : new()
@@ -86,4 +92,6 @@ class ClassName<N, C, T, TT, L>
     where C : class
     where T : IComparable
     where TT : IList<N>
-    where L : class, new() { }
+    where L : class, new()
+{
+}

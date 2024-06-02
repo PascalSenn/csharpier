@@ -1,8 +1,12 @@
 public class ClassName
 {
-    public void MethodName() { }
+    public void MethodName()
+    {
+    }
 
-    public void LongMethodNameKeepsEmptyBraces__________________________________________________________() { }
+    public void LongMethodNameKeepsEmptyBraces__________________________________________________________()
+    {
+    }
 
     public void LongMethodNameKeepsEmptyBraces__________________________________________________________()
     {
@@ -12,8 +16,7 @@ public class ClassName
     public void LongMethodNameForceLineBreak(
         string firstParameter___________,
         string secondParameter___________,
-        string thirdParameter___________
-    )
+        string thirdParameter___________)
     {
         return;
     }
@@ -21,8 +24,9 @@ public class ClassName
     public void LongMethodNameForceLineBreaks___________________________(
         string one,
         string two,
-        string three
-    ) { }
+        string three)
+    {
+    }
 
     public void ReallyLongMethodNameWithoutAnyParametersShouldNewLineBrace_______()
     {
@@ -33,13 +37,14 @@ public class ClassName
         // leading
         string one, // trailing
         string two,
-        string three
-    )
+        string three)
     {
         var x = 0;
     }
 
-    public void MethodName(string one, string two) { }
+    public void MethodName(string one, string two)
+    {
+    }
 
     public void MethodName()
     {
@@ -50,8 +55,8 @@ public class ClassName
     private Doc MethodWithParameters__________________(
         SomeClass one,
         SomeClass two,
-        SomeClass three
-    ) => CallSomethingElseWithALongNameThatForcesABreak_________(one, two, three);
+        SomeClass three) =>
+        CallSomethingElseWithALongNameThatForcesABreak_________(one, two, three);
 
     private Doc ShortMethod() => Method();
 
@@ -61,8 +66,7 @@ public class ClassName
     private Doc MethodWithParameters_______________________(
         SomeClass one,
         SomeClass two,
-        SomeClass three
-    ) => CallSomething(one, two, three);
+        SomeClass three) => CallSomething(one, two, three);
 
     private void MethodWithEmptyBlockShouldNotGetExtraSpace()
     {
@@ -83,7 +87,9 @@ public class ClassName
 
 class ExplicitInterfaceSpecifier : IDisposable
 {
-    void IDisposable.Dispose() { }
+    void IDisposable.Dispose()
+    {
+    }
 }
 
 namespace SomeNamespace
@@ -115,8 +121,7 @@ namespace SomeNamespace
 
         public void JustOver100(
             IApplicationBuilder app,
-            IWebHostEnvironment env____________________
-        )
+            IWebHostEnvironment env____________________)
         {
             return;
         }

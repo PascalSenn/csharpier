@@ -23,20 +23,17 @@ class ClassName
 
         return (T)CallMethod(
             someArgument_______________________________,
-            someArgument_______________________________
-        );
+            someArgument_______________________________);
 
         return (SomeGenericType<T, T2>)
             CallMethod(
                 someArgument_______________________________,
-                someArgument_______________________________
-            );
+                someArgument_______________________________);
 
         return (SomeGenericType<T, T2>)(
             CallMethod(
                 someArgument_______________________________,
-                someArgument_______________________________
-            )
+                someArgument_______________________________)
         );
 
         var someValue____________________________ =

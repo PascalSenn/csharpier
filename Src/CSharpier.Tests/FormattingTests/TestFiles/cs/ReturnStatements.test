@@ -19,7 +19,6 @@ class ClassName
     string LongMethodCallWithParameter()
     {
         return CallSomeLongMethodThatIndentsInsideOfItAndSeeWhatHappens(
-            "SomeLongerValue________________________________"
-        );
+            "SomeLongerValue________________________________");
     }
 }

@@ -29,16 +29,15 @@ class ClassName
             syntaxTrivia.IsKind(VisualBasic.SyntaxKind.CommentTrivia);
 
         Func<SyntaxTrivia, bool> s_isVisualBasicCommentTrivia = (
-            syntaxTrivia_________________________________
-        ) => syntaxTrivia.IsKind(VisualBasic.SyntaxKind.CommentTrivia);
+            syntaxTrivia_________________________________) =>
+            syntaxTrivia.IsKind(VisualBasic.SyntaxKind.CommentTrivia);
 
         Action find = () =>
             EntryPointDiscoverer.FindStaticEntryMethod(typeof(IEnumerable<>).Assembly);
 
         Action find = () =>
             EntryPointDiscoverer.FindStaticEntryMethod(
-                typeof(IEnumerable<>).Assembly_________________________________________
-            );
+                typeof(IEnumerable<>).Assembly_________________________________________);
 
         var arrayCreationExpression1 = new byte[100];
         var arrayCreationExpression2 = new byte[
@@ -76,19 +75,19 @@ class ClassName
                 + SqlParameterCollectionExtensions.DefaultValueColumnWidth
         ];
 
-        var someLongValue_________________ = memberAccessExpression[
-            elementAccessExpression
-        ].theMember______________________________;
+        var someLongValue_________________ =
+            memberAccessExpression[elementAccessExpression].theMember______________________________;
 
-        var someLongValue_________________ = memberAccessExpression[elementAccessExpression]
-            .theMember______________________________();
+        var someLongValue_________________ =
+            memberAccessExpression[elementAccessExpression]
+                .theMember______________________________();
 
-        var someLongValue_________________ = memberAccessExpression(
-            elementAccessExpression
-        ).theMember______________________________;
+        var someLongValue_________________ =
+            memberAccessExpression(elementAccessExpression).theMember______________________________;
 
-        var someLongValue_________________ = memberAccessExpression(elementAccessExpression)
-            .theMember______________________________();
+        var someLongValue_________________ =
+            memberAccessExpression(elementAccessExpression)
+                .theMember______________________________();
 
         var someLongVariable_doesNotBreakArrayRank____________________________ =
             (ArrayType[])CallMethod();
@@ -134,10 +133,8 @@ class ClassName
 withLineEnding"
         );
 
-        var value = coalesceAssignmentExpression ??= CallMethod(
-            parameter_____________________,
-            parameter_____________________
-        );
+        var value = coalesceAssignmentExpression ??=
+            CallMethod(parameter_____________________, parameter_____________________);
 
         var value =
             coalesceAssignmentExpression =
@@ -146,22 +143,19 @@ withLineEnding"
 
         var value = CallSomeMethod(
             someParameter_____________________,
-            someParameter_____________________
-        )
+            someParameter_____________________)
             ? someValue
             : someOtherValue;
 
         var someValue =
             await SomeObject.CallLongAsyncMethod____________________________________________(
                 someParameter_________________________,
-                someParameter_________________________
-            );
+                someParameter_________________________);
 
         var someValue =
             SomeObject.CallLongMethod____________________________________________________(
                 someParameter_________________________,
-                someParameter_________________________
-            );
+                someParameter_________________________);
 
         var someValue =
             SomeObject.CallLongMethod____________________________________________________()

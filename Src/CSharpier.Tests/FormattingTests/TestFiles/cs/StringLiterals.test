@@ -62,8 +62,7 @@ two
 three
 four
 five
-"
-        );
+");
 
         CallSomeLongMethod(
             $@"one
@@ -71,24 +70,21 @@ two
 three
 four
 five
-"
-        );
+");
 
         CallSomeLongMethod(
             @"one
 two
 three
 four",
-            five
-        );
+            five);
 
         CallSomeLongMethod(
             $@"one
 two
 three
 four",
-            five
-        );
+            five);
 
         var multiLineRaw = """
             This is a long message.
@@ -113,8 +109,7 @@ two
 three
 four
 five
-"""
-        );
+""");
 
         CallSomeLongMethod(
             """
@@ -123,8 +118,7 @@ two
 three
 four
 """,
-            five
-        );
+            five);
 
         CallSomeLongMethod(
             one,
@@ -133,8 +127,7 @@ two
 three
 four
 """,
-            five
-        );
+            five);
 
         var expressionsInInterpolatedVerbatimStringDontBreak =
             $@"{CallMethod_____________________________().CallMethod_____________________________().CallMethod_____________________________()}";
@@ -163,25 +156,21 @@ four
             _ => null
         }}}"
               }
-              """
-        );
+              """);
 
         CallMethod(
             @"
 SomeVerbatimString
-".CallMethod()
-        );
+".CallMethod());
 
         CallMethod(
             @"
 SomeVerbatimString
-".CallMethod().CallMethod()
-        );
+".CallMethod().CallMethod());
 
         CallMethod(
             @"
 SomeVerbatimString
-".CallMethod().CallMethod().CallMethod()
-        );
+".CallMethod().CallMethod().CallMethod());
     }
 }

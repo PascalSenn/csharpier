@@ -5,4 +5,6 @@ using SomeAlias = SomeNamespace;
 using SomeDebugNamespace;
 #endif
 
-public static class ODataEdmModelProvider { }
+public static class ODataEdmModelProvider
+{
+}

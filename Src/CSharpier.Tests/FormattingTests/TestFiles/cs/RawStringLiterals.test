@@ -35,53 +35,44 @@ var whatAboutWhiteSpace = $"""
 CallMethod(
     """
     SomeString
-    """
-);
+    """);
 
 CallMethod(
     """
     TrailingSpaceHere 
-    """
-);
+    """);
 
 CallMethod(
     $"""
     TrailingSpaceHere 
-    """
-);
+    """);
 
 CallMethod(
     """
     SomeRawString
-    """.CallMethod()
-);
+    """.CallMethod());
 
 CallMethod(
     """
     SomeRawString
-    """.CallMethod().CallMethod()
-);
+    """.CallMethod().CallMethod());
 
 CallMethod(
     """
     SomeRawString
-    """.CallMethod().CallMethod().CallMethod()
-);
+    """.CallMethod().CallMethod().CallMethod());
 
 CallMethod(
     $"""
     SomeRawString
-    """.CallMethod()
-);
+    """.CallMethod());
 
 CallMethod(
     $"""
     SomeRawString
-    """.CallMethod().CallMethod()
-);
+    """.CallMethod().CallMethod());
 
 CallMethod(
     $"""
     SomeRawString
-    """.CallMethod().CallMethod().CallMethod()
-);
+    """.CallMethod().CallMethod().CallMethod());

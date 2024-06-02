@@ -7,8 +7,7 @@ class ClassName
 
     static Complex operator -(
         Complex someOverlyLongNameToForceBreak,
-        Complex someOverlyLongNameToForceBreak2
-    )
+        Complex someOverlyLongNameToForceBreak2)
     {
         return a.Add(b);
     }
@@ -16,6 +15,5 @@ class ClassName
     static Complex operator checked -(Complex value);
 
     static BigInteger IUnaryNegationOperators<BigInteger, BigInteger>.operator checked -(
-        BigInteger value
-    ) => -value;
+        BigInteger value) => -value;
 }

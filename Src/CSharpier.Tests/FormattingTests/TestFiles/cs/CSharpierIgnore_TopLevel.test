@@ -4,16 +4,16 @@ using System;
 string    unformatted1;
 // csharpier-ignore-end
 
- string    formatMe;
+string formatMe;
 // csharpier-ignore-start
  string    noNewLine;
 // csharpier-ignore-end
 
 // csharpier-ignore-start
- string    keepNewLine;
+string keepNewLine;
 // csharpier-ignore-end
 
 
 // csharpier-ignore-start
- string    removeNewLine;
+string removeNewLine;
 // csharpier-ignore-end

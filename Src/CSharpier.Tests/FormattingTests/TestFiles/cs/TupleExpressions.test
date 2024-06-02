@@ -15,8 +15,7 @@ class ClassName
     {
         var (noteTexts, matcher) = await (
             GetAndAnalyzeNoteTexts(),
-            _wordInfoCollectionManager.BuildWordMatcher()
-        );
+            _wordInfoCollectionManager.BuildWordMatcher());
 
         var (a, b) = await (c(), d());
     }
@@ -45,8 +44,7 @@ class ClassName
             string myString,
             ClassName myClassNameInstance,
             Dictionary<int, string> wordList
-        ) inputArgs
-    )
+        ) inputArgs)
     {
         // do something
     }
