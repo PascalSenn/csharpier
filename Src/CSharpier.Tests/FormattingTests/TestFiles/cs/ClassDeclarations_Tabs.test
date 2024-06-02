@@ -37,16 +37,14 @@ public class LongTypeConstraints<T>
 public class LongerClassNameWithLotsOfGenerics<
 	TLongName,
 	TAnotherLongName,
-	TThirdLongName__________________
->
+	TThirdLongName__________________>
 {
 }
 
 public class LongerClassNameWithLotsOfGenerics<
 	TLongName,
 	TAnotherLongName,
-	TThirdLongName__________________
-> : SomeBaseClass<TLongName>
+	TThirdLongName__________________> : SomeBaseClass<TLongName>
 {
 }
 

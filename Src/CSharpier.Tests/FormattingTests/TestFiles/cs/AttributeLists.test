@@ -87,16 +87,14 @@ class ClassName
 
     public void MethodWithAttributesOnTypeParameters<
         [SomeLongAttribute__________________________] T,
-        K
-    >()
+        K>()
     {
     }
 
     public void MethodWithAttributesOnTypeParameters<
         [SomeLongAttribute__________________________]
             TSomeMuchLongerName___________________________________,
-        K
-    >()
+        K>()
     {
     }
 
@@ -106,8 +104,7 @@ class ClassName
             longParameter_____________________________
         )]
             TSomeMuchLongerName___________________________________,
-        K
-    >()
+        K>()
     {
     }
 }
