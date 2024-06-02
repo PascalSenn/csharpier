@@ -92,22 +92,19 @@ internal class LineEndingEdgeCase
 
         result.Code.Should().Be(unformattedCode);
     }
+
     [TestCase]
-    public async Task LongProperyChain()
+    public async Task NewInMethodCall()
     {
         var unformattedCode = @"class Unformatted
 {
     private string GetTypeName()
     {
-        objectModel
-            .ThisIsAVeryLongPropertyChain
-            .ThisIsAVeryLongPropertyChain
-            .ThisIsAVeryLongPropertyChain
-            .Add(new Field
-            {
-                Name = field.Name,
-                Type = GetType(context, field.Type, currentModel.Name)
-            });
+        objectModel.Fields.Add(new Field
+        {
+            Name = field.Name,
+            Type = GetType(context, field.Type, currentModel.Name)
+        });
     }
 }
 ";
@@ -122,17 +119,17 @@ internal class LineEndingEdgeCase
     }
 
     [TestCase]
-    public async Task NewInMethodCall()
+    public async Task IfPullUp()
     {
         var unformattedCode = @"class Unformatted
 {
     private string GetTypeName()
     {
-        objectModel.Fields.Add(new Field
+        if (result.Kind == SelectionVisitorActionKind.Continue
+            && VisitChildren(selection, context).Kind == Break)
         {
-            Name = field.Name,
-            Type = GetType(context, field.Type, currentModel.Name)
-        });
+            return Break;
+        }
     }
 }
 ";

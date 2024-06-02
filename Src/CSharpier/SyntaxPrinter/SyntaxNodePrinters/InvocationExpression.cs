@@ -317,7 +317,7 @@ internal static class InvocationExpression
                 hasSeenNodeThatRequiresBreak = false;
             }
 
-            if (printedNodes[index].Node is InvocationExpressionSyntax 
+            if (printedNodes[index].Node is InvocationExpressionSyntax
                 //  We dont want to do it if it's just the last element in the chain
                 && index + 1 < printedNodes.Count)
             {

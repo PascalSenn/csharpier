@@ -15,11 +15,7 @@ internal static class IfStatement
             " ",
             Doc.Group(
                 Token.Print(node.OpenParenToken, context),
-                Doc.Indent(
-                    Doc.IfBreak(Doc.SoftLine, Doc.Null),
-                    Node.Print(node.Condition, context)
-                ),
-                Doc.IfBreak(Doc.SoftLine, Doc.Null)
+                Doc.Indent(Node.Print(node.Condition, context))
             ),
             Token.Print(node.CloseParenToken, context),
             OptionalBraces.Print(node.Statement, context)
