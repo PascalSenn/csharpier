@@ -70,8 +70,7 @@ public class IdentityDbContext<TUser, TRole, TKey>
 		IdentityUserRole<TKey>,
 		IdentityUserLogin<TKey>,
 		IdentityRoleClaim<TKey>,
-		IdentityUserToken<TKey>
-	>
+		IdentityUserToken<TKey>>
 	where TUser : IdentityUser<TKey>
 	where TRole : IdentityRole<TKey>
 	where TKey : IEquatable<TKey>

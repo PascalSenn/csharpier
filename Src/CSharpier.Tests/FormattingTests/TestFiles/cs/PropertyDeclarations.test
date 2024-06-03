@@ -63,13 +63,12 @@ public class ClassName
     public IReadOnlyCollection<Action<One, Two>> SomeName => true;
 
     public IReadOnlyCollection<
-        Action<SomeRandomType, IAnotherRandomType>
-    > SomeRandomLongName___________________ => someRandomResult_________________;
+        Action<SomeRandomType, IAnotherRandomType>> SomeRandomLongName___________________ =>
+        someRandomResult_________________;
 
     public IReadOnlyCollection<
         Action<SomeRandomType, IAnotherRandomType>,
-        SomethingElse
-    > SomeRandomLongName___________________ => someRandomResult_________________;
+        SomethingElse> SomeRandomLongName___________________ => someRandomResult_________________;
 
     public virtual LongerPropertyConfiguration LongerPropertyConfiguration { get; set; }
 

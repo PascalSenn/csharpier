@@ -129,8 +129,7 @@ public class ClassName
 [Generic<
     LongName______________________,
     LongName______________________,
-    LongName______________________
->]
+    LongName______________________>]
 public class ClassName
 {
 }

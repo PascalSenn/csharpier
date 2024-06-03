@@ -26,7 +26,6 @@ internal static class TypeArgumentList
                     )
                 )
             ),
-            separator,
             Token.Print(node.GreaterThanToken, context)
         );
     }

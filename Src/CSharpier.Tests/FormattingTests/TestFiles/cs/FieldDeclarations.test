@@ -58,18 +58,15 @@ public class ClassName
 
     public static Dictionary<
         SomeOtherLongTypeName_______________,
-        SomeOtherLongTypeName_______________
-    > PropertiesByType =
+        SomeOtherLongTypeName_______________> PropertiesByType =
         new Dictionary<SomeOtherLongTypeName____________, SomeOtherLongTypeName____________>();
 
     public static Dictionary<
         SomeOtherLongTypeName_______________________________,
-        SomeOtherLongTypeName_______________________________
-    > PropertiesByType =
+        SomeOtherLongTypeName_______________________________> PropertiesByType =
         new Dictionary<
             SomeOtherLongTypeName_______________________________,
-            SomeOtherLongTypeName_______________________________
-        >();
+            SomeOtherLongTypeName_______________________________>();
 
     private static readonly Func<SyntaxTrivia, bool> s_isVisualBasicCommentTrivia = (
         syntaxTrivia) => syntaxTrivia.IsKind(VisualBasic.SyntaxKind.CommentTrivia);
@@ -87,19 +84,16 @@ public class ClassName
 
     private Func<
         SomeLongObjectIn__________________________________,
-        bool
-    > SomeFieldFuncWithALongName = (someValue) => SometimesBreaksThisWay(someValue);
+        bool> SomeFieldFuncWithALongName = (someValue) => SometimesBreaksThisWay(someValue);
 
     private Func<
         SomeLongObjectIn__________________________________,
-        bool
-    > SomeFieldFuncWithALongName = (someValue) =>
+        bool> SomeFieldFuncWithALongName = (someValue) =>
         SometimesBreaksThisWay(someValue, SomeOtherLongValue);
 
     private Func<
         SomeLongObjectIn__________________________________,
-        bool
-    > SomeFieldFuncWithALongName = (someValue_____________________________) =>
+        bool> SomeFieldFuncWithALongName = (someValue_____________________________) =>
         SometimesBreaksThisWay(someValue, SomeOtherLongValue);
 
     private Type OmittedTypes = typeof(OmittedTypes<,>);

@@ -3,12 +3,10 @@
 class ClassName
 {
     public readonly StackObjectPool<
-        Dictionary<object, KeyedItemInfo>
-    > KeyedItemInfoDictionaryPool_____;
+        Dictionary<object, KeyedItemInfo>> KeyedItemInfoDictionaryPool_____;
 
     internal StackObjectPool<
-        Dictionary<object, KeyedItemInfo>
-    > KeyedItemInfoDictionaryPool { get; } =
+        Dictionary<object, KeyedItemInfo>> KeyedItemInfoDictionaryPool { get; } =
         new StackObjectPool<Dictionary<object, KeyedItemInfo>>(
             maxPreservedItems: 10,
             () => new Dictionary<object, KeyedItemInfo>());
@@ -38,8 +36,7 @@ class ClassName
         Type,
         string,
         string,
-        Exception
-    > _navigatingToComponent =
+        Exception> _navigatingToComponent =
         LoggerMessage.Define<Type, string, string>(
             LogLevel.Debug,
             new EventId(2, "NavigatingToComponent"),
@@ -48,14 +45,12 @@ class ClassName
     public void MethodName()
     {
         builder_________________.OpenComponent<
-            SecondCascadingParameterConsumerComponent<string, int>
-        >(0);
+            SecondCascadingParameterConsumerComponent<string, int>>(0);
     }
 
     public static IRemoteAuthenticationBuilder<
         RemoteAuthenticationState,
-        RemoteUserAccount
-    > AddAccountClaimsPrincipalFactory<
+        RemoteUserAccount> AddAccountClaimsPrincipalFactory<
         [DynamicallyAccessedMembers(DynamicallyAccessedMemberTypes.PublicConstructors)]
             TAccountClaimsPrincipalFactory>(
         this IRemoteAuthenticationBuilder<RemoteAuthenticationState, RemoteUserAccount> builder)
@@ -63,8 +58,7 @@ class ClassName
         builder.AddAccountClaimsPrincipalFactory<
             RemoteAuthenticationState,
             RemoteUserAccount,
-            TAccountClaimsPrincipalFactory
-        >();
+            TAccountClaimsPrincipalFactory>();
 
     private static readonly Action<IApplicationBuilder> ActionNotImplemented =
         new Action<IApplicationBuilder>(_ =>
@@ -91,8 +85,12 @@ class ClassName
         PathMapActions.Add(pm =>
         {
             Expression<
-                Func<TSource, TDestination, TMember, TMember, ResolutionContext, bool>
-            > expr = (src, dest, srcMember, destMember, ctxt) =>
+                Func<TSource, TDestination, TMember, TMember, ResolutionContext, bool>> expr = (
+                src,
+                dest,
+                srcMember,
+                destMember,
+                ctxt) =>
                 condition(new ConditionParameters<TSource, TDestination, TMember>(
                     src,
                     dest,

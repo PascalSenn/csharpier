@@ -18,7 +18,6 @@ internal static class TypeParameterList
                 shouldBreakMore ? Doc.SoftLine : Doc.Null,
                 SeparatedSyntaxList.Print(node.Parameters, TypeParameter.Print, Doc.Line, context)
             ),
-            shouldBreakMore ? Doc.SoftLine : Doc.Null,
             Token.Print(node.GreaterThanToken, context)
         );
     }
