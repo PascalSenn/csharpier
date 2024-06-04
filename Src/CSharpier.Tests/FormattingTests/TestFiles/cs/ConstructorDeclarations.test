@@ -20,7 +20,8 @@ public class BasicClass
     }
 }
 
-public class Initializers : BasicClass
+public class Initializers
+    : BasicClass
 {
     public Initializers()
         : this(true) { }

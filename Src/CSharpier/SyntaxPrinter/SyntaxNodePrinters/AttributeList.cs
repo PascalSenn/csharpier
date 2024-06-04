@@ -64,7 +64,6 @@ internal static class AttributeList
                             context
                         )
                     ),
-                    Doc.SoftLine,
                     Token.Print(attributeNode.ArgumentList.CloseParenToken, context)
                 );
             },

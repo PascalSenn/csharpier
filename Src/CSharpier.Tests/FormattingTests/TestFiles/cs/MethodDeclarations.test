@@ -85,7 +85,8 @@ public class ClassName
     }
 }
 
-class ExplicitInterfaceSpecifier : IDisposable
+class ExplicitInterfaceSpecifier
+    : IDisposable
 {
     void IDisposable.Dispose()
     {

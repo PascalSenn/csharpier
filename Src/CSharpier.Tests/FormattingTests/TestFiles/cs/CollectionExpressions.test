@@ -150,8 +150,7 @@ class MyClass
         someValue,
         someValue,
         someValue,
-    ]
-)]
+    ])]
 class ClassName
 {
 }

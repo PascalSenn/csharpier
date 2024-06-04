@@ -10,7 +10,8 @@ class NoModifiers
 {
 }
 
-public class WithInterface : IInterface
+public class WithInterface
+    : IInterface
 {
 }
 
@@ -44,11 +45,13 @@ public class LongerClassNameWithLotsOfGenerics<
 public class LongerClassNameWithLotsOfGenerics<
     TLongName,
     TAnotherLongName,
-    TThirdLongName__________________> : SomeBaseClass<TLongName>
+    TThirdLongName__________________>
+    : SomeBaseClass<TLongName>
 {
 }
 
-public class SimpleGeneric<T> : BaseClass<T>
+public class SimpleGeneric<T>
+    : BaseClass<T>
     where T : new()
 {
 }

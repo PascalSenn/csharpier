@@ -60,8 +60,7 @@ class ClassName
     [LongAttributeWithParametersBreaking(
         "someValue_____________",
         "someValue_____________",
-        "someValue_____________"
-    )]
+        "someValue_____________")]
     void LongAttribute()
     {
     }
@@ -101,8 +100,7 @@ class ClassName
     public void MethodWithAttributesOnTypeParameters<
         [SomeAttributeWithParameters(
             longParameter_____________________________,
-            longParameter_____________________________
-        )]
+            longParameter_____________________________)]
             TSomeMuchLongerName___________________________________,
         K>()
     {
@@ -113,8 +111,7 @@ class ClassName
     LongAttributeWithParametersBreaking(
         "someValue_____________",
         "someValue_____________",
-        "someValue_____________"
-    ),
+        "someValue_____________"),
     AnotherAttribute
 ]
 public class ClassName

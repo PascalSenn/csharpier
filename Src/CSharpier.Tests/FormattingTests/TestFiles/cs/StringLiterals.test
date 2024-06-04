@@ -1,7 +1,6 @@
 [assembly: System.Copyright(
     @"(C)""
-2009"
-)]
+2009")]
 
 class ClassName
 {

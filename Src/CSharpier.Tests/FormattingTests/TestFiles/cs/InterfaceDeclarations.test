@@ -3,7 +3,8 @@ public interface BasicInterface
     string Property { get; set; }
 }
 
-public interface BasicInterface : BaseInterface
+public interface BasicInterface
+    : BaseInterface
 {
 }
 

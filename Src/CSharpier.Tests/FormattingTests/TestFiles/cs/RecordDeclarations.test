@@ -13,7 +13,8 @@ record MostlyWeeklyTemperature(
     public double Mean => (monday + monday + thursday + friday + sunday) / 5.0;
 }
 
-record PC(string x) : PrimaryConstructor(x)
+record PC(string x)
+    : PrimaryConstructor(x)
 {
 }
 
@@ -34,7 +35,8 @@ record GenericRecord<T>(T Result);
 public record LotsOfParametersWithBase(
     string longNameParameter,
     string areTheyCalledParametersWithRecords,
-    string theyLookLikeParameters) : BaseRecord(longNameParameter);
+    string theyLookLikeParameters)
+    : BaseRecord(longNameParameter);
 
 public record LotsOfParametersWithBaseWithLots(
     string longNameParameter,
@@ -46,7 +48,8 @@ public record LotsOfParametersWithBaseWithLots(
         theyLookLikeParameters,
         "someExtraValueToMakeThisReallyLong");
 
-public record SomeRecord : SomeBaseRecord
+public record SomeRecord
+    : SomeBaseRecord
 {
 }
 
