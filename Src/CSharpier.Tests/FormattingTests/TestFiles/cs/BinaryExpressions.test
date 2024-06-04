@@ -64,7 +64,8 @@ class TestClass
         if (one == two
             || someValue_______________
                 == thisWillIndent_______________________________________________________________)
-        { }
+        {
+        }
 
         while (
             one == two
