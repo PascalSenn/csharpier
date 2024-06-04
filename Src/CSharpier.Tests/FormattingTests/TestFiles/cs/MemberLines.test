@@ -38,13 +38,21 @@ public class ClassRules
     {
     }
 
-    public ClassRules() { }
+    public ClassRules()
+    {
+    }
 
-    public ClassRules() { }
+    public ClassRules()
+    {
+    }
 
-    public ~ClassName() { }
+    public ~ClassName()
+    {
+    }
 
-    public ~ClassName() { }
+    public ~ClassName()
+    {
+    }
 
     public static implicit operator ClassRules(string s)
     {
