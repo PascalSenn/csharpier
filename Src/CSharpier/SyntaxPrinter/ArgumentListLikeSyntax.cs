@@ -36,7 +36,7 @@ internal static class ArgumentListLike
                         : Doc.SoftLine
                 ),
             [{ Expression: ParenthesizedLambdaExpressionSyntax lambda } arg]
-                when lambda is { ParameterList.Parameters: [], Block: { } }
+                when lambda is {  Block: { } }
                 => Doc.Concat(
                     Doc.GroupWithId(
                         $"LambdaArguments{lambdaId}",

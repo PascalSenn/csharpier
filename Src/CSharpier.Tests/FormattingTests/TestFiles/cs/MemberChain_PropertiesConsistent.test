@@ -15,8 +15,7 @@ var someVariable =
 
 var someVariable =
     someObject
-        .Property
-        .CallMethod(someValue =>
+        .Property.CallMethod(someValue =>
             someValue.SomeProperty == someOtherValue___________________________
         )
         .CallMethod();
@@ -48,8 +47,8 @@ var someVariable =
         );
 
 var someVariable =
-    this.Property
-        .CallMethod(someValue =>
+    this
+        .Property.CallMethod(someValue =>
             someValue.SomeProperty == someOtherValue___________________________
         )
         .CallMethod();

@@ -96,9 +96,15 @@ internal static class BaseTypeDeclaration
             docs.Add(TypeParameterList.Print(typeParameterList, context));
         }
 
+        var id = Guid.NewGuid().ToString();
+        string? parameterListId = null;
         if (parameterList != null)
         {
-            docs.Add(ParameterList.Print(parameterList, context));
+            parameterListId = $"parameterList{id:N}";
+            docs.Add(
+                Doc.GroupWithId(
+                    parameterListId,
+                    ParameterList.Print(parameterList, context)));
         }
 
         if (node.BaseList != null)
@@ -125,7 +131,9 @@ internal static class BaseTypeDeclaration
                             : Doc.Null
                     );
 
-            docs.Add(Doc.Group(Doc.Indent(Doc.SoftLine, baseListDoc)));
+            docs.Add(Doc.Group(
+                Doc.Indent(
+                    Doc.IfBreak(Doc.HardLine, Doc.SoftLine, parameterListId), baseListDoc)));
         }
 
         docs.Add(ConstraintClauses.Print(constraintClauses, context));
