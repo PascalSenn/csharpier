@@ -33,7 +33,7 @@ internal static class ArgumentListLike
                             or ObjectCreationExpressionSyntax
                             or AnonymousObjectCreationExpressionSyntax
                         ? Doc.IfBreak(Doc.SoftLine, Doc.Null, $"LambdaArguments{lambdaId}")
-                        : Doc.SoftLine
+                        : Doc.Null
                 ),
             [{ Expression: ParenthesizedLambdaExpressionSyntax lambda } arg]
                 when lambda is {  Block: { } }
