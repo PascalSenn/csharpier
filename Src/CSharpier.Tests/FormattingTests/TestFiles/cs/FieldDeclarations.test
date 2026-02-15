@@ -8,35 +8,27 @@ public class ClassName
 
     private static readonly Regex FrontEndResourceRelativePathRegex = new Regex(
         @".*?/Themes/.*?/.*?/(.*)",
-        RegexOptions.Compiled
-            | RegexOptions.CultureInvariant
-            | RegexOptions.IgnoreCase
-            | RegexOptions.MakeThisBreak
-    );
+        RegexOptions.Compiled | RegexOptions.CultureInvariant | RegexOptions.IgnoreCase | RegexOptions.MakeThisBreak);
 
-    private SomeObject SomeLongerName = new SomeObject(
-        "lkjasdflkjasdfkljaskldjf",
-        "klasldkfaksdfasdfkjasdklf"
-    )
+    private SomeObject SomeLongerName = new SomeObject("lkjasdflkjasdfkljaskldjf", "klasldkfaksdfasdfkjasdklf")
     {
         Property1 = 1,
-        Property2 = 2,
+        Property2 = 2
     };
 
     private LotsOfParametersToCauseBreaking ShortFieldName = new LotsOfParametersToCauseBreaking(
         "someValue",
         "someOtherValue",
         "anotherValue",
-        "yetAnotherValue"
-    );
+        "yetAnotherValue");
 
-    private SomeReallyLongObjectName SomeReallyLongFieldName_____________ =
-        new SomeReallyLongObjectName("someValue", "someOtherValue");
+    private SomeReallyLongObjectName SomeReallyLongFieldName_____________ = new SomeReallyLongObjectName(
+        "someValue",
+        "someOtherValue");
 
     private SomeReallyLongObjectName LongFieldNameAndLongParameters = new SomeReallyLongObjectName(
         "someValue___________________",
-        "someOtherValue_____________________________________"
-    );
+        "someOtherValue_____________________________________");
 
     public ClassName Value = new ClassName
     {
@@ -44,7 +36,7 @@ public class ClassName
         Property2 = false,
         Property3 = false,
         Property4 = false,
-        Property5 = false,
+        Property5 = false
     };
 
     // leading comments
@@ -63,8 +55,7 @@ public class ClassName
     public static Dictionary<
         SomeOtherLongTypeName_______________,
         SomeOtherLongTypeName_______________
-    > PropertiesByType =
-        new Dictionary<SomeOtherLongTypeName____________, SomeOtherLongTypeName____________>();
+    > PropertiesByType = new Dictionary<SomeOtherLongTypeName____________, SomeOtherLongTypeName____________>();
 
     public static Dictionary<
         SomeOtherLongTypeName_______________________________,
@@ -75,37 +66,26 @@ public class ClassName
             SomeOtherLongTypeName_______________________________
         >();
 
-    private static readonly Func<SyntaxTrivia, bool> s_isVisualBasicCommentTrivia = (
-        syntaxTrivia
-    ) => syntaxTrivia.IsKind(VisualBasic.SyntaxKind.CommentTrivia);
+    private static readonly Func<SyntaxTrivia, bool> s_isVisualBasicCommentTrivia = (syntaxTrivia) =>
+        syntaxTrivia.IsKind(VisualBasic.SyntaxKind.CommentTrivia);
 
     private Func<SomeObjectIn, bool> SomeFieldFunc = (someValue) => true;
 
-    private Func<SomeObjectIn, bool> SomeFieldFunc = (someValue) =>
+    private Func<SomeObjectIn, bool> SomeFieldFunc = (someValue) => SometimesBreaksThisWay(someValue);
+
+    private Func<SomeObjectIn, bool> SomeFieldFunc = (someValue) => OrWhenLongerBreaksThisWay________(someValue);
+
+    private Func<SomeObjectIn_________________________, bool> SomeFieldFuncWithALongName_________ = (someValue) =>
+        SomeOtherLongerMethod(someValue);
+
+    private Func<SomeLongObjectIn__________________________________, bool> SomeFieldFuncWithALongName = (someValue) =>
         SometimesBreaksThisWay(someValue);
 
-    private Func<SomeObjectIn, bool> SomeFieldFunc = (someValue) =>
-        OrWhenLongerBreaksThisWay________(someValue);
-
-    private Func<SomeObjectIn_________________________, bool> SomeFieldFuncWithALongName_________ =
-        (someValue) => SomeOtherLongerMethod(someValue);
-
-    private Func<
-        SomeLongObjectIn__________________________________,
-        bool
-    > SomeFieldFuncWithALongName = (someValue) => SometimesBreaksThisWay(someValue);
-
-    private Func<
-        SomeLongObjectIn__________________________________,
-        bool
-    > SomeFieldFuncWithALongName = (someValue) =>
+    private Func<SomeLongObjectIn__________________________________, bool> SomeFieldFuncWithALongName = (someValue) =>
         SometimesBreaksThisWay(someValue, SomeOtherLongValue);
 
-    private Func<
-        SomeLongObjectIn__________________________________,
-        bool
-    > SomeFieldFuncWithALongName = (someValue_____________________________) =>
-        SometimesBreaksThisWay(someValue, SomeOtherLongValue);
+    private Func<SomeLongObjectIn__________________________________, bool> SomeFieldFuncWithALongName = (
+        someValue_____________________________) => SometimesBreaksThisWay(someValue, SomeOtherLongValue);
 
     private Type OmittedTypes = typeof(OmittedTypes<,>);
 }

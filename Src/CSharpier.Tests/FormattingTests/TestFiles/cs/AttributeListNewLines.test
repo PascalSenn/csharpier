@@ -4,9 +4,7 @@ namespace Namespace
     class ClassOne { }
 
     [Obsolete]
-
     [NoNewLine]
-    
     // do stuff
     class ClassTwo { }
 

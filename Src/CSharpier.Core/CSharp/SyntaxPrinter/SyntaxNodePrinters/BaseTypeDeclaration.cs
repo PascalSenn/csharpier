@@ -122,26 +122,24 @@ internal static class BaseTypeDeclaration
 
         if (node.BaseList != null)
         {
-            var baseListDoc = Doc.Concat(
+            var baseListParts = new List<Doc>
+            {
                 Token.Print(node.BaseList.ColonToken, context),
                 " ",
-                Node.Print(node.BaseList.Types.First(), context),
-                node.BaseList.Types.Count > 1
-                    ? Doc.Indent(
-                        Token.Print(node.BaseList.Types.GetSeparator(0), context),
-                        Doc.Line,
-                        SeparatedSyntaxList.Print(
-                            node.BaseList.Types,
-                            Node.Print,
-                            Doc.Line,
-                            context,
-                            startingIndex: 1
-                        )
-                    )
-                    : Doc.Null
-            );
+                Node.Print(node.BaseList.Types[0], context),
+            };
 
-            docs.Add(Doc.Group(Doc.Indent(Doc.Line, baseListDoc)));
+            for (var i = 1; i < node.BaseList.Types.Count; i++)
+            {
+                baseListParts.Add(Doc.SoftLine);
+                baseListParts.Add(
+                    Token.Print(node.BaseList.Types.GetSeparator(i - 1), context)
+                );
+                baseListParts.Add(" ");
+                baseListParts.Add(Node.Print(node.BaseList.Types[i], context));
+            }
+
+            docs.Add(Doc.Group(Doc.Indent(Doc.Line, Doc.Concat(baseListParts))));
         }
 
         if (constraintClauses != null)

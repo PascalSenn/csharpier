@@ -35,65 +35,54 @@ var whatAboutWhiteSpace = $"""
 CallMethod(
     """
     "Quoted"
-    """
-);
+    """);
 
 CallMethod(
     """""
     ""MultiQuoted""
-    """""
-);
+    """"");
 
 CallMethod(
     """
     SomeString
-    """
-);
+    """);
 
 CallMethod(
     """
     TrailingSpaceHere 
-    """
-);
+    """);
 
 CallMethod(
     $"""
     TrailingSpaceHere 
-    """
-);
+    """);
 
 CallMethod(
     """
     SomeRawString
-    """.CallMethod()
-);
+    """.CallMethod());
 
 CallMethod(
     """
     SomeRawString
-    """.CallMethod().CallMethod()
-);
+    """.CallMethod().CallMethod());
 
 CallMethod(
     """
     SomeRawString
-    """.CallMethod().CallMethod().CallMethod()
-);
+    """.CallMethod().CallMethod().CallMethod());
 
 CallMethod(
     $"""
     SomeRawString
-    """.CallMethod()
-);
+    """.CallMethod());
 
 CallMethod(
     $"""
     SomeRawString
-    """.CallMethod().CallMethod()
-);
+    """.CallMethod().CallMethod());
 
 CallMethod(
     $"""
     SomeRawString
-    """.CallMethod().CallMethod().CallMethod()
-);
+    """.CallMethod().CallMethod().CallMethod());

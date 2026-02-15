@@ -4,11 +4,6 @@ class ClassName
     {
         someRecord = someRecord with { Property = "Value" };
 
-        someRecord = someRecord with
-        {
-            Property = "Value",
-            AnotherProperty = "Value",
-            YetAnother = "Value",
-        };
+        someRecord = someRecord with { Property = "Value", AnotherProperty = "Value", YetAnother = "Value" };
     }
 }

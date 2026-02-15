@@ -1,41 +1,30 @@
-delegate void Delegate<T>()
-    where T : struct;
+delegate void Delegate<T>() where T : struct;
 
-class ClassName<T>
-    where T : class
+class ClassName<T> where T : class
 {
-    void MethodName<T>()
-        where T : class
+    void MethodName<T>() where T : class
     {
-        void LocalFunction<T>()
-            where T : class
+        void LocalFunction<T>() where T : class
         {
             return;
         }
     }
 
-    public static ReturnType<T> MethodName<T, U>()
-        where T : class
-        where U : class
+    public static ReturnType<T> MethodName<T, U>() where T : class where U : class
     {
         return;
     }
 
-    public static ReturnType<T> MethodName<T, U>()
-        where T : class
-        where U : class { }
+    public static ReturnType<T> MethodName<T, U>() where T : class where U : class { }
 
-    public static ReturnType<T> MethodName<T, U>(string parameter)
-        where T : class
-        where U : class
+    public static ReturnType<T> MethodName<T, U>(string parameter) where T : class where U : class
     {
         return;
     }
 
     public static ReturnType<T> MethodName<T, U>(
         string longParameter_______________________,
-        string longParameter_______________________
-    )
+        string longParameter_______________________)
         where T : class
     {
         return;
@@ -43,14 +32,12 @@ class ClassName<T>
 
     public static ReturnType<T> MethodName<T, U>(
         string longParameter_______________________,
-        string longParameter_______________________
-    )
+        string longParameter_______________________)
         where T : class { }
 
     public static ReturnType<T> MethodName<T, U>(
         string longParameter_______________________,
-        string longParameter_______________________
-    )
+        string longParameter_______________________)
         where T : class
         where U : class
     {
@@ -59,17 +46,14 @@ class ClassName<T>
 
     public static ReturnType<T> MethodName<T, U>(
         string longParameter_______________________,
-        string longParameter_______________________
-    )
+        string longParameter_______________________)
         where T : class
         where U : class { }
 }
 
-interface InterfaceName<T>
-    where T : class { }
+interface InterfaceName<T> where T : class { }
 
-struct Struct<T>
-    where T : class { }
+struct Struct<T> where T : class { }
 
 class ClassName<N, C, T, TT, L>
     where N : new()

@@ -1,4 +1,3 @@
 typeof(AnExceptionallyLongAndElaborateClassNameToMakeAnExampleRegardingOpenGenerics<,>).MakeGenericType(
     typeof(string),
-    typeof(int)
-);
+    typeof(int));

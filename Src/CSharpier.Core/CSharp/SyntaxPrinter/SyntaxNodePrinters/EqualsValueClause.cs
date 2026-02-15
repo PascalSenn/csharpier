@@ -30,7 +30,6 @@ internal static class EqualsValueClause
                 or ObjectCreationExpressionSyntax
                 or InitializerExpressionSyntax
                 or ParenthesizedLambdaExpressionSyntax
-                or InvocationExpressionSyntax
                 or SwitchExpressionSyntax
         )
         {

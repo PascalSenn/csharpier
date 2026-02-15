@@ -18,12 +18,11 @@ internal static class IfStatement
             Token.Print(node.IfKeyword, context),
             " ",
             Doc.Group(
+                LineLengthThreshold.Long,
                 Token.Print(node.OpenParenToken, context),
                 Doc.Indent(
-                    Doc.IfBreak(Doc.SoftLine, Doc.Null),
                     Node.Print(node.Condition, context)
-                ),
-                Doc.IfBreak(Doc.SoftLine, Doc.Null)
+                )
             ),
             Token.Print(node.CloseParenToken, context),
             OptionalBraces.Print(node.Statement, context)

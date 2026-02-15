@@ -8,14 +8,9 @@ class ClassName
 
             unchecked(printsLikeInvocations + whenItsFlat);
 
-            unchecked(
-                printsLikeInvocations + whenItBreaks______________________________________________
-            );
+            unchecked(printsLikeInvocations + whenItBreaks______________________________________________);
 
-            unchecked(
-                printsLikeInvocations
-                + whenItLongBreaks_______________________________________________
-            );
+            unchecked(printsLikeInvocations + whenItLongBreaks_______________________________________________);
         }
     }
 }

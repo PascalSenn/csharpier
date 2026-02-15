@@ -70,12 +70,9 @@ internal static class ArgumentListLike
         }
         else if (arguments.Count > 0)
         {
-            args = Doc.Concat(
-                Doc.Indent(
-                    Doc.SoftLine,
-                    SeparatedSyntaxList.Print(arguments, Argument.Print, Doc.Line, context)
-                ),
-                Doc.SoftLine
+            args = Doc.Indent(
+                Doc.SoftLine,
+                SeparatedSyntaxList.Print(arguments, Argument.Print, Doc.Line, context)
             );
         }
         else

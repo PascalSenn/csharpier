@@ -2,5 +2,5 @@
 #undef XMLCHARTYPE_USE_RESOURCE
 #endif
 
-using System.Threading;
 using System.Diagnostics;
+using System.Threading;

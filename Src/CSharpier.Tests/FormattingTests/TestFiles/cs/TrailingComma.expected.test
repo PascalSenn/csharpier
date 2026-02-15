@@ -6,14 +6,14 @@ int[][] longCollectionExpressionTrailingComma =
 [
     [1, 2, 3],
     [4, 5, 6],
-    [7, 8, 9],
+    [7, 8, 9]
 ];
 
 int[][] longCollectionExpressionNoTrailingComma =
 [
     [1, 2, 3],
     [4, 5, 6],
-    [7, 8, 9],
+    [7, 8, 9]
 ];
 
 public dynamic shortAnonymousObjectCreationExpressionTrailingComma = new { Property = true };
@@ -24,14 +24,14 @@ public dynamic longAnonymousObjectCreationExpressionTrailingComma = new
 {
     One = "One",
     Two = "Two",
-    ThreeThreeThree = "ThreeThreeThree",
+    ThreeThreeThree = "ThreeThreeThree"
 };
 
 public dynamic longAnonymousObjectCreationExpressionNoTrailingComma = new
 {
     One = "One",
     Two = "Two",
-    ThreeThreeThree = "ThreeThreeThree",
+    ThreeThreeThree = "ThreeThreeThree"
 };
 
 int[] shortInitializerExpressionTrailingComma = { 1, 2 };
@@ -41,13 +41,13 @@ int[] shortInitializerExpressionNoTrailingComma = { 1, 2 };
 string[] longInitializerExpressionTrailingComma =
 {
     "someLongValue_____________________________________",
-    "someLongValue_____________________________________",
+    "someLongValue_____________________________________"
 };
 
 string[] longInitializerExpressionNoTrailingComma =
 {
     "someLongValue_____________________________________",
-    "someLongValue_____________________________________",
+    "someLongValue_____________________________________"
 };
 
 int switchExpressionTrailingComma()
@@ -55,7 +55,7 @@ int switchExpressionTrailingComma()
     return 1 switch
     {
         1 => 100,
-        _ => throw new global::System.Exception(),
+        _ => throw new global::System.Exception()
     };
 }
 
@@ -64,7 +64,7 @@ int switchExpressionNoTrailingComma()
     return 1 switch
     {
         1 => 100,
-        _ => throw new global::System.Exception(),
+        _ => throw new global::System.Exception()
     };
 }
 
@@ -74,7 +74,7 @@ object listPatternTrailingComma(object list)
     {
         [var elem] => elem * elem,
         [] => 0,
-        [..] elems => elems.Sum(e => e + e),
+        [..] elems => elems.Sum(e => e + e)
     };
 }
 
@@ -84,7 +84,7 @@ object listPatternNoTrailingComma(object list)
     {
         [var elem] => elem * elem,
         [] => 0,
-        [..] elems => elems.Sum(e => e + e),
+        [..] elems => elems.Sum(e => e + e)
     };
 }
 
@@ -95,7 +95,7 @@ public enum EnumDeclarationTrailingComma
 
 public enum EnumDeclarationNoTrailingCommand
 {
-    Foo = 1,
+    Foo = 1
 }
 
 public enum EnumDeclarationWithDirective
@@ -123,7 +123,7 @@ public enum EnumDeclarationWithLeadingCommaInDirective
     Bar = 2
 #endif
     ,
-    Abc = 3,
+    Abc = 3
 }
 
 public enum EnumDeclarationWithLeadingCommaInDirectiveBeforeBracket

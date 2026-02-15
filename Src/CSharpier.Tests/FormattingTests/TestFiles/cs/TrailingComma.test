@@ -1,4 +1,4 @@
-int[] shortCollectionExpressionTrailingComma = [1, 2, 3, 4, 5, 6, 7, 8,];
+int[] shortCollectionExpressionTrailingComma = [1, 2, 3, 4, 5, 6, 7, 8];
 
 int[] shortCollectionExpressionNoTrailingComma = [1, 2, 3, 4, 5, 6, 7, 8];
 
@@ -6,7 +6,7 @@ int[][] longCollectionExpressionTrailingComma =
 [
     [1, 2, 3],
     [4, 5, 6],
-    [7, 8, 9],
+    [7, 8, 9]
 ];
 
 int[][] longCollectionExpressionNoTrailingComma =
@@ -16,7 +16,7 @@ int[][] longCollectionExpressionNoTrailingComma =
     [7, 8, 9]
 ];
 
-public dynamic shortAnonymousObjectCreationExpressionTrailingComma = new { Property = true, };
+public dynamic shortAnonymousObjectCreationExpressionTrailingComma = new { Property = true };
 
 public dynamic shortAnonymousObjectCreationExpressionNoTrailingComma = new { Property = true };
 
@@ -24,7 +24,7 @@ public dynamic longAnonymousObjectCreationExpressionTrailingComma = new
 {
     One = "One",
     Two = "Two",
-    ThreeThreeThree = "ThreeThreeThree",
+    ThreeThreeThree = "ThreeThreeThree"
 };
 
 public dynamic longAnonymousObjectCreationExpressionNoTrailingComma = new
@@ -34,14 +34,14 @@ public dynamic longAnonymousObjectCreationExpressionNoTrailingComma = new
     ThreeThreeThree = "ThreeThreeThree"
 };
 
-int[] shortInitializerExpressionTrailingComma = { 1, 2, };
+int[] shortInitializerExpressionTrailingComma = { 1, 2 };
 
 int[] shortInitializerExpressionNoTrailingComma = { 1, 2 };
 
 string[] longInitializerExpressionTrailingComma =
 {
     "someLongValue_____________________________________",
-    "someLongValue_____________________________________",
+    "someLongValue_____________________________________"
 };
 
 string[] longInitializerExpressionNoTrailingComma =
@@ -52,7 +52,11 @@ string[] longInitializerExpressionNoTrailingComma =
 
 int switchExpressionTrailingComma()
 {
-    return 1 switch { 1 => 100, _ => throw new global::System.Exception(), };
+    return 1 switch
+    {
+        1 => 100,
+        _ => throw new global::System.Exception()
+    };
 }
 
 int switchExpressionNoTrailingComma()
@@ -66,7 +70,12 @@ int switchExpressionNoTrailingComma()
 
 object listPatternTrailingComma(object list)
 {
-    return list switch { [var elem] => elem * elem, [] => 0, [..] elems => elems.Sum(e => e + e), };
+    return list switch
+    {
+        [var elem] => elem * elem,
+        [] => 0,
+        [..] elems => elems.Sum(e => e + e)
+    };
 }
 
 object listPatternNoTrailingComma(object list)
@@ -79,14 +88,18 @@ object listPatternNoTrailingComma(object list)
     };
 }
 
-public enum EnumDeclarationTrailingComma { Foo = 1, }
-
-public enum EnumDeclarationNoTrailingCommand 
-{ 
-    Foo = 1 
+public enum EnumDeclarationTrailingComma
+{
+    Foo = 1,
 }
 
-public enum EnumDeclarationWithDirective { 
+public enum EnumDeclarationNoTrailingCommand
+{
+    Foo = 1
+}
+
+public enum EnumDeclarationWithDirective
+{
     Foo = 1,
 #if DEBUG
     Bar = 2,
@@ -94,14 +107,16 @@ public enum EnumDeclarationWithDirective {
     Abc = 3,
 }
 
-public enum EnumDeclarationWithDirectiveBeforeBracket { 
+public enum EnumDeclarationWithDirectiveBeforeBracket
+{
     Foo = 1,
 #if DEBUG
     Bar = 2,
 #endif
 }
 
-public enum EnumDeclarationWithLeadingCommaInDirective { 
+public enum EnumDeclarationWithLeadingCommaInDirective
+{
     Foo = 1
 #if DEBUG
     ,
@@ -111,7 +126,8 @@ public enum EnumDeclarationWithLeadingCommaInDirective {
     Abc = 3
 }
 
-public enum EnumDeclarationWithLeadingCommaInDirectiveBeforeBracket { 
+public enum EnumDeclarationWithLeadingCommaInDirectiveBeforeBracket
+{
     Foo = 1
 #if DEBUG
     ,

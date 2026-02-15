@@ -2,21 +2,11 @@ public class ClassName
 {
     public string Value = true ? "yes" : "no";
 
-    public string Value = someLongCondition______________________
-        ? "someLongValue"
-        : "someOtherLongValue";
+    public string Value = someLongCondition______________________ ? "someLongValue" : "someOtherLongValue";
 
     public bool CloseParenIndents = someCondition
-        ? this.SomeMethodCallThatIsLonger____________________(
-            someLongValue,
-            someLongValue,
-            someLongValue
-        )
-        : this.SomeMethodCallThatIsLonger____________________(
-            someLongValue,
-            someLongValue,
-            someLongValue
-        );
+        ? this.SomeMethodCallThatIsLonger____________________(someLongValue, someLongValue, someLongValue)
+        : this.SomeMethodCallThatIsLonger____________________(someLongValue, someLongValue, someLongValue);
 
     void Method()
     {
@@ -29,39 +19,31 @@ public class ClassName
                 : someOtherThirdValue_______________________;
 
         var value =
-            someLongValue__________________________________
-            && someOtherValue__________________________________
+            someLongValue__________________________________ && someOtherValue__________________________________
                 ? trueValue
                 : falseValue;
 
         CallMethod(
             someValue,
-            someCondition
+            someCondition ? trueValue________________________________ : falseValue_______________________________,
+            someCondition_____________________________________ && someOtherCondition__________________________________
                 ? trueValue________________________________
                 : falseValue_______________________________,
-            someCondition_____________________________________
-            && someOtherCondition__________________________________
-                ? trueValue________________________________
-                : falseValue_______________________________,
-            someCondition_____________________________________
-                && someOtherCondition__________________________________
-        );
+            someCondition_____________________________________ && someOtherCondition__________________________________);
 
-        var fileContents = File.ReadAllText(
-            file,
-            // leading here should break parameters and GetEncoding should still group
-            encoding
-                ? File.GetEncoding________________________________(1252)
-                : encoding_____________________,
-            cancellationToken
-        );
+        var fileContents =
+            File.ReadAllText(
+                file,
+                // leading here should break parameters and GetEncoding should still group
+                encoding ? File.GetEncoding________________________________(1252) : encoding_____________________,
+                cancellationToken);
 
-        var fileContents = File.ReadAllText(
-            file,
-            // leading here should break parameters
-            encoding ? GetEncoding(1252) : encoding,
-            cancellationToken
-        );
+        var fileContents =
+            File.ReadAllText(
+                file,
+                // leading here should break parameters
+                encoding ? GetEncoding(1252) : encoding,
+                cancellationToken);
 
         return someLongCondition___________________________
             ? trueValue________________________________
@@ -73,37 +55,31 @@ public class ClassName
             ? trueValue________________________________
             : falseValue_______________________________;
 
-        return
-            someLongCondition____________________________________
-            is SomeLongType___________________________
+        return someLongCondition____________________________________ is SomeLongType___________________________
             ? trueValue________________________________
             : falseValue_______________________________;
 
         return (
             someLongCondition____________________________________
-            && someOtherLongCondition____________________________________
-        )
+            && someOtherLongCondition____________________________________)
             ? trueValue________________________________
             : falseValue_______________________________;
 
         return
-            someLongCondition____________________________________
-                == someThingElse______________________
+            someLongCondition____________________________________ == someThingElse______________________
             && someOtherLongCondition____________________________________
             ? trueValue________________________________
             : falseValue_______________________________;
 
         return CallSomeMethod(
             someLongCondition____________________________________,
-            someOtherLongCondition____________________________________
-        )
+            someOtherLongCondition____________________________________)
             ? trueValue________________________________
             : falseValue_______________________________;
 
         return firstCondition ? firstValue
             : secondCondition ? secondValue
-            : thirdCondition ? thirdValue
-            : fourthValue;
+            : thirdCondition ? thirdValue : fourthValue;
 
         return firstCondition
             ? secondCondition
@@ -116,8 +92,7 @@ public class ClassName
         return a ? b : c;
 
         return a ? b
-            : c ? d
-            : e;
+            : c ? d : e;
 
         var invocationIndent = someCondition
             ? SomeObject
@@ -132,40 +107,31 @@ public class ClassName
                 ? SomeValue
                 : SomeObject
                     .CallMethod__________________________________()
-                    .CallMethod__________________________________()
-        );
+                    .CallMethod__________________________________());
 
         return something.IsNotBlank() ? something
             : otherThing.IsNotBlank() ? otherThing
-            : thingThing.IsNotBlank() ? thingThing
-            : "enUs";
+            : thingThing.IsNotBlank() ? thingThing : "enUs";
 
         var languageCode =
             something.IsNotBlank() ? something
             : otherThing.IsNotBlank() ? otherThing
-            : thingThing.IsNotBlank() ? thingThing
-            : "enUs";
+            : thingThing.IsNotBlank() ? thingThing : "enUs";
 
         var languageCode =
-            something____________________________________.IsNotBlank()
-                ? something____________________________________
+            something____________________________________.IsNotBlank() ? something____________________________________
             : otherThing____________________________________.IsNotBlank()
                 ? otherThing____________________________________
             : thingThing____________________________________.IsNotBlank()
-                ? thingThing____________________________________
-            : "enUs";
+                ? thingThing____________________________________ : "enUs";
 
         var languageCode =
-            something____________________________________
-            && someCondition______________________________________
+            something____________________________________ && someCondition______________________________________
                 ? something____________________________________
-            : otherThing____________________________________
-            && someCondition______________________________________
+            : otherThing____________________________________ && someCondition______________________________________
                 ? otherThing____________________________________
-            : thingThing____________________________________
-            && someCondition______________________________________
-                ? thingThing____________________________________
-            : "enUs";
+            : thingThing____________________________________ && someCondition______________________________________
+                ? thingThing____________________________________ : "enUs";
 
         var parameterType =
             property.PropertyType == typeof(string) ? "string"
@@ -182,28 +148,21 @@ public class ClassName
             : property.PropertyType == typeof(bool) ? "bool"
             : property.PropertyType == typeof(bool?) ? "bool?"
             : property.PropertyType == typeof(byte[]) ? "byte[]"
-            : property.PropertyType == typeof(float) ? "float"
-            : property.PropertyType.Name;
+            : property.PropertyType == typeof(float) ? "float" : property.PropertyType.Name;
 
         CallMethod(
-            something____________________________________.IsNotBlank()
-                ? something____________________________________
+            something____________________________________.IsNotBlank() ? something____________________________________
             : otherThing____________________________________.IsNotBlank()
                 ? otherThing____________________________________
             : thingThing____________________________________.IsNotBlank()
-                ? thingThing____________________________________
-            : "enUs"
-        );
+                ? thingThing____________________________________ : "enUs");
 
         CallMethod(
             someParameter,
-            something____________________________________.IsNotBlank()
-                    ? something____________________________________
+            something____________________________________.IsNotBlank() ? something____________________________________
                 : otherThing____________________________________.IsNotBlank()
                     ? otherThing____________________________________
                 : thingThing____________________________________.IsNotBlank()
-                    ? thingThing____________________________________
-                : "enUs"
-        );
+                    ? thingThing____________________________________ : "enUs");
     }
 }

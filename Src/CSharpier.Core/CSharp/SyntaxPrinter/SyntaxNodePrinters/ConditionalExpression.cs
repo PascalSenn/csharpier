@@ -38,10 +38,12 @@ internal static class ConditionalExpression
         Doc[] innerContents =
         [
             Doc.Line,
-            Token.PrintWithSuffix(node.QuestionToken, " ", context),
+            Token.Print(node.QuestionToken, context),
+            " ",
             Doc.Concat(whenTrue),
             Doc.Line,
-            Token.PrintWithSuffix(node.ColonToken, " ", context),
+            Token.Print(node.ColonToken, context),
+            " ",
             Doc.Concat(whenFalse),
         ];
 
@@ -90,12 +92,12 @@ internal static class ConditionalExpression
                 Node.Print(node.Condition, context),
                 Doc.Indent(
                     Doc.Line,
-                    Token.PrintWithSuffix(node.QuestionToken, " ", context),
+                    Token.Print(node.QuestionToken, context),
+                    " ",
                     Doc.IndentIf(node.WhenTrue is ConditionalExpressionSyntax, whenTrue)
                 )
             ),
-            Doc.Line,
-            Doc.Group(Token.PrintWithSuffix(node.ColonToken, " ", context), whenFalse)
+            Doc.Group(Doc.Line, Token.Print(node.ColonToken, context), " ", whenFalse)
         );
 
         if (

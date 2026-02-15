@@ -1,1 +1,1 @@
-<DoubleQuotesForce Attribute='SomeText"'></DoubleQuotesForce>
+<DoubleQuotesForce Attribute="SomeText&quot;"></DoubleQuotesForce>

@@ -6,7 +6,7 @@ namespace CSharpier.Cli.Options;
 
 internal class ConfigurationFileOptions
 {
-    public int PrintWidth { get; init; } = 100;
+    public int PrintWidth { get; init; } = 120;
     public int? IndentSize { get; init; }
     public bool UseTabs { get; init; }
 
@@ -69,7 +69,7 @@ internal class Override
 {
     private GlobMatcher? matcher;
 
-    public int PrintWidth { get; init; } = 100;
+    public int PrintWidth { get; init; } = 120;
     public int IndentSize { get; init; } = 4;
     public bool UseTabs { get; init; }
 

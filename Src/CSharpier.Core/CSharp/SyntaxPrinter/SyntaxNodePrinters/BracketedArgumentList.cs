@@ -13,7 +13,6 @@ internal static class BracketedArgumentList
                 Doc.SoftLine,
                 SeparatedSyntaxList.Print(node.Arguments, Node.Print, Doc.Line, context)
             ),
-            Doc.SoftLine,
             Token.Print(node.CloseBracketToken, context)
         );
     }

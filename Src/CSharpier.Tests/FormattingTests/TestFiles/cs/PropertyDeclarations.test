@@ -5,11 +5,7 @@ public class ClassName
 
     string ShortModifiers { get; private set; }
 
-    string PropertyWithModifiersThatIsLongEnoughToBreak
-    {
-        protected internal get;
-        protected internal set;
-    }
+    string PropertyWithModifiersThatIsLongEnoughToBreak { protected internal get; protected internal set; }
 
     private string backingValue;
     public string PropertyWithBackingValue
@@ -28,8 +24,7 @@ public class ClassName
 
     public string LambdaBod => this.Property;
 
-    public string LongNameForcesALineBreakSoWeCanTestEvenLonger____________________ =>
-        this.Property;
+    public string LongNameForcesALineBreakSoWeCanTestEvenLonger____________________ => this.Property;
 
     public string Property
     {
@@ -51,14 +46,12 @@ public class ClassName
     public virtual ICollection<SomeObject> SomeLongNameThatForcesALineBreak______________________ { get; set; } =
         new HashSet<SomeObject>();
 
-    public Dictionary<string, string> Properties_________________ { get; set; } =
-        new Dictionary<string, string>();
+    public Dictionary<string, string> Properties_________________ { get; set; } = new Dictionary<string, string>();
 
     public IReadOnlyCollection<Action<One, Two>> SomeName => true;
 
-    public IReadOnlyCollection<
-        Action<SomeRandomType, IAnotherRandomType>
-    > SomeRandomLongName___________________ => someRandomResult_________________;
+    public IReadOnlyCollection<Action<SomeRandomType, IAnotherRandomType>> SomeRandomLongName___________________
+        => someRandomResult_________________;
 
     public IReadOnlyCollection<
         Action<SomeRandomType, IAnotherRandomType>,
@@ -70,20 +63,14 @@ public class ClassName
     public List<(
         ClaimsPrincipal user,
         object resource,
-        IEnumerable<IAuthorizationRequirement> requirements
-    )> AuthorizeCalls { get; } =
-        new List<(
-            ClaimsPrincipal user,
-            object resource,
-            IEnumerable<IAuthorizationRequirement> requirements
-        )>();
+        IEnumerable<IAuthorizationRequirement> requirements)> AuthorizeCalls { get; } =
+        new List<(ClaimsPrincipal user, object resource, IEnumerable<IAuthorizationRequirement> requirements)>();
 
     public int[] ArrayWithoutSizesDoesntBreak { get; set; }
 
     public int[] ArrayWithInitializer { get; set; } = { 1, 2, 3, 4, 5 };
 
-    public Guid[] BreakingArray1 { get; set; } =
-        { Guid.NewGuid(), Guid.NewGuid(), Guid.NewGuid(), Guid.NewGuid() };
+    public Guid[] BreakingArray1 { get; set; } = { Guid.NewGuid(), Guid.NewGuid(), Guid.NewGuid(), Guid.NewGuid() };
 
     public Guid[] BreakingArray2 { get; set; } =
         {
@@ -94,6 +81,6 @@ public class ClassName
             Guid.NewGuid(),
             Guid.NewGuid(),
             Guid.NewGuid(),
-            Guid.NewGuid(),
+            Guid.NewGuid()
         };
 }

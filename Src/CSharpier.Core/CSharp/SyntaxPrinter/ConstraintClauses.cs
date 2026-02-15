@@ -17,10 +17,10 @@ internal static class ConstraintClauses
             return Doc.Null;
         }
         var body = Doc.Join(
-            Doc.HardLine,
+            Doc.Line,
             constraintClauses.Select(o => TypeParameterConstraintClause.Print(o, context))
         );
 
-        return Doc.Group(Doc.Indent(Doc.HardLine, body));
+        return Doc.Group(Doc.Indent(Doc.Line, body));
     }
 }

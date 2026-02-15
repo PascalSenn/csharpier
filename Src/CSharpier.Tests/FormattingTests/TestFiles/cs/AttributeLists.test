@@ -13,13 +13,7 @@ class ClassName
     [Obsolete, NonSerialized]
     void MethodName([In] string value) { }
 
-    [
-        Obsolete,
-        System.NonSerialized,
-        NonSerialized,
-        CLSCompliant(true || false & true),
-        AnotherRandomAttribute
-    ]
+    [Obsolete, System.NonSerialized, NonSerialized, CLSCompliant(true || false & true), AnotherRandomAttribute]
     private volatile int f2;
 
     [DllImport("kernel32", SetLastError = true)]
@@ -41,11 +35,7 @@ class ClassName
     // leading before class
     class ClassTwo { }
 
-    [LongAttributeWithParametersBreaking(
-        "someValue_____________",
-        "someValue_____________",
-        "someValue_____________"
-    )]
+    [LongAttributeWithParametersBreaking("someValue_____________", "someValue_____________", "someValue_____________")]
     void LongAttribute() { }
 
     public void MethodName([FromBody] SomeParameter parameter)
@@ -56,72 +46,50 @@ class ClassName
     public void MethodName(
         int someParameter,
         [ShortAttributeName] AnotherObject anotherObject,
-        [VeryLongAttributeName(SomeFlag.SomeValue, SomeOtherFlag.SomeOtherLongValue)]
-            string tabbedBreakParameter,
-        bool anotherParameter
-    )
+        [VeryLongAttributeName(SomeFlag.SomeValue, SomeOtherFlag.SomeOtherLongValue)] string tabbedBreakParameter,
+        bool anotherParameter)
     {
         return;
     }
 
     public void MethodWithAttributesOnTypeParameters<[SomeShort] T, K>() { }
 
-    public void MethodWithAttributesOnTypeParameters<
-        [SomeLongAttribute__________________________] T,
-        K
-    >() { }
+    public void MethodWithAttributesOnTypeParameters<[SomeLongAttribute__________________________] T, K>() { }
 
     public void MethodWithAttributesOnTypeParameters<
-        [SomeLongAttribute__________________________]
-            TSomeMuchLongerName___________________________________,
-        K
-    >() { }
+        [SomeLongAttribute__________________________] TSomeMuchLongerName___________________________________,
+        K>() { }
 
     public void MethodWithAttributesOnTypeParameters<
         [SomeAttributeWithParameters(
             longParameter_____________________________,
-            longParameter_____________________________
-        )]
+            longParameter_____________________________)]
             TSomeMuchLongerName___________________________________,
-        K
-    >() { }
+        K>() { }
 
     public void SomeMethod(
         // Some Comment does not indent parameter
-        [SomeAttribute] string someParameter
-    ) { }
+        [SomeAttribute] string someParameter) { }
 
     public void SomeMethod(
-        [SomeLongAttribute(someLongValue___________________________________________)]
-            string someParameter
-    ) { }
+        [SomeLongAttribute(someLongValue___________________________________________)] string someParameter) { }
 
     public void SomeMethod(
         // Some Comment
         [SomeAttribute]
         [SomeOtherAttribute]
-            string someParameter
-    ) { }
+            string someParameter) { }
 }
 
 [
-    LongAttributeWithParametersBreaking(
-        "someValue_____________",
-        "someValue_____________",
-        "someValue_____________"
-    ),
-    AnotherAttribute
-]
+    LongAttributeWithParametersBreaking("someValue_____________", "someValue_____________", "someValue_____________"),
+    AnotherAttribute]
 public class ClassName { }
 
 [GenericAttribute<string>()]
 public class ClassName { }
 
-[Generic<
-    LongName______________________,
-    LongName______________________,
-    LongName______________________
->]
+[Generic<LongName______________________, LongName______________________, LongName______________________>]
 public class ClassName { }
 
 public class ClassName

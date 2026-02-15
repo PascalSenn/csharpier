@@ -4,10 +4,7 @@ public class ClassName
 
     public ClassName WithInitializer = new ClassName { Property = true };
 
-    public ClassName WithMediumInitializer = new ClassName
-    {
-        Property_____________________________ = true,
-    };
+    public ClassName WithMediumInitializer = new ClassName { Property_____________________________ = true };
 
     public ClassName WithBigInitializer = new ClassName
     {
@@ -15,29 +12,20 @@ public class ClassName
         Property2 = false,
         Property3 = false,
         Property4 = false,
-        Property5 = false,
+        Property5 = false
     };
 
-    public ClassName TrailingComma = new ClassName_______________________
-    {
-        Property1 = true,
-        Property2 = true,
-    };
+    public ClassName TrailingComma = new ClassName_______________________ { Property1 = true, Property2 = true };
 
-    public ClassName WithConstructorAndInitializer = new ClassName(false)
-    {
-        Property1 = true,
-        Property2 = false,
-    };
+    public ClassName WithConstructorAndInitializer = new ClassName(false) { Property1 = true, Property2 = false };
 
     public ClassName WithComplexConstructor = new ClassName(
         "parameter1",
-        new ClassName("parameter1", "parameter2") { Property1 = true }
-    )
+        new ClassName("parameter1", "parameter2") { Property1 = true })
     {
-        Property1 = true,
+        Property1 = true
     };
 
-    public SomeGenericObject<SomeRandomObject> WithGenericLongEnoughToBreak =
-        new SomeGenericObject<SomeRandomObject>("someRandomValue");
+    public SomeGenericObject<SomeRandomObject> WithGenericLongEnoughToBreak = new SomeGenericObject<SomeRandomObject>(
+        "someRandomValue");
 }

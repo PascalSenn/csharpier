@@ -19,7 +19,6 @@ internal static class ListPattern
                     node.CloseBracketToken
                 )
             ),
-            Doc.SoftLine,
             Token.Print(node.CloseBracketToken, context),
             node.Designation is not null ? " " : Doc.Null,
             Node.Print(node.Designation, context)

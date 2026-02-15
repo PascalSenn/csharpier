@@ -342,7 +342,7 @@ internal class DocPrinter
             this.ShouldRemeasure = false;
             var possibleCommand = new PrintCommand(indent, PrintMode.Flat, group.Contents);
 
-            if (!group.Break && this.Fits(possibleCommand))
+            if (!group.Break && this.Fits(possibleCommand, group.Threshold))
             {
                 this.RemainingCommands.Push(possibleCommand);
             }
@@ -386,12 +386,16 @@ internal class DocPrinter
         }
     }
 
-    private bool Fits(PrintCommand possibleCommand)
+    private bool Fits(
+        PrintCommand possibleCommand,
+        LineLengthThreshold threshold = LineLengthThreshold.None
+    )
     {
+        var effectiveWidth = this.PrinterOptions.GetEffectiveWidth(threshold);
         return DocFitter.Fits(
             possibleCommand,
             this.RemainingCommands,
-            this.PrinterOptions.Width - this.CurrentWidth,
+            effectiveWidth - this.CurrentWidth,
             this.GroupModeMap,
             this.Indenter,
             this.DocFitterNewCommands,

@@ -128,6 +128,12 @@ internal abstract class Doc
 
     public static Group Group(params Doc[] contents) => new() { Contents = Concat(contents) };
 
+    public static Group Group(LineLengthThreshold threshold, Doc contents) =>
+        new() { Contents = contents, Threshold = threshold };
+
+    public static Group Group(LineLengthThreshold threshold, params Doc[] contents) =>
+        new() { Contents = Concat(contents), Threshold = threshold };
+
     // prevents allocating an array if there is only a single parameter
     public static IndentDoc Indent(Doc contents) => new() { Contents = contents };
 

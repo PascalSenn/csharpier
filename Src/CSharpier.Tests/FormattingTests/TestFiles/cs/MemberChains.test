@@ -1,193 +1,104 @@
 this.DoSomething().DoSomething();
 
-this.DoSomething___________________()
-    .DoSomething___________________()
-    .DoSomething___________________();
+this.DoSomething___________________().DoSomething___________________().DoSomething___________________();
 
-this.DoSomething___________________()
-    ?.DoSomething___________________()
-    ?.DoSomething___________________();
+this.DoSomething___________________()?.DoSomething___________________()?.DoSomething___________________();
 
-this.DoSomething___________________()!
-    .DoSomething___________________()!
-    .DoSomething___________________();
+this.DoSomething___________________()!.DoSomething___________________()!.DoSomething___________________();
 
-base.DoSomething___________________()
-    .DoSomething___________________()
-    .DoSomething___________________();
+base.DoSomething___________________().DoSomething___________________().DoSomething___________________();
 
-AnIdentifier
-    .DoSomething___________________()
-    .DoSomething___________________()
-    .DoSomething___________________();
+AnIdentifier.DoSomething___________________().DoSomething___________________().DoSomething___________________();
 
-this.Method(
-    someParameter__________________________________,
-    someParameter__________________________________
-);
+this.Method(someParameter__________________________________, someParameter__________________________________);
 
-this.SomeMethod(
-    SomeOtherMethod(parameter__________________________________________________________)
-);
+this.SomeMethod(SomeOtherMethod(parameter__________________________________________________________));
 
-var superLongName____________________________________ =
-    someOtherName.CallSomeMethod________________();
+var superLongName____________________________________ = someOtherName.CallSomeMethod________________();
 
-var superLongName_______________ = someOtherName____________
-    .CallSomeMethod______________()
-    .CallSomeMethod______________();
+var superLongName_______________ =
+    someOtherName____________.CallSomeMethod______________().CallSomeMethod______________();
 
 var someValue = someOtherValue.Where(o => someLongCondition).Where(o => someLongCondition);
 
-var someValue = someOtherValue
-    .Where(o => someLongCondition__________________________)
-    .Where(o => someLongCondition__________________________);
+var someValue =
+    someOtherValue
+        .Where(o => someLongCondition__________________________)
+        .Where(o => someLongCondition__________________________);
 
-var someValue = someOtherValue!
-    .Where(o => someLongCondition__________________________)
-    .Where(o => someLongCondition__________________________);
+var someValue =
+    someOtherValue!
+        .Where(o => someLongCondition__________________________)
+        .Where(o => someLongCondition__________________________);
 
-var someValue = someOtherValue!
-    .Thing!.Where(o => someLongCondition__________________________)
-    .Where(o => someLongCondition__________________________);
+var someValue =
+    someOtherValue!
+        .Thing!.Where(o => someLongCondition__________________________)
+        .Where(o => someLongCondition__________________________);
 
-var someValue = someOtherValue
-    .Thing.Where(o => someLongCondition__________________________)
-    .Where(o => someLongCondition__________________________);
+var someValue =
+    someOtherValue
+        .Thing.Where(o => someLongCondition__________________________)
+        .Where(o => someLongCondition__________________________);
 
-var someValue = someOtherValue
-    .Where(o => someLongCondition__________________________)
-    .Where(o => someLongCondition__________________________)
-    .Where(o => someLongCondition__________________________);
+var someValue =
+    someOtherValue
+        .Where(o => someLongCondition__________________________)
+        .Where(o => someLongCondition__________________________)
+        .Where(o => someLongCondition__________________________);
 
-roleNames
-    .ToList()
-    .Where(o => someLongCondition)
-    .Where(o => someLongCondition)
-    .Where(o => someLongCondition);
+roleNames.ToList().Where(o => someLongCondition).Where(o => someLongCondition).Where(o => someLongCondition);
 
-this.SomeMethod(
-    SomeOtherMethod(parameter__________________________________________________________)
-);
+this.SomeMethod(SomeOtherMethod(parameter__________________________________________________________));
 
-roleNames
-    .ToList()
-    .ForEach(role =>
-        this.SomeProperty.Setup(o => longThing_______________________________________)
-    );
+roleNames.ToList().ForEach(role => this.SomeProperty.Setup(o => longThing_______________________________________));
 
-roleNames
-    .Value.Where(o => o.SomeProperty____________________________________)
-    .Select(o => o.SomethingElse);
+roleNames.Value.Where(o => o.SomeProperty____________________________________).Select(o => o.SomethingElse);
 
 return someCondition
-    ? CallMethod(
-        someLongParameter____________________________,
-        someLongParameter____________________________
-    )
+    ? CallMethod(someLongParameter____________________________, someLongParameter____________________________)
     : Something.CallMethod(
         someLongParameter____________________________,
-        someLongParameter____________________________
+        someLongParameter____________________________);
+
+someValue.CallMethod(someLongParameter____________________________, someLongParameter____________________________);
+
+someValue!.CallMethod(someLongParameter____________________________, someLongParameter____________________________);
+
+CallSomeMethod(someParameter____________________________________, someParameter____________________________________)!;
+
+var someVariable =
+    someObject.Property.CallMethod(someValue =>
+        someValue.SomeProperty == someOtherValue___________________________________
     );
 
-someValue.CallMethod(
-    someLongParameter____________________________,
-    someLongParameter____________________________
-);
+CallMethod(firstParameter________________________________, secondParameter_______________________________)
+    .CallMethod(firstParameter________________________________, secondParameter_______________________________);
 
-someValue!.CallMethod(
-    someLongParameter____________________________,
-    someLongParameter____________________________
-);
-
-CallSomeMethod(
-    someParameter____________________________________,
-    someParameter____________________________________
-)!;
-
-var someVariable = someObject.Property.CallMethod(someValue =>
-    someValue.SomeProperty == someOtherValue___________________________________
-);
-
-CallMethod(
-        firstParameter________________________________,
-        secondParameter_______________________________
-    )
-    .CallMethod(
-        firstParameter________________________________,
-        secondParameter_______________________________
-    );
-
-CallMethod(
-        firstParameter________________________________,
-        secondParameter_______________________________
-    )
-    .CallMethod(
-        firstParameter________________________________,
-        secondParameter_______________________________
-    )
-    .CallMethod(
-        firstParameter________________________________,
-        secondParameter_______________________________
-    );
+CallMethod(firstParameter________________________________, secondParameter_______________________________)
+    .CallMethod(firstParameter________________________________, secondParameter_______________________________)
+    .CallMethod(firstParameter________________________________, secondParameter_______________________________);
 
 // comment shouldn't do weird stuff
-CallMethod(
-        firstParameter________________________________,
-        secondParameter_______________________________
-    )
-    .CallMethod(
-        firstParameter________________________________,
-        secondParameter_______________________________
-    )
-    .CallMethod(
-        firstParameter________________________________,
-        secondParameter_______________________________
-    );
+CallMethod(firstParameter________________________________, secondParameter_______________________________)
+    .CallMethod(firstParameter________________________________, secondParameter_______________________________)
+    .CallMethod(firstParameter________________________________, secondParameter_______________________________);
 
-this.CallMethod(
-        firstParameter____________________________,
-        secondParameter___________________________
-    )
-    .CallMethod(
-        firstParameter____________________________,
-        secondParameter___________________________
-    );
+this.CallMethod(firstParameter____________________________, secondParameter___________________________)
+    .CallMethod(firstParameter____________________________, secondParameter___________________________);
 
-string.CallMethod(
-        firstParameter____________________________,
-        secondParameter___________________________
-    )
-    .CallMethod(
-        firstParameter____________________________,
-        secondParameter___________________________
-    );
+string.CallMethod(firstParameter____________________________, secondParameter___________________________)
+    .CallMethod(firstParameter____________________________, secondParameter___________________________);
 
-o.CallMethod(
-        firstParameter________________________________,
-        secondParameter_______________________________
-    )
-    .CallMethod(
-        firstParameter________________________________,
-        secondParameter_______________________________
-    );
+o.CallMethod(firstParameter________________________________, secondParameter_______________________________)
+    .CallMethod(firstParameter________________________________, secondParameter_______________________________);
 
-CallMethod<string>(
-        one______________________________________,
-        two______________________________________
-    )
-    .CallMethod(
-        one______________________________________,
-        two______________________________________
-    );
+CallMethod<string>(one______________________________________, two______________________________________)
+    .CallMethod(one______________________________________, two______________________________________);
 
-SomeObject
-    ?.CallMethod(parameter_______________________________________________________________)
-    .ToArray();
+SomeObject?.CallMethod(parameter_______________________________________________________________).ToArray();
 
-SomeObject
-    .CallMethod(parameter_______________________________________________________________)
-    .ToArray();
+SomeObject.CallMethod(parameter_______________________________________________________________).ToArray();
 
 // comment shouldn't do weird stuff
 SomeObject.CallMethod();
@@ -204,46 +115,35 @@ someObject.CallMethod(lambdaWithBlock =>
     return;
 });
 
-o.CallMethod(parameter_____________, parameter_____________)
-    .CallMethod(parameter_____________, parameter_____________);
+o.CallMethod(parameter_____________, parameter_____________).CallMethod(parameter_____________, parameter_____________);
 
-this.CallMethod()
-    .CallMethod__________________(one_________________________, two_________________________);
+this.CallMethod().CallMethod__________________(one_________________________, two_________________________);
 
-var someValue = CallMethod__________________(longParameter________________________________)!
-    .CallMethod__________________();
+var someValue =
+    CallMethod__________________(longParameter________________________________)!.CallMethod__________________();
 
-var someValue = CallMethod__________________(longParameter________________________________)
-    .CallMethod__________________();
+var someValue =
+    CallMethod__________________(longParameter________________________________).CallMethod__________________();
 
-var someValue = CallMethod______________________(
-        longParameter___________________________________________
-    )!
-    .CallMethod__________________();
+var someValue =
+    CallMethod______________________(longParameter___________________________________________)!
+        .CallMethod__________________();
 
-var someValue = CallMethod______________________(
-        longParameter___________________________________________
-    )
-    .CallMethod__________________();
+var someValue =
+    CallMethod______________________(longParameter___________________________________________)
+        .CallMethod__________________();
 
-someThing_______________________
-    .Property.CallMethod__________________()
-    .CallMethod__________________();
+someThing_______________________.Property.CallMethod__________________().CallMethod__________________();
 
-someThing_______________________
-    ?.Property.CallMethod__________________()
-    .CallMethod__________________();
+someThing_______________________?.Property.CallMethod__________________().CallMethod__________________();
 
-someThing_______________________
-    .Property!.CallMethod__________________()
-    .CallMethod__________________();
+someThing_______________________.Property!.CallMethod__________________().CallMethod__________________();
 
 IEnumerable<ValueProviderFactory> valueProviderFactories =
     new ModelBinderAttribute_______().GetValueProviderFactories(config);
 
-var something________________________________________ = x
-    .SomeProperty.CallMethod(longParameter_____________, longParameter_____________)
-    .CallMethod();
+var something________________________________________ =
+    x.SomeProperty.CallMethod(longParameter_____________, longParameter_____________).CallMethod();
 
 CallMethod(o =>
     o.Property.CallMethod_____________________________________________________()
@@ -253,18 +153,14 @@ CallMethod(o =>
 CallMethod(
     o,
     o.Property.CallMethod_____________________________________________________()
-        .CallMethod_____________________________________________________()
-);
+        .CallMethod_____________________________________________________());
 
 var someValue =
     someValue
     && o.Property.CallMethod_____________________________________________________()
         .CallMethod_____________________________________________________();
 
-o.Property.CallMethod(
-        someParameter_____________________________,
-        someParameter_____________________________
-    )
+o.Property.CallMethod(someParameter_____________________________, someParameter_____________________________)
     .CallMethod()
     .CallMethod();
 
@@ -281,14 +177,15 @@ SomeObject<SomeThing>.SomeProperty.SomeOtherProperty = 1;
 // CommentOnGenericDoesNotBreakChain
 SomeObject<SomeThing>.SomeProperty.CallMethod();
 
-websiteQueryable = websiteQueryable
-    .Include(o => o.Categories)
-    .Include(o => o.Categories)
-        .ThenInclude(c => c.Products)
-    .Include(o => o.Categories)
-        .ThenInclude(c => c.RuleManager)
-            .ThenInclude(rm => rm.RuleClauses)
-    .Include(o => o.Categories)
-        .ThenInclude(c => c.RuleManager)
-            .ThenInclude(rm => rm.RuleClauses)
-                .ThenInclude(rc => rc.RuleTypeOption);
+websiteQueryable =
+    websiteQueryable
+        .Include(o => o.Categories)
+        .Include(o => o.Categories)
+            .ThenInclude(c => c.Products)
+        .Include(o => o.Categories)
+            .ThenInclude(c => c.RuleManager)
+                .ThenInclude(rm => rm.RuleClauses)
+        .Include(o => o.Categories)
+            .ThenInclude(c => c.RuleManager)
+                .ThenInclude(rm => rm.RuleClauses)
+                    .ThenInclude(rc => rc.RuleTypeOption);

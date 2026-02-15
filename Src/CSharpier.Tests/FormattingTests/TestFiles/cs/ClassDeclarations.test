@@ -6,39 +6,26 @@ class NoModifiers { }
 
 public class WithInterface : IInterface { }
 
-public class WithReallyLongNameInterface
-    : IReallyLongNameLetsMakeThisBreak___________________________ { }
+public class WithReallyLongNameInterface : IReallyLongNameLetsMakeThisBreak___________________________ { }
 
 public class ThisIsSomeLongNameAndItShouldFormatWell1
-    : AnotherLongClassName,
-        AndYetAnotherLongClassName,
-        AndStillOneMore { }
+    : AnotherLongClassName
+    , AndYetAnotherLongClassName
+    , AndStillOneMore { }
 
-public class SimpleGeneric<T>
-    where T : new() { }
+public class SimpleGeneric<T> where T : new() { }
 
 public class LongTypeConstraints<T>
-    where T : SomeLongNameThatJustKeepsGoing,
-        AndThenAnotherOneThatIsEvenLonger____________________ { }
+    where T : SomeLongNameThatJustKeepsGoing, AndThenAnotherOneThatIsEvenLonger____________________ { }
 
-public class LongerClassNameWithLotsOfGenerics<
-    TLongName,
-    TAnotherLongName,
-    TThirdLongName__________________
-> { }
+public class LongerClassNameWithLotsOfGenerics<TLongName, TAnotherLongName, TThirdLongName__________________> { }
 
-public class LongerClassNameWithLotsOfGenerics<
-    TLongName,
-    TAnotherLongName,
-    TThirdLongName__________________
-> : SomeBaseClass<TLongName> { }
+public class LongerClassNameWithLotsOfGenerics<TLongName, TAnotherLongName, TThirdLongName__________________>
+    : SomeBaseClass<TLongName> { }
 
-public class SimpleGeneric<T> : BaseClass<T>
-    where T : new() { }
+public class SimpleGeneric<T> : BaseClass<T> where T : new() { }
 
-public class ThisIsSomeLongNameAndItShouldFormatWell2<T, T2, T3>
-    : AnotherLongClassName<T>,
-        AnotherClassName
+public class ThisIsSomeLongNameAndItShouldFormatWell2<T, T2, T3> : AnotherLongClassName<T>, AnotherClassName
     where T : new(), AnotherTypeConstraint
     where T2 : new()
     where T3 : new() { }
@@ -53,10 +40,7 @@ public class IdentityDbContext<TUser, TRole, TKey>
         IdentityUserLogin<TKey>,
         IdentityRoleClaim<TKey>,
         IdentityUserToken<TKey>
-    >
-    where TUser : IdentityUser<TKey>
-    where TRole : IdentityRole<TKey>
-    where TKey : IEquatable<TKey> { }
+    > where TUser : IdentityUser<TKey> where TRole : IdentityRole<TKey> where TKey : IEquatable<TKey> { }
 
 file class FileScopedType { }
 
@@ -65,10 +49,7 @@ public class NamedItem(string name)
     public string Name => name;
 }
 
-public class NamedItem2(
-    string name1________________________________,
-    string name2________________________________
-)
+public class NamedItem2(string name1________________________________, string name2________________________________)
 {
     public string Name1 => name1;
     public string Name2 => name1;

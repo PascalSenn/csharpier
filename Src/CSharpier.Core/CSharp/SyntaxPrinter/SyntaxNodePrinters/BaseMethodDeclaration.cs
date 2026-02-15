@@ -232,7 +232,7 @@ internal static partial class BaseMethodDeclaration
 
             declarationGroup.Add(
                 Doc.Group(
-                    Doc.Indent(Doc.HardLine),
+                    Doc.Indent(Doc.Line),
                     Doc.Indent(colonToken),
                     Token.Print(constructorInitializer.ThisOrBaseKeyword, context),
                     Doc.Indent(argumentList)
@@ -240,23 +240,33 @@ internal static partial class BaseMethodDeclaration
             );
         }
 
-        docs.Add(Doc.Group(declarationGroup));
-
-        if (constraintClauses != null)
+        if (constraintClauses is { Count: > 0 })
         {
-            docs.Add(ConstraintClauses.Print(constraintClauses.Value, context));
+            var constraintBody = Doc.Join(
+                Doc.Line,
+                constraintClauses.Value.Select(o =>
+                    TypeParameterConstraintClause.Print(o, context)
+                )
+            );
+            declarationGroup.Add(Doc.Indent(Doc.Line, constraintBody));
         }
+
+        if (body == null && expressionBody != null)
+        {
+            declarationGroup.Add(
+                Doc.Indent(
+                    Doc.Line,
+                    Token.PrintWithSuffix(expressionBody.ArrowToken, " ", context),
+                    Node.Print(expressionBody.Expression, context)
+                )
+            );
+        }
+
+        docs.Add(Doc.Group(declarationGroup));
 
         if (body != null)
         {
             docs.Add(Block.Print(body, context));
-        }
-        else
-        {
-            if (expressionBody != null)
-            {
-                docs.Add(ArrowExpressionClause.Print(expressionBody, context));
-            }
         }
 
         if (semicolonToken.HasValue)

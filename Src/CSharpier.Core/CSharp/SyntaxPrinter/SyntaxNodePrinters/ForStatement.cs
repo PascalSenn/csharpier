@@ -38,8 +38,7 @@ internal static class ForStatement
                                 )
                             )
                         )
-                    ),
-                    Doc.SoftLine
+                    )
                 ),
                 Token.Print(node.CloseParenToken, context)
             ),

@@ -1,10 +1,7 @@
 public class ClassName
 {
     public static readonly EventCallback Empty = new EventCallback(null, (Action)(() => { }));
-    public static readonly EventCallback<TValue> Empty = new EventCallback<TValue>(
-        null,
-        (Action)(() => { })
-    );
+    public static readonly EventCallback<TValue> Empty = new EventCallback<TValue>(null, (Action)(() => { }));
     private static readonly Action _callbackCompleted = () => { };
 
     public void MethodName()
@@ -16,97 +13,72 @@ public class ClassName
         this.Where(static () => true);
         this.Where(static async () => true);
         this.SomeMethod(
-            (longParameter__________________, longParameter_________________) =>
-                longParameter________________
-        );
+            (longParameter__________________, longParameter_________________) => longParameter________________);
 
         this.SomeMethod(
             (
                 longerParameter_________________________,
                 longerParameter_________________________,
-                longerParameter_________________________
-            ) => evenLongerParameter
-        );
+                longerParameter_________________________) => evenLongerParameter);
 
         this.SomeMethod(
             [Attribute]
             (
                 longerParameter_________________________,
                 longerParameter_________________________,
-                longerParameter_________________________
-            ) => evenLongerParameter
-        );
+                longerParameter_________________________) => evenLongerParameter);
 
         CallMethod(() =>
         {
             CallOtherMethod();
         });
 
-        CallMethod(() =>
-            CallOtherMethod___________________________________________________________()
-        );
+        CallMethod(() => CallOtherMethod___________________________________________________________());
 
         CallMethod(() =>
-            CallLongMethod_________________________________()
-                .ThenAnotherMethod_____________________________________()
+            CallLongMethod_________________________________().ThenAnotherMethod_____________________________________()
         );
 
-        var task = Task.Factory.StartNew(async () =>
-        {
-            return await new WebClient().DownloadStringTaskAsync____________________(
-                "http://example.com"
-            );
-        });
+        var task =
+            Task.Factory.StartNew(async () =>
+            {
+                return await new WebClient().DownloadStringTaskAsync____________________("http://example.com");
+            });
 
-        Action find = () =>
-            EntryPointDiscoverer.FindStaticEntryMethod(typeof(IEnumerable<>).Assembly);
+        Action find = () => EntryPointDiscoverer.FindStaticEntryMethod(typeof(IEnumerable<>).Assembly);
 
         var @delegate = (Action<string>)((s) => { });
 
         var reusedCommand = new Command("reused") { Handler = CommandHandler.Create(() => { }) };
 
-        var component = new EventComponent
-        {
-            OnArbitraryDelegateEvent = (Action<EventArgs, string>)((x, y) => { }),
-        };
+        var component = new EventComponent { OnArbitraryDelegateEvent = (Action<EventArgs, string>)((x, y) => { }) };
 
         Parallel.For(0, OuterLoopCount, () => schedulers, _parallelAction, (s) => { });
 
         var reusedCommand = new Command("reused")
         {
-            Handler = CommandHandler.Create(() =>
-            {
-                doSomething();
-            }),
+            Handler =
+                CommandHandler.Create(() =>
+                {
+                    doSomething();
+                })
         };
 
         CallSomeMethod(
             () =>
-                CallAnotherMethodWithParameters(
-                    someParameter,
-                    someParameter___________________________________
-                ) > someValue,
-            anotherParameter
-        );
+                CallAnotherMethodWithParameters(someParameter, someParameter___________________________________)
+                > someValue,
+            anotherParameter);
 
         var returnType = object (bool o) => o ? 1 : "two";
         var returnTypeWithAsync = async object (bool o) => o ? 1 : "two";
         var returnTypeWithAttribute = [Attribute] object (bool o) => o ? 1 : "two";
 
         CallMethod(() => CallAnotherMethod______________________________________________________());
-        CallMethod(() =>
-            CallAnotherMethod______________________________________________________1()
-        );
-        CallMethod(() =>
-            CallAnotherMethod______________________________________________________12()
-        );
-        CallMethod(() =>
-            CallAnotherMethod______________________________________________________123()
-        );
+        CallMethod(() => CallAnotherMethod______________________________________________________1());
+        CallMethod(() => CallAnotherMethod______________________________________________________12());
+        CallMethod(() => CallAnotherMethod______________________________________________________123());
 
-        CallMethod(
-            CallAnotherMethod_________________(),
-            () => CallAnotherMethod_________________()
-        );
+        CallMethod(CallAnotherMethod_________________(), () => CallAnotherMethod_________________());
     }
 }

@@ -126,14 +126,7 @@ internal static class SeparatedSyntaxList
                 {
                     docs.Add(Token.Print(trailingSeparatorToken, context));
                 }
-                else if (closingToken != null)
-                {
-                    docs.Add(TrailingComma.Print(closingToken.Value, context));
-                }
-                else
-                {
-                    docs.Add(Doc.IfBreak(Token.Print(list.GetSeparator(x), context), Doc.Null));
-                }
+                // else: don't add trailing commas
             }
             else
             {

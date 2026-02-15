@@ -10,13 +10,13 @@ class ClassName
     int[] array =
     {
         "someLongValue_____________________________________",
-        "someLongValue_____________________________________",
+        "someLongValue_____________________________________"
     };
 
     int[] array = new int[]
     {
         "someLongValue_____________________________________",
-        "someLongValue_____________________________________",
+        "someLongValue_____________________________________"
     };
 
     public IList<string> Value = new List<string> { "one", "two" };
@@ -24,7 +24,7 @@ class ClassName
     Dictionary<int, string> dictionary = new Dictionary<int, string>
     {
         { 1, "one_________" },
-        { 2, "two_________________" },
+        { 2, "two_________________" }
     };
 
     Dictionary<int, string> dictionary = new Dictionary<int, string>
@@ -32,10 +32,7 @@ class ClassName
         // should break braces correctly
         { 1, "one" },
         { 2, "two" },
-        {
-            3,
-            "ifThisIsReallyLongItShouldntInsertAnExtraLineAboveIt_________________________________"
-        },
+        { 3, "ifThisIsReallyLongItShouldntInsertAnExtraLineAboveIt_________________________________" }
     };
 
     private int[,] arrayInitializerWithoutSize =
@@ -44,20 +41,20 @@ class ClassName
         {
             longValue______________________________,
             longValue______________________________,
-            longValue______________________________,
+            longValue______________________________
         },
         {
             longValue______________________________,
             longValue______________________________,
-            longValue______________________________,
-        },
+            longValue______________________________
+        }
     };
 
     void MethodName()
     {
         var x = new SomeClass
         {
-            Property1 = true,
+            Property1 = true
             // should indent
         };
 
@@ -71,35 +68,25 @@ class ClassName
         {
             One = true,
             Two = true,
-            Three = true,
+            Three = true
         };
 
         var objectInitializerExpression = new SomeObject()
         {
             ShouldNotBreak = { SomeProperty = SomeValue },
-            ShouldBreak =
-            {
-                SomeOtherProperty = SomeLongValue_______________________________________,
-            },
+            ShouldBreak = { SomeOtherProperty = SomeLongValue_______________________________________ },
             SomeList = new List<SomeObject>()
             {
                 new() { SomeProperty = SomeLongValue_____________ },
 # pragma this should not affect the breaking of the next line
                 new() { SomeProperty = SomeLongValue_____________ },
-                new()
-                {
-                    SomeProperty = SomeOtherValue,
-                    AnotherProperty = SomeThirdValue_______________________,
-                },
-            },
+                new() { SomeProperty = SomeOtherValue, AnotherProperty = SomeThirdValue_______________________ }
+            }
         };
 
         var someObject = new SomeObject
         {
-            SomeProperty =
-            {
-                someOtherValue__________________________________________________________________,
-            },
+            SomeProperty = { someOtherValue__________________________________________________________________ }
         };
 
         var collectionInitializerExpressions = new SomeObject
@@ -108,8 +95,8 @@ class ClassName
             ThisIsAlsoACollection =
             {
                 longerValueThatMakesItBreak______________________,
-                longerValueThatMakesItBreak______________________,
-            },
+                longerValueThatMakesItBreak______________________
+            }
         };
 
         var emptyInitializer = new SomeObject[] { };
@@ -119,36 +106,36 @@ class ClassName
         var nestedInitializer = new Thing
         {
             One = 1,
-            Two = new Thing { One = 1 },
+            Two = new Thing { One = 1 }
         };
 
         var nestedInitializer = new List<Thing>()
         {
             new Thing() { One = 1 },
-            new Thing() { One = 1 },
+            new Thing() { One = 1 }
         };
 
         var nestedInitializer = new Thing
         {
             One = 1,
-            Two = new() { One = 1 },
+            Two = new() { One = 1 }
         };
 
         var nestedInitializer = new List<Thing>()
         {
             new() { One = 1 },
-            new() { One = 1 },
+            new() { One = 1 }
         };
 
         var noBreak = new List<Thing> { new Thing { One = 1 } };
         var yesBreak = new List<Thing>
         {
-            new Thing { One = 1, Two = 2 },
+            new Thing { One = 1, Two = 2 }
         };
         var yesBreak = new List<Thing>
         {
             new Thing { One = 1 },
-            Two = 2,
+            Two = 2
         };
 
         var listInitializer = new List<int> { 1, 2, 3 };
@@ -156,23 +143,23 @@ class ClassName
         {
             { 1, "" },
             { 2, "a" },
-            { 3, "b" },
+            { 3, "b" }
         };
         int[,,] cube =
         {
             {
                 { 111, 112 },
-                { 121, 122 },
+                { 121, 122 }
             },
             {
                 { 211, 212 },
-                { 221, 222 },
-            },
+                { 221, 222 }
+            }
         };
         int[][] jagged =
         {
             { 111 },
-            { 121, 122 },
+            { 121, 122 }
         };
 
         var conditionalsAndInvocations = new List<SomeObject>
@@ -190,10 +177,36 @@ class ClassName
             SomeOtherMethod(),
             this.CallSomeMethod________________________________________()
                 .CallSomeMethod________________________________________(),
-            someLongCondition___________________________________
-            && someLongCondition___________________________________
+            someLongCondition___________________________________ && someLongCondition___________________________________
                 ? one
-                : two,
+                : two
+        };
+
+        var someObject = new SomeObject
+        {
+            SomeArray =
+                new SomeOtherObject[]
+                {
+                    new SomeOtherObject { SomeProperty = 1 },
+                    new SomeOtherObject()
+                }
+                    .CallMethod()
+                    .CallMethod()
+        };
+
+        var result =
+            SomeType.CallMethod().CallOtherMethod(someParameter, new SomeObjectType().SomeProperty.SomeOtherProperty);
+
+        var someObject = new SomeObject
+        {
+            SomeArray =
+                new SomeOtherObject
+                {
+                    new SomeOtherObject { SomeProperty = 1 },
+                    new SomeOtherObject()
+                }
+                    .CallMethod()
+                    .CallMethod()
         };
 
         var someObject = new SomeObject
@@ -201,88 +214,56 @@ class ClassName
             SomeArray = new SomeOtherObject[]
             {
                 new SomeOtherObject { SomeProperty = 1 },
-                new SomeOtherObject(),
+                new SomeOtherObject()
             }
-                .CallMethod()
-                .CallMethod(),
-        };
-
-        var result = SomeType
-            .CallMethod()
-            .CallOtherMethod(someParameter, new SomeObjectType().SomeProperty.SomeOtherProperty);
-
-        var someObject = new SomeObject
-        {
-            SomeArray = new SomeOtherObject
-            {
-                new SomeOtherObject { SomeProperty = 1 },
-                new SomeOtherObject(),
-            }
-                .CallMethod()
-                .CallMethod(),
         };
 
         var someObject = new SomeObject
         {
-            SomeArray = new SomeOtherObject[]
-            {
-                new SomeOtherObject { SomeProperty = 1 },
-                new SomeOtherObject(),
-            },
-        };
-
-        var someObject = new SomeObject
-        {
-            SomeArray = new SomeOtherObject[]
-            {
-                new SomeOtherObject_________________________________(),
-                new SomeOtherObject_________________________________(),
-            }
-                .CallMethod()
-                .CallMethod(),
+            SomeArray =
+                new SomeOtherObject[]
+                {
+                    new SomeOtherObject_________________________________(),
+                    new SomeOtherObject_________________________________()
+                }
+                    .CallMethod()
+                    .CallMethod()
         };
 
         // Issue#1268
         var someObject = new List<(
             int Field1__________________________________,
-            int Field2__________________________________
-        )>
+            int Field2__________________________________)>
         { };
     }
 
     SomeObject someObject = new()
     {
-        Property = longValue_______________________________________________________________________,
+        Property = longValue_______________________________________________________________________
     };
 
     SomeObject someObject = new SomeObject
     {
-        Property = longValue_______________________________________________________________________,
+        Property = longValue_______________________________________________________________________
     };
 
     SomeObject someObject = new(someLongParameter___________________)
     {
-        Property = longValue_______________________________________________________________________,
+        Property = longValue_______________________________________________________________________
     };
 
     SomeObject someObject = new SomeObject(someLongParameter___________________)
     {
-        Property = longValue_______________________________________________________________________,
+        Property = longValue_______________________________________________________________________
     };
 
-    SomeObject someObject = new(
-        someLongParameter___________________,
-        someLongParameter___________________
-    )
+    SomeObject someObject = new(someLongParameter___________________, someLongParameter___________________)
     {
-        Property = longValue_______________________________________________________________________,
+        Property = longValue_______________________________________________________________________
     };
 
-    SomeObject someObject = new SomeObject(
-        someLongParameter___________________,
-        someLongParameter___________________
-    )
+    SomeObject someObject = new SomeObject(someLongParameter___________________, someLongParameter___________________)
     {
-        Property = longValue_______________________________________________________________________,
+        Property = longValue_______________________________________________________________________
     };
 }

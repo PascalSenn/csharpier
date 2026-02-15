@@ -6,14 +6,14 @@ public class ClassName
     {
         One = "One",
         Two = "Two",
-        ThreeThreeThree = "ThreeThreeThree",
+        ThreeThreeThree = "ThreeThreeThree"
     };
 
     public SomeObject LongValue { get; } = new
     {
         One = "One",
         Two = "Two",
-        ThreeThreeThree = "ThreeThreeThree",
+        ThreeThreeThree = "ThreeThreeThree"
     };
 
     public SomeObject Value = new { NoName };

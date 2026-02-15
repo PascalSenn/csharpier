@@ -1,4 +1,5 @@
 using System.Globalization;
+using CSharpier.Core.DocTypes;
 
 namespace CSharpier.Core;
 
@@ -22,13 +23,28 @@ internal class PrinterOptions(Formatter formatter)
         }
     }
 
-    public int Width { get; set; } = 100;
+    public int Width { get; set; } = 120;
     public EndOfLine EndOfLine { get; set; } = EndOfLine.Auto;
     public bool TrimInitialLines { get; init; } = true;
     public bool IncludeGenerated { get; set; }
     public Formatter Formatter { get; set; } = formatter;
 
-    public const int WidthUsedByTests = 100;
+    public double SmallLineFactor { get; set; } = 0.33;
+    public double MediumLineFactor { get; set; } = 0.66;
+    public double LongLineFactor { get; set; } = 0.8;
+
+    public const int WidthUsedByTests = 120;
+
+    public int GetEffectiveWidth(LineLengthThreshold threshold)
+    {
+        return threshold switch
+        {
+            LineLengthThreshold.Small => (int)(Width * SmallLineFactor),
+            LineLengthThreshold.Medium => (int)(Width * MediumLineFactor),
+            LineLengthThreshold.Long => (int)(Width * LongLineFactor),
+            _ => Width,
+        };
+    }
 
     internal static string GetLineEnding(string code, PrinterOptions printerOptions)
     {

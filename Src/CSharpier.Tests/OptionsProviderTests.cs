@@ -574,7 +574,7 @@ indent_size==
             "c:/test/subfolder",
             "c:/test/subfolder/test.cs"
         );
-        result.Width.Should().Be(100);
+        result.Width.Should().Be(120);
     }
 
     [Test]
@@ -777,7 +777,7 @@ indent_size = 2
 
     private static void ShouldHaveDefaultCSharpOptions(PrinterOptions printerOptions)
     {
-        printerOptions.Width.Should().Be(100);
+        printerOptions.Width.Should().Be(120);
         printerOptions.IndentSize.Should().Be(4);
         printerOptions.UseTabs.Should().BeFalse();
         printerOptions.EndOfLine.Should().Be(EndOfLine.Auto);
@@ -785,7 +785,7 @@ indent_size = 2
 
     private static void ShouldHaveDefaultXmlOptions(PrinterOptions printerOptions)
     {
-        printerOptions.Width.Should().Be(100);
+        printerOptions.Width.Should().Be(120);
         printerOptions.IndentSize.Should().Be(2);
         printerOptions.UseTabs.Should().BeFalse();
         printerOptions.EndOfLine.Should().Be(EndOfLine.Auto);

@@ -38,8 +38,7 @@ internal static class CommonForEachStatement
                         Token.Print(node.InKeyword, context),
                         " ",
                         Node.Print(node.Expression, context)
-                    ),
-                    Doc.SoftLine
+                    )
                 ),
                 Token.Print(node.CloseParenToken, context)
             ),

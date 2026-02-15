@@ -1,7 +1,4 @@
-<Metadata
-  xmlns="http://schemas.xmlsoap.org/ws/2004/09/mex"
-  xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex"
->
+<Metadata xmlns="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex">
   <wsx:MetadataSection
     Dialect="http://schemas.xmlsoap.org/wsdl/"
     Identifier="http://myns/echo"

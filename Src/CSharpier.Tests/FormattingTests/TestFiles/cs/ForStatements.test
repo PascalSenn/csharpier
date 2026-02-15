@@ -39,11 +39,7 @@ class ClassName
         for (var someLongerValue = 0; someLongerValue____________________ < 1; someLongerValue++)
             Call(SomeLongerValue);
 
-        for (
-            var someLongerValue__________ = 0;
-            someLongerValue__________ < 1;
-            someLongerValue__________++
-        )
+        for (var someLongerValue__________ = 0; someLongerValue__________ < 1; someLongerValue__________++)
             Call(someLongerValue__________);
 
         for (int i = 0, j = 0; i < length; i++, j++)
@@ -53,30 +49,21 @@ class ClassName
 
         for (
             var shorterName = 0;
-            someLongName____________
-                < someOtherLongName__________________________________________________;
-            someLongishName_________________________++
-        )
+            someLongName____________ < someOtherLongName__________________________________________________;
+            someLongishName_________________________++)
+        {
+            break;
+        }
+
+        for (var someShortName = 0, anotherShortName = 1; someRandomCondition; someShortName++, anotherShortName++)
         {
             break;
         }
 
         for (
-            var someShortName = 0, anotherShortName = 1;
+            var someLongerName_________________________ = 0, anotherLongerName________________________________ = 1;
             someRandomCondition;
-            someShortName++, anotherShortName++
-        )
-        {
-            break;
-        }
-
-        for (
-            var someLongerName_________________________ = 0,
-                anotherLongerName________________________________ = 1;
-            someRandomCondition;
-            someLongerName_________________________++,
-                anotherLongerName________________________________++
-        )
+            someLongerName_________________________++, anotherLongerName________________________________++)
         {
             break;
         }
@@ -92,11 +79,7 @@ class ClassName
             break;
         }
 
-        for (
-            y = 0;
-            y < justOver100____________________________________________________________;
-            y++
-        )
+        for (y = 0; y < justOver100____________________________________________________________; y++)
         {
             break;
         }

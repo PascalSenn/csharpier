@@ -22,34 +22,24 @@ class ClassName
         var trailingMulti = 1; /* ensure no extra line after this */
         var trailingMultiAfter = 2;
 
-        var captureUnmatchedValuesParameters______________________________ =
-            new List<IPropertySymbol>();
+        var captureUnmatchedValuesParameters______________________________ = new List<IPropertySymbol>();
 
         Func<SyntaxTrivia, bool> s_isVisualBasicCommentTrivia = (syntaxTrivia) =>
             syntaxTrivia.IsKind(VisualBasic.SyntaxKind.CommentTrivia);
 
-        Func<SyntaxTrivia, bool> s_isVisualBasicCommentTrivia = (
-            syntaxTrivia_________________________________
-        ) => syntaxTrivia.IsKind(VisualBasic.SyntaxKind.CommentTrivia);
+        Func<SyntaxTrivia, bool> s_isVisualBasicCommentTrivia = (syntaxTrivia_________________________________) =>
+            syntaxTrivia.IsKind(VisualBasic.SyntaxKind.CommentTrivia);
 
-        Action find = () =>
-            EntryPointDiscoverer.FindStaticEntryMethod(typeof(IEnumerable<>).Assembly);
+        Action find = () => EntryPointDiscoverer.FindStaticEntryMethod(typeof(IEnumerable<>).Assembly);
 
         Action find = () =>
             EntryPointDiscoverer.FindStaticEntryMethod(
-                typeof(IEnumerable<>).Assembly_________________________________________
-            );
+                typeof(IEnumerable<>).Assembly_________________________________________);
 
         var arrayCreationExpression1 = new byte[100];
-        var arrayCreationExpression2 = new byte[
-            SqlParameterCollectionExtensions.DefaultValueColumnWidth
-        ];
-        var arrayCreationExpression3 = new byte[
-            SqlParameterCollectionExtensions.DefaultValueColumnWidth + 100
-        ];
-        var shortOne______ = new byte[
-            SqlParameterCollectionExtensions.DefaultValueColumnWidth + 100
-        ];
+        var arrayCreationExpression2 = new byte[SqlParameterCollectionExtensions.DefaultValueColumnWidth];
+        var arrayCreationExpression3 = new byte[SqlParameterCollectionExtensions.DefaultValueColumnWidth + 100];
+        var shortOne______ = new byte[SqlParameterCollectionExtensions.DefaultValueColumnWidth + 100];
         var muchLongerOne_________________ = new byte[
             SqlParameterCollectionExtensions.DefaultValueColumnWidth + DefaultValueColumnWidth
         ];
@@ -59,114 +49,82 @@ class ClassName
         ];
 
         var elementAccessExpression1 = anArray[100];
-        var elementAccessExpression2 = anArray[
-            SqlParameterCollectionExtensions.DefaultValueColumnWidth
-        ];
-        var elementAccessExpression3 = anArray[
-            SqlParameterCollectionExtensions.DefaultValueColumnWidth + 100
-        ];
-        var shortOne______ = anArray_[
-            SqlParameterCollectionExtensions.DefaultValueColumnWidth + 100
-        ];
-        var shortOne______ = anArray[
-            DefaultValueColumnWidth_________ + DefaultValueColumnWidth_______
-        ];
+        var elementAccessExpression2 = anArray[SqlParameterCollectionExtensions.DefaultValueColumnWidth];
+        var elementAccessExpression3 = anArray[SqlParameterCollectionExtensions.DefaultValueColumnWidth + 100];
+        var shortOne______ = anArray_[SqlParameterCollectionExtensions.DefaultValueColumnWidth + 100];
+        var shortOne______ = anArray[DefaultValueColumnWidth_________ + DefaultValueColumnWidth_______];
         var shortOne______ = anArray[
             SqlParameterCollectionExtensions.DefaultValueColumnWidth
-                + SqlParameterCollectionExtensions.DefaultValueColumnWidth
-        ];
+                + SqlParameterCollectionExtensions.DefaultValueColumnWidth];
 
         var someLongValue_________________ = memberAccessExpression[
-            elementAccessExpression
-        ].theMember______________________________;
+            elementAccessExpression].theMember______________________________;
 
-        var someLongValue_________________ = memberAccessExpression[elementAccessExpression]
-            .theMember______________________________();
+        var someLongValue_________________ =
+            memberAccessExpression[elementAccessExpression].theMember______________________________();
 
         var someLongValue_________________ = memberAccessExpression(
-            elementAccessExpression
-        ).theMember______________________________;
+            elementAccessExpression).theMember______________________________;
 
-        var someLongValue_________________ = memberAccessExpression(elementAccessExpression)
-            .theMember______________________________();
+        var someLongValue_________________ =
+            memberAccessExpression(elementAccessExpression).theMember______________________________();
 
-        var someLongVariable_doesNotBreakArrayRank____________________________ =
-            (ArrayType[])CallMethod();
+        var someLongVariable_doesNotBreakArrayRank____________________________ = (ArrayType[])CallMethod();
 
         var conditionalIndentation = someBoolean
-            ? someLongValue____________________________________
-                + someLongValue____________________________________
-            : someLongValue____________________________________
-                + someLongValue____________________________________;
+            ? someLongValue____________________________________ + someLongValue____________________________________
+            : someLongValue____________________________________ + someLongValue____________________________________;
 
-        var longEnoughToMakeThisBreak =
-            something == somethingElse ? shortValue__________ : otherShortValue;
+        var longEnoughToMakeThisBreak = something == somethingElse ? shortValue__________ : otherShortValue;
 
         var value =
-            someLongValue__________________________________
-            && someOtherValue__________________________________
+            someLongValue__________________________________ && someOtherValue__________________________________
                 ? trueValue
                 : falseValue;
 
-        var value = someLongCondition______________________
-            ? "someLongValue"
-            : "someOtherLongValue";
+        var value = someLongCondition______________________ ? "someLongValue" : "someOtherLongValue";
 
         fixed (
             byte* someName_____________________ =
-                (someCondition > someOtherLongCondition_______________________)
-                    ? new byte[someValue]
-                    : null
+                (someCondition > someOtherLongCondition_______________________) ? new byte[someValue] : null
         ) { }
 
         var variableDeclarator = conditionalAccessExpression?.invocationExpression(o =>
             someLongValue___________________________________
         );
 
-        var variableDeclarator = (CastExpression)
-            invocationExpression.SomeMethod(someParameter______________________);
+        var variableDeclarator = (CastExpression)invocationExpression.SomeMethod(someParameter______________________);
 
-        var someValue =
-            (SomeLongGenericType<SomeType, SomeOtherType>)someLongValue___________________________;
+        var someValue = (SomeLongGenericType<SomeType, SomeOtherType>)someLongValue___________________________;
 
         var variableDeclarator = (
             @"parenthesizedExpression
-withLineEnding"
-        );
+withLineEnding");
 
-        var value = coalesceAssignmentExpression ??= CallMethod(
-            parameter_____________________,
-            parameter_____________________
-        );
+        var value = coalesceAssignmentExpression ??=
+            CallMethod(parameter_____________________, parameter_____________________);
 
         var value =
             coalesceAssignmentExpression =
             coalesceAssignmentExpression ??=
                 CallMethod(parameter_____________________, parameter_____________________);
 
-        var value = CallSomeMethod(
-            someParameter_____________________,
-            someParameter_____________________
-        )
+        var value = CallSomeMethod(someParameter_____________________, someParameter_____________________)
             ? someValue
             : someOtherValue;
 
-        var someValue =
-            await SomeObject.CallLongAsyncMethod____________________________________________(
-                someParameter_________________________,
-                someParameter_________________________
-            );
+        var someValue = await SomeObject.CallLongAsyncMethod____________________________________________(
+            someParameter_________________________,
+            someParameter_________________________);
 
         var someValue =
             SomeObject.CallLongMethod____________________________________________________(
                 someParameter_________________________,
-                someParameter_________________________
-            );
+                someParameter_________________________);
 
-        var someValue =
-            SomeObject.CallLongMethod____________________________________________________()
-                ? someValue
-                : someOtherValue;
+        var someValue = SomeObject.CallLongMethod____________________________________________________()
+            ? someValue
+            : someOtherValue;
 
         var someValue = SomeObject
             .CallLongMethod____________________________________________________()

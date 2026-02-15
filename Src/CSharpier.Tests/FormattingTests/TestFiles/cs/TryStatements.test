@@ -38,8 +38,7 @@ class ClassName
         {
             throw new Exception();
         }
-        catch (Exception exception)
-            when (exception.Message.Contains("someLongValueThatMakesThisLineTooLong"))
+        catch (Exception exception) when (exception.Message.Contains("someLongValueThatMakesThisLineTooLong"))
         {
             return;
         }

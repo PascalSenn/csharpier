@@ -7,7 +7,7 @@ internal static class WithExpression
 {
     public static Doc Print(WithExpressionSyntax node, PrintingContext context)
     {
-        return Doc.Concat(
+        return Doc.Group(
             Node.Print(node.Expression, context),
             " ",
             Token.PrintWithSuffix(node.WithKeyword, Doc.Line, context),

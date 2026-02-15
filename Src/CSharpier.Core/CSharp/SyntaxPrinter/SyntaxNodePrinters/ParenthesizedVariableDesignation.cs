@@ -13,7 +13,6 @@ internal static class ParenthesizedVariableDesignation
                 Doc.SoftLine,
                 SeparatedSyntaxList.Print(node.Variables, Node.Print, Doc.Line, context)
             ),
-            Doc.SoftLine,
             Token.Print(node.CloseParenToken, context)
         );
     }

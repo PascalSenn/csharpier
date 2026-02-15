@@ -70,10 +70,7 @@ public class ClassName
         return;
     }
 
-    void TrailingCommentWithParameters(
-        string oasdflkjasdfljkaksjdfasjdkfjslakdf,
-        string ljasdfjklaskldfkalsfjkasdf
-    ) // shouldn't space before the next brace
+    void TrailingCommentWithParameters(string oasdflkjasdfljkaksjdfasjdkfjslakdf, string ljasdfjklaskldfkalsfjkasdf) // shouldn't space before the next brace
     {
         return;
     }

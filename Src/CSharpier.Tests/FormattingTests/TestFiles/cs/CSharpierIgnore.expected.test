@@ -81,7 +81,7 @@ public class ClassName
             // csharpier-ignore-start
             SomeProperty2 =     2,
             // csharpier-ignore-end
-            SomeProperty3 = 3,
+            SomeProperty3 = 3
         };
 
         return new Lines

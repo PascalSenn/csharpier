@@ -8,14 +8,9 @@ class ClassName
 
             checked(printsLikeInvocations + whenItsFlat);
 
-            checked(
-                printsLikeInvocations + whenItBreaks______________________________________________
-            );
+            checked(printsLikeInvocations + whenItBreaks______________________________________________);
 
-            checked(
-                printsLikeInvocations
-                + whenItLongBreaks_______________________________________________
-            );
+            checked(printsLikeInvocations + whenItLongBreaks_______________________________________________);
         }
     }
 }

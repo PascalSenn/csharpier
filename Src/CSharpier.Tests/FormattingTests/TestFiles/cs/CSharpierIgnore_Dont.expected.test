@@ -4,8 +4,7 @@ class ClassName
 {
     private void MethodName(
         // csharpier-ignore
-        string one
-    )
+        string one)
     {
         var x
         // csharpier-ignore
@@ -14,7 +13,6 @@ class ClassName
         this.CallMethod(
             // csharpier-ignore
             true,
-            false
-        );
+            false);
     }
 }

@@ -9,14 +9,14 @@ string[] c =
     "________________________",
     "________________________",
     "________________________",
-    "________________________",
+    "________________________"
 ];
 
 int[][] d =
 [
     [1, 2, 3],
     [4, 5, 6],
-    [7, 8, 9],
+    [7, 8, 9]
 ];
 
 var a = new A { B = [1, 2, 3] };
@@ -24,7 +24,7 @@ var a = new A { B = [1, 2, 3] };
 List<string> items =
 [
     // My item
-    "Hello",
+    "Hello"
 ];
 
 items.AddRange([
@@ -32,7 +32,7 @@ items.AddRange([
     "which span multiple lines",
     "are added here",
     "and something bad",
-    "happens",
+    "happens"
 ]);
 
 someObject = new SomeObject
@@ -41,15 +41,15 @@ someObject = new SomeObject
     Property2 =
     [
         LongValue________________________________________________,
-        LongValue________________________________________________,
+        LongValue________________________________________________
     ],
-    Property3 = "three",
+    Property3 = "three"
 };
 
 someValue =
 [
     LongValue________________________________________________,
-    LongValue________________________________________________,
+    LongValue________________________________________________
 ];
 
 CallMethod(parameter1, parameterName: [1, 2]);
@@ -59,16 +59,15 @@ CallMethod(
     parameterName:
     [
         LongValue________________________________________________,
-        LongValue________________________________________________,
-    ]
-);
+        LongValue________________________________________________
+    ]);
 
 CallMethod([
     // some comment
 ]);
 
 CallMethod([
-    1,
+    1
     // some comment
     // and more
 ]);
@@ -77,53 +76,47 @@ CallMethod(
     (parameter1, parameter2) =>
         [
             LongValue________________________________________________,
-            LongValue________________________________________________,
-        ]
-);
+            LongValue________________________________________________
+        ]);
 
 CallMethod(
     static (parameter1, parameter2) =>
         [
             LongValue________________________________________________,
-            LongValue________________________________________________,
-        ]
-);
+            LongValue________________________________________________
+        ]);
 
 CallMethod(_ =>
     [
         LongValue________________________________________________,
-        LongValue________________________________________________,
+        LongValue________________________________________________
     ]
 );
 
 CallMethod([
     LongValue________________________________________________,
-    LongValue________________________________________________,
+    LongValue________________________________________________
 ]);
 
 CallMethod(
     parameterName:
     [
         LongValue________________________________________________,
-        LongValue________________________________________________,
-    ]
-);
+        LongValue________________________________________________
+    ]);
 
 CallMethod([
     [1, 2, 3],
     [4, 5, 6],
-    [7, 8, 9],
+    [7, 8, 9]
 ]);
 
 Dictionary<string, string[]> dictionary = new()
 {
     {
         "Key",
-        [
-            "SomeValue__________________________________________",
-            "SomeValue__________________________________________",
-        ]
-    },
+        ["SomeValue__________________________________________", "SomeValue__________________________________________"]
+    }
 };
 
 class MyClass
@@ -136,28 +129,16 @@ class MyClass
         _items ??= [];
     }
 
-    public TheoryData<string[]> ArgsData =>
-        [
+    public TheoryData<string[]> ArgsData
+        => [
             [],
             [ArgConstants.UseProgramMain],
             [ArgConstants.GlobalInteractivity, ArgConstants.WebAssemblyInteractivity],
-            [
-                ArgConstants.NoInteractivity,
-                ArgConstants.UseProgramMain,
-                ArgConstants.NoHttps,
-                ArgConstants.Empty,
-            ],
+            [ArgConstants.NoInteractivity, ArgConstants.UseProgramMain, ArgConstants.NoHttps, ArgConstants.Empty]
         ];
 
-    public ReadOnlySpan<HttpMethod> Methods() =>
-        [
-            HttpMethod.None,
-            HttpMethod.Put,
-            HttpMethod.Post,
-            HttpMethod.Patch,
-            HttpMethod.None,
-            HttpMethod.Connect,
-        ];
+    public ReadOnlySpan<HttpMethod> Methods()
+        => [HttpMethod.None, HttpMethod.Put, HttpMethod.Post, HttpMethod.Patch, HttpMethod.None, HttpMethod.Connect];
 
     public List<DayOfWeek> DaysOfWeek { get; } =
     [
@@ -167,7 +148,7 @@ class MyClass
         DayOfWeek.Wednesday,
         DayOfWeek.Thursday,
         DayOfWeek.Friday,
-        DayOfWeek.Saturday,
+        DayOfWeek.Saturday
     ];
 }
 
@@ -181,27 +162,21 @@ class MyClass
     someValue,
     someValue,
     someValue,
-    someValue,
+    someValue
 ])]
 [SomeAttribute(
     someName: [
         SomeValue__________________________________________,
-        SomeValue__________________________________________,
-    ]
-)]
+        SomeValue__________________________________________
+    ])]
 [SomeAttribute(
-    [
-        SomeValue__________________________________________,
-        SomeValue__________________________________________,
-    ],
-    SomeArgument = false
-)]
+    [SomeValue__________________________________________, SomeValue__________________________________________],
+    SomeArgument = false)]
 [SomeAttribute(
     SomeArgument = [
         SomeValue__________________________________________,
-        SomeValue__________________________________________,
-    ]
-)]
+        SomeValue__________________________________________
+    ])]
 class ClassName { }
 
 class CastExpressions
@@ -209,41 +184,36 @@ class CastExpressions
     public SomeType[] ShortName =
     [
         someLongValue___________________________________________________,
-        someLongValue___________________________________________________,
+        someLongValue___________________________________________________
     ];
 
     public SomeType[] LongName____________________________________________________________________________ =
     [
         someLongValue___________________________________________________,
-        someLongValue___________________________________________________,
+        someLongValue___________________________________________________
     ];
 
     void MethodName()
     {
         var x = (string[])[someValue, someValue];
 
-        var x = (string[])
-            [longValue________________________________, longValue________________________________];
+        var x = (string[])[longValue________________________________, longValue________________________________];
 
         var x = (string[])
             [
                 longerValue_____________________________________________,
-                longerValue_____________________________________________,
+                longerValue_____________________________________________
             ];
 
         CallMethod((string[])[someValue, someValue]);
 
-        CallMethod(
-            (string[])
-                [longValue______________________________, longValue______________________________]
-        );
+        CallMethod((string[])[longValue______________________________, longValue______________________________]);
 
         CallMethod(
             (string[])
                 [
                     longerValue_____________________________________________,
-                    longerValue_____________________________________________,
-                ]
-        );
+                    longerValue_____________________________________________
+                ]);
     }
 }

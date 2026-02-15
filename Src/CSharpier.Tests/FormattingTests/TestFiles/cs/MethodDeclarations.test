@@ -12,17 +12,12 @@ public class ClassName
     public void LongMethodNameForceLineBreak(
         string firstParameter___________,
         string secondParameter___________,
-        string thirdParameter___________
-    )
+        string thirdParameter___________)
     {
         return;
     }
 
-    public void LongMethodNameForceLineBreaks___________________________(
-        string one,
-        string two,
-        string three
-    ) { }
+    public void LongMethodNameForceLineBreaks___________________________(string one, string two, string three) { }
 
     public void ReallyLongMethodNameWithoutAnyParametersShouldNewLineBrace_______()
     {
@@ -33,8 +28,7 @@ public class ClassName
         // leading
         string one, // trailing
         string two,
-        string three
-    )
+        string three)
     {
         var x = 0;
     }
@@ -47,22 +41,15 @@ public class ClassName
         MethodName();
     }
 
-    private Doc MethodWithParameters__________________(
-        SomeClass one,
-        SomeClass two,
-        SomeClass three
-    ) => CallSomethingElseWithALongNameThatForcesABreak_________(one, two, three);
+    private Doc MethodWithParameters__________________(SomeClass one, SomeClass two, SomeClass three)
+        => CallSomethingElseWithALongNameThatForcesABreak_________(one, two, three);
 
     private Doc ShortMethod() => Method();
 
-    private Doc ShortishMethod(SomeClass one) =>
-        CallSomeOtherLongMethodSoThatItBreaks____________________(one);
+    private Doc ShortishMethod(SomeClass one) => CallSomeOtherLongMethodSoThatItBreaks____________________(one);
 
-    private Doc MethodWithParameters_______________________(
-        SomeClass one,
-        SomeClass two,
-        SomeClass three
-    ) => CallSomething(one, two, three);
+    private Doc MethodWithParameters_______________________(SomeClass one, SomeClass two, SomeClass three)
+        => CallSomething(one, two, three);
 
     private void MethodWithEmptyBlockShouldNotGetExtraSpace()
     {
@@ -113,10 +100,7 @@ namespace SomeNamespace
             return;
         }
 
-        public void JustOver100(
-            IApplicationBuilder app,
-            IWebHostEnvironment env____________________
-        )
+        public void JustOver100(IApplicationBuilder app, IWebHostEnvironment env____________________)
         {
             return;
         }

@@ -1,0 +1,5 @@
+/// <summary>
+/// Provides a fluent API for configuring a consumer's name, inbound routes, and consumer-scoped
+/// middleware during bus setup.
+/// </summary>
+public class ConsumerDescriptor : MessagingDescriptorBase<ConsumerConfiguration>, IConsumerDescriptor { }

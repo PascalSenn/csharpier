@@ -21,17 +21,14 @@ internal static class ParameterList
         return Doc.Group(
             Token.Print(openToken, context),
             node.Parameters.Count > 0
-                ? Doc.Concat(
-                    Doc.Indent(
-                        Doc.SoftLine,
-                        SeparatedSyntaxList.Print(
-                            node.Parameters,
-                            Parameter.Print,
-                            Doc.Line,
-                            context
-                        )
-                    ),
-                    Doc.SoftLine
+                ? Doc.Indent(
+                    Doc.SoftLine,
+                    SeparatedSyntaxList.Print(
+                        node.Parameters,
+                        Parameter.Print,
+                        Doc.Line,
+                        context
+                    )
                 )
                 : Doc.Null,
             Token.Print(closeToken, context)

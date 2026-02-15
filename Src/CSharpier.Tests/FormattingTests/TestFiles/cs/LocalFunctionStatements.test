@@ -7,12 +7,7 @@ public class ClassName
             return;
         }
 
-        void LocalFunctionWithParameters(
-            string one,
-            string two,
-            string three,
-            string four_______________
-        )
+        void LocalFunctionWithParameters(string one, string two, string three, string four_______________)
         {
             return;
         }

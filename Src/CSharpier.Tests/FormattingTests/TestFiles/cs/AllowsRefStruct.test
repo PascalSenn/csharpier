@@ -1,5 +1,4 @@
-public class C<T>
-    where T : allows ref struct
+public class C<T> where T : allows ref struct
 {
     // Use T as a ref struct:
     public void M(scoped T p)

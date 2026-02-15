@@ -81,7 +81,6 @@ internal static class AttributeList
                             )
                         )
                     ),
-                    singleCollectionExpression ? Doc.Null : Doc.SoftLine,
                     Token.Print(attributeNode.ArgumentList.CloseParenToken, context)
                 );
             },
@@ -94,11 +93,6 @@ internal static class AttributeList
                 ? Doc.Indent(Doc.SoftLine, printSeparatedSyntaxList)
                 : printSeparatedSyntaxList
         );
-
-        if (node.Attributes.Count > 1)
-        {
-            docs.Add(Doc.SoftLine);
-        }
 
         docs.Add(Token.Print(node.CloseBracketToken, context));
 

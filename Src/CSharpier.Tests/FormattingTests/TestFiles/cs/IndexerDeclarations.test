@@ -4,6 +4,5 @@ abstract class ClassName
 
     public string this[
         [SomeAttribute] int a________________________________,
-        [SomeAttribute] int b________________________________
-    ] => someValue;
+        [SomeAttribute] int b________________________________] => someValue;
 }

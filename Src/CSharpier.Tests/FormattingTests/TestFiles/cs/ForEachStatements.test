@@ -7,19 +7,14 @@ public class ClassName
             x = 1;
         }
 
-        foreach (
-            var x in this.SomeMethodCall()
-                .SomeChainedCall()
-                .AnotherChainedCall__________________________()
-        )
+        foreach (var x in this.SomeMethodCall().SomeChainedCall().AnotherChainedCall__________________________())
         {
             break;
         }
 
         foreach (
             var x // trailing
-            in y
-        )
+            in y)
         {
             return;
         }
@@ -41,9 +36,7 @@ public class ClassName
             return;
         }
 
-        foreach (
-            var justOver100 in Something_______________________________________________________
-        )
+        foreach (var justOver100 in Something_______________________________________________________)
         {
             return;
         }
@@ -62,9 +55,7 @@ public class ClassName
         foreach (var someLongerNameThatMakesThis in BreakAndLongName____________________)
             CallSomething(x);
 
-        foreach (
-            var someLongerNameThatMakesThis in BreakInAnotherWay_______________________________________
-        )
+        foreach (var someLongerNameThatMakesThis in BreakInAnotherWay_______________________________________)
             CallSomething(x);
 
         foreach (var x in y)
@@ -80,18 +71,13 @@ public class ClassName
         }
 
         foreach (
-            (
-                (int l2, int l3),
-                (int longName________________________, string[] anotherLongName___________)
-            ) in (
+            ((int l2, int l3), (int longName________________________, string[] anotherLongName___________)) in (
                 from l2 in Enumerable.Range(1, 7)
                 from l3 in Enumerable.Range(1, 7)
-                select (l2, l3)
-            )
+                select (l2, l3))
                 .AsParallel()
                 .Select(l => (l, res: GenerateTable(l.l2, l.l3, cutOff)))
-                .OrderBy(v => v.res.Total)
-        )
+                .OrderBy(v => v.res.Total))
         {
             return;
         }

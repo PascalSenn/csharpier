@@ -7,10 +7,7 @@ class ClassName
             *intref = 1;
         }
 
-        fixed (
-            int* someLongNameThatWillMakeThisBreakYeahKeepGoing_____________________ =
-                stackalloc int[100]
-        )
+        fixed (int* someLongNameThatWillMakeThisBreakYeahKeepGoing_____________________ = stackalloc int[100])
         {
             *intref = 1;
         }
@@ -26,9 +23,7 @@ class ClassName
             return;
         }
 
-        fixed (
-            int* justOver100_______________________________________________ = stackalloc int[100]
-        )
+        fixed (int* justOver100_______________________________________________ = stackalloc int[100])
         {
             return;
         }

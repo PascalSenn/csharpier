@@ -1,7 +1,6 @@
 [assembly: System.Copyright(
     @"(C)""
-2009"
-)]
+2009")]
 
 class ClassName
 {
@@ -62,8 +61,7 @@ two
 three
 four
 five
-"
-        );
+");
 
         CallSomeLongMethod(
             $@"one
@@ -71,24 +69,21 @@ two
 three
 four
 five
-"
-        );
+");
 
         CallSomeLongMethod(
             @"one
 two
 three
 four",
-            five
-        );
+            five);
 
         CallSomeLongMethod(
             $@"one
 two
 three
 four",
-            five
-        );
+            five);
 
         var multiLineRaw = """
             This is a long message.
@@ -101,8 +96,7 @@ four",
 
         var shortRaw = """Short Raw String""";
         var shortRawInterpolated = $"""Short Raw String""";
-        var longRaw =
-            """Long Raw String                                                                       """;
+        var longRaw = """Long Raw String                                                                       """;
         var longRawInterpolated =
             $"""Long Raw String                                                                       """;
 
@@ -113,8 +107,7 @@ two
 three
 four
 five
-"""
-        );
+""");
 
         CallSomeLongMethod(
             """
@@ -123,8 +116,7 @@ two
 three
 four
 """,
-            five
-        );
+            five);
 
         CallSomeLongMethod(
             one,
@@ -133,8 +125,7 @@ two
 three
 four
 """,
-            five
-        );
+            five);
 
         var expressionsInInterpolatedVerbatimStringDontBreak =
             $@"{CallMethod_____________________________().CallMethod_____________________________().CallMethod_____________________________()}";
@@ -163,26 +154,22 @@ four
             _ => null
         }}}"
               }
-              """
-        );
+              """);
 
         CallMethod(
             @"
 SomeVerbatimString
-".CallMethod()
-        );
+".CallMethod());
 
         CallMethod(
             @"
 SomeVerbatimString
-".CallMethod().CallMethod()
-        );
+".CallMethod().CallMethod());
 
         CallMethod(
             @"
 SomeVerbatimString
-".CallMethod().CallMethod().CallMethod()
-        );
+".CallMethod().CallMethod().CallMethod());
 
         var someStringWithLineBreakAndLongValue =
             $@"

@@ -9,8 +9,8 @@ internal static class ArrowExpressionClause
     {
         return Doc.Group(
             Doc.Indent(
-                " ",
-                Token.PrintWithSuffix(node.ArrowToken, Doc.Line, context),
+                Doc.Line,
+                Token.PrintWithSuffix(node.ArrowToken, " ", context),
                 Node.Print(node.Expression, context)
             )
         );

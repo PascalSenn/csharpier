@@ -13,7 +13,6 @@ internal static class TupleType
                 Doc.SoftLine,
                 SeparatedSyntaxList.Print(node.Elements, Node.Print, Doc.Line, context)
             ),
-            Doc.SoftLine,
             Token.Print(node.CloseParenToken, context)
         );
     }
