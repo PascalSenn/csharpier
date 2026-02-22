@@ -29,6 +29,33 @@ internal static class ParenthesizedLambdaExpression
     {
         if (node.Body is BlockSyntax block)
         {
+            if (
+                block.Statements.Count == 1
+                && !Token.HasComments(block.OpenBraceToken)
+                && !Token.HasComments(block.CloseBraceToken)
+                && !block.Statements[0].GetLeadingTrivia().Any(o => o.IsComment())
+                && !block.Statements[0].GetTrailingTrivia().Any(o => o.IsComment())
+            )
+            {
+                var statement = Node.Print(block.Statements[0], context);
+
+                var inlineOption = Doc.Concat(
+                    " ",
+                    Token.Print(block.OpenBraceToken, context),
+                    " ",
+                    statement,
+                    " ",
+                    Token.Print(block.CloseBraceToken, context)
+                );
+
+                var brokenOption = Doc.Concat(
+                    Doc.HardLine,
+                    Block.Print(block, context)
+                );
+
+                return Doc.ConditionalGroup(inlineOption, brokenOption);
+            }
+
             return Doc.Concat(
                 block.Statements.Count > 0 ? Doc.HardLine : " ",
                 Block.Print(block, context)

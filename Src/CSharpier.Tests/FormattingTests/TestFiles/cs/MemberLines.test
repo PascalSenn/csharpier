@@ -18,13 +18,21 @@ public class ClassRules
         Two,
     }
 
-    private class AlwaysLineBeforeClass { }
+    private class AlwaysLineBeforeClass
+    {
+    }
 
-    private class NoDoubleLines { }
+    private class NoDoubleLines
+    {
+    }
 
-    private interface IAlwaysLineBeforeInterface { }
+    private interface IAlwaysLineBeforeInterface
+    {
+    }
 
-    private interface INoDoubleLines { }
+    private interface INoDoubleLines
+    {
+    }
 
     public ClassRules() { }
 
@@ -48,9 +56,13 @@ public class ClassRules
 
     public record SomeRecord2(string property);
 
-    public struct SomeStruct1 { }
+    public struct SomeStruct1
+    {
+    }
 
-    public struct SomeStruct2 { }
+    public struct SomeStruct2
+    {
+    }
 
     static ClassRules operator +(ClassRules a, ClassRules b)
     {
@@ -114,7 +126,9 @@ public class ClassRules
     public void SomeMethod() { }
 }
 
-public class LineBeforeClass { }
+public class LineBeforeClass
+{
+}
 
 public interface InterfaceRulesAreLikeClassesButMethodsFollowTheFieldRulesAbove
 {

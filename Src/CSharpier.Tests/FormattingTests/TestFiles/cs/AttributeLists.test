@@ -28,12 +28,16 @@ class ClassName
 
     // leading
     [Obsolete] // trailing
-    class ClassOne { }
+    class ClassOne
+    {
+    }
 
     // leading with new line
     [Obsolete] // more trailing
     // leading before class
-    class ClassTwo { }
+    class ClassTwo
+    {
+    }
 
     [LongAttributeWithParametersBreaking("someValue_____________", "someValue_____________", "someValue_____________")]
     void LongAttribute() { }
@@ -84,13 +88,19 @@ class ClassName
 [
     LongAttributeWithParametersBreaking("someValue_____________", "someValue_____________", "someValue_____________"),
     AnotherAttribute]
-public class ClassName { }
+public class ClassName
+{
+}
 
 [GenericAttribute<string>()]
-public class ClassName { }
+public class ClassName
+{
+}
 
 [Generic<LongName______________________, LongName______________________, LongName______________________>]
-public class ClassName { }
+public class ClassName
+{
+}
 
 public class ClassName
 {

@@ -131,6 +131,8 @@ var someVariable =   someValue;
         var syntaxTree = CSharpSyntaxTree.ParseText(code);
         var result = CSharpFormatter.Format(syntaxTree);
 
-        result.Code.Should().Be("public class ClassName { }" + lineEnding);
+        result.Code.Should().Be(
+            $"public class ClassName{lineEnding}{{{lineEnding}}}{lineEnding}"
+        );
     }
 }

@@ -6,4 +6,5 @@ internal enum LineLengthThreshold
     Small,
     Medium,
     Long,
+    ExtraLong,
 }

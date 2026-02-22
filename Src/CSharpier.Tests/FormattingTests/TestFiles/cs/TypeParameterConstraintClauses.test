@@ -51,9 +51,13 @@ class ClassName<T> where T : class
         where U : class { }
 }
 
-interface InterfaceName<T> where T : class { }
+interface InterfaceName<T> where T : class
+{
+}
 
-struct Struct<T> where T : class { }
+struct Struct<T> where T : class
+{
+}
 
 class ClassName<N, C, T, TT, L>
     where N : new()
@@ -70,4 +74,6 @@ class ClassName<N, C, T, TT, L>
     where C : class
     where T : IComparable
     where TT : IList<N>
-    where L : class, new() { }
+    where L : class, new()
+{
+}

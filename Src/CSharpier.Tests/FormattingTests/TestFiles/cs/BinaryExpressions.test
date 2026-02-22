@@ -82,12 +82,11 @@ class TestClass
             "shouldIndentToMakeItClearWhereParametersAre" + "someLongString_________________________________",
             "SecondParameter");
 
-        var y =
-            someList.Where(o =>
-                someLongValue_______________________
-                && theseShouldNotIndent_________________
-                && theseShouldNotIndent_________________ > butThisOneShould_________________________________________
-            );
+        var y = someList.Where(o =>
+            someLongValue_______________________
+            && theseShouldNotIndent_________________
+            && theseShouldNotIndent_________________ > butThisOneShould_________________________________________
+        );
 
         var someVariable =
             CallMethod(

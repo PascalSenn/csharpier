@@ -167,7 +167,7 @@ internal static class BaseTypeDeclaration
                 o.RawSyntaxKind() is not (SyntaxKind.WhitespaceTrivia or SyntaxKind.EndOfLineTrivia)
             )
                 ? Doc.Line
-                : " ";
+                : Doc.HardLine;
 
             docs.Add(
                 separator,

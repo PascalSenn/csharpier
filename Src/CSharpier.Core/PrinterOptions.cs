@@ -32,6 +32,7 @@ internal class PrinterOptions(Formatter formatter)
     public double SmallLineFactor { get; set; } = 0.33;
     public double MediumLineFactor { get; set; } = 0.66;
     public double LongLineFactor { get; set; } = 0.8;
+    public double ExtraLongLineFactor { get; set; } = 0.9;
 
     public const int WidthUsedByTests = 120;
 
@@ -42,6 +43,7 @@ internal class PrinterOptions(Formatter formatter)
             LineLengthThreshold.Small => (int)(Width * SmallLineFactor),
             LineLengthThreshold.Medium => (int)(Width * MediumLineFactor),
             LineLengthThreshold.Long => (int)(Width * LongLineFactor),
+            LineLengthThreshold.ExtraLong => (int)(Width * ExtraLongLineFactor),
             _ => Width,
         };
     }

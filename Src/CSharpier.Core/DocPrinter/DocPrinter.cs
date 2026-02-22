@@ -386,6 +386,8 @@ internal class DocPrinter
         }
     }
 
+    private static readonly Stack<PrintCommand> EmptyStack = new();
+
     private bool Fits(
         PrintCommand possibleCommand,
         LineLengthThreshold threshold = LineLengthThreshold.None
@@ -395,6 +397,23 @@ internal class DocPrinter
         return DocFitter.Fits(
             possibleCommand,
             this.RemainingCommands,
+            effectiveWidth - this.CurrentWidth,
+            this.GroupModeMap,
+            this.Indenter,
+            this.DocFitterNewCommands,
+            this.DocFitterOutput
+        );
+    }
+
+    private bool FitsGroupOnly(
+        PrintCommand possibleCommand,
+        LineLengthThreshold threshold
+    )
+    {
+        var effectiveWidth = this.PrinterOptions.GetEffectiveWidth(threshold);
+        return DocFitter.Fits(
+            possibleCommand,
+            EmptyStack,
             effectiveWidth - this.CurrentWidth,
             this.GroupModeMap,
             this.Indenter,

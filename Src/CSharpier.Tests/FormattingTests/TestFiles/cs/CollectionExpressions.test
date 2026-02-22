@@ -177,7 +177,9 @@ class MyClass
         SomeValue__________________________________________,
         SomeValue__________________________________________
     ])]
-class ClassName { }
+class ClassName
+{
+}
 
 class CastExpressions
 {

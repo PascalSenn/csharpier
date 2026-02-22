@@ -126,8 +126,12 @@ internal static class RightHandSide
             or InterpolatedStringExpressionSyntax
             or IsPatternExpressionSyntax
             or LiteralExpressionSyntax
-            or StackAllocArrayCreationExpressionSyntax { Initializer: null }
             or InvocationExpressionSyntax
+            {
+                Expression: GenericNameSyntax
+                    or MemberAccessExpressionSyntax { Name: GenericNameSyntax }
+            }
+            or StackAllocArrayCreationExpressionSyntax { Initializer: null }
             or QueryExpressionSyntax => Layout.BreakAfterOperator,
             _ => Layout.Fluid,
         };

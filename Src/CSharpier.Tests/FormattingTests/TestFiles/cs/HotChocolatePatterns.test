@@ -1,0 +1,594 @@
+namespace HotChocolate.Patterns;
+
+// from GreenDonut DataLoaderServiceCollectionExtensions.cs
+public static class DataLoaderServiceCollectionExtensions
+{
+    public static IServiceCollection TryAddDataLoaderCore(this IServiceCollection services)
+    {
+        ArgumentNullException.ThrowIfNull(services);
+
+        services.TryAddSingleton<ObjectPoolProvider, DefaultObjectPoolProvider>();
+
+        services.TryAddSingleton<DataLoaderRegistrar>();
+        services.AddSingleton<DataLoaderScopeFactory>();
+        services.TryAddScoped(sp => sp.GetRequiredService<DataLoaderScopeFactory>().CreateScope(sp));
+        services.TryAddScoped<IBatchScheduler, AutoBatchScheduler>();
+
+        services.TryAddSingleton(sp => PromiseCachePool.Create(sp.GetRequiredService<ObjectPoolProvider>()));
+        services.TryAddScoped(sp =>
+        {
+            var pool = sp.GetRequiredService<ObjectPool<PromiseCache>>();
+            var interceptor = sp.GetService<IPromiseCacheInterceptor>();
+            return new PromiseCacheOwner(pool, interceptor);
+        });
+
+        services.TryAddSingleton<IDataLoaderDiagnosticEvents>(sp =>
+        {
+            var listeners = sp.GetServices<IDataLoaderDiagnosticEventListener>().ToArray();
+
+            return listeners.Length switch
+            {
+                0 => new DataLoaderDiagnosticEventListener(),
+                1 => listeners[0],
+                _ => new AggregateDataLoaderDiagnosticEventListener(listeners)
+            };
+        });
+
+        services.TryAddScoped(sp =>
+        {
+            var cacheOwner = sp.GetRequiredService<PromiseCacheOwner>();
+
+            return new DataLoaderOptions
+            {
+                Cache = cacheOwner.Cache,
+                DiagnosticEvents = sp.GetService<IDataLoaderDiagnosticEvents>(),
+                MaxBatchSize = 1024
+            };
+        });
+
+        return services;
+    }
+}
+
+// from RequestExecutorServiceCollectionExtensions.cs
+public static class RequestExecutorServiceCollectionExtensions
+{
+    public static IServiceCollection AddGraphQLCore(this IServiceCollection services)
+    {
+        services.AddOptions();
+
+        services.TryAddSingleton<ObjectPoolProvider, DefaultObjectPoolProvider>();
+        services.TryAddSingleton<DefaultRequestContextAccessor>();
+        services.TryAddSingleton<IRequestContextAccessor>(sp => sp.GetRequiredService<DefaultRequestContextAccessor>());
+        services.TryAddSingleton<AggregateServiceScopeInitializer>();
+        services.TryAddSingleton<ParameterBindingResolver>();
+
+        services.TryAddSingleton(sp =>
+        {
+            var provider = sp.GetRequiredService<ObjectPoolProvider>();
+            var policy = new StringBuilderPooledObjectPolicy();
+            return provider.Create(policy);
+        });
+
+        // core services
+        services
+            .TryAddTypeConverter()
+            .TryAddInputFormatter()
+            .TryAddInputParser()
+            .TryAddDefaultBatchDispatcher(default)
+            .TryAddDefaultDataLoaderRegistry()
+            .TryAddDataLoaderParameterExpressionBuilder()
+            .AddSingleton<ResolverProvider>();
+
+        // pools
+        services
+            .TryAddResolverTaskPool()
+            .TryAddOperationContextPool()
+            .TryAddSingleton<ObjectPool<DocumentValidatorContext>>(new DocumentValidatorContextPool());
+
+        // parser
+        services.TryAddSingleton(sp =>
+        {
+            var modifiers = sp.GetService<IEnumerable<Action<RequestParserOptions>>?>();
+
+            if (modifiers is null)
+            {
+                return ParserOptions.Default;
+            }
+
+            var options = new RequestParserOptions();
+
+            foreach (var configure in modifiers)
+            {
+                configure(options);
+            }
+
+            return new ParserOptions(
+                noLocations: !options.IncludeLocations,
+                maxAllowedNodes: options.MaxAllowedNodes,
+                maxAllowedTokens: options.MaxAllowedTokens,
+                maxAllowedFields: options.MaxAllowedFields);
+        });
+
+        return services;
+    }
+
+    private static DefaultRequestExecutorBuilder CreateBuilder(IServiceCollection services, string schemaName)
+    {
+        var builder = new DefaultRequestExecutorBuilder(services, schemaName);
+
+        builder.TryAddTypeInterceptor<DataLoaderRootFieldTypeInterceptor>();
+        builder.TryAddTypeInterceptor<RequirementsTypeInterceptor>();
+
+        builder.AddDocumentCache();
+
+        if (!services.Any(t =>
+                t.ServiceType == typeof(SchemaName)
+                && t.ImplementationInstance is SchemaName s
+                && s.Value.Equals(schemaName, StringComparison.Ordinal)
+            ))
+        {
+            services.AddSingleton(new SchemaName(schemaName));
+        }
+
+        builder.ConfigureSchemaServices(static s => s.TryAddSingleton<ITimeProvider, DefaultTimeProvider>());
+
+        return builder;
+    }
+}
+
+// from Fusion SourceSchemaMerger.cs
+public class SourceSchemaMerger
+{
+    private void MergeDirectiveDefinitions(MutableSchemaDefinition mergedSchema)
+    {
+        // [DirectiveName: [{DirectiveDefinition, Schema}, ...], ...].
+        var directiveDefinitionGroupByName = _schemas
+            .SelectMany(
+                s => s.DirectiveDefinitions.AsEnumerable(),
+                (schema, directiveDefinition) => new DirectiveDefinitionInfo(directiveDefinition, schema))
+            .GroupBy(i => i.DirectiveDefinition.Name);
+
+        foreach (var grouping in directiveDefinitionGroupByName)
+        {
+            if (!_directiveMergers.TryGetValue(grouping.Key, out var directiveMerger)
+                || directiveMerger.MergeBehavior is DirectiveMergeBehavior.Ignore)
+            {
+                continue;
+            }
+
+            var canonicalDirectiveDefinition = directiveMerger.GetCanonicalDirectiveDefinition(mergedSchema);
+            var canonicalDirectiveNode = canonicalDirectiveDefinition.ToSyntaxNode();
+
+            // Ensure that all directive definitions match the canonical definition.
+            if (!grouping.All(d =>
+                    d.DirectiveDefinition.ToSyntaxNode()
+                        .Equals(canonicalDirectiveNode, SyntaxComparison.SyntaxIgnoreDescriptions)
+                ))
+            {
+                // Skip merging if there is a mismatch.
+                continue;
+            }
+
+            directiveMerger.MergeDirectiveDefinition(canonicalDirectiveDefinition, mergedSchema);
+        }
+    }
+}
+
+// from Fusion SchemaComposer.cs
+public class SchemaComposer
+{
+    public CompositionResult<MutableSchemaDefinition> Compose()
+    {
+        // Parse Source Schemas
+        var parsingResult = _sourceSchemas
+            .Select(schema =>
+            {
+                var options = _schemaComposerOptions.SourceSchemas.GetValueOrDefault(schema.Name);
+
+                return new SourceSchemaParser(schema, _log, options?.Parser).Parse();
+            })
+            .Combine();
+
+        if (parsingResult.IsFailure)
+        {
+            return parsingResult.Errors;
+        }
+
+        var schemas = parsingResult.Value.ToImmutableSortedSet(new SchemaByNameComparer<MutableSchemaDefinition>());
+
+        // Enrich Source Schemas
+        var enrichmentResult = schemas.Select(schema => new SourceSchemaEnricher(schema, schemas).Enrich()).Combine();
+
+        if (enrichmentResult.IsFailure)
+        {
+            return enrichmentResult.Errors;
+        }
+
+        // Validate Source Schemas
+        var validationResult = new SourceSchemaValidator(schemas, s_sourceSchemaRules, _log).Validate();
+
+        if (validationResult.IsFailure)
+        {
+            return validationResult;
+        }
+
+        // Merge Source Schemas
+        var sourceSchemaMergerOptions = _schemaComposerOptions.Merger;
+        var (_, isMergeFailure, mergedSchema, mergeErrors) = new SourceSchemaMerger(
+            schemas,
+            sourceSchemaMergerOptions).Merge();
+
+        if (isMergeFailure)
+        {
+            return mergeErrors;
+        }
+
+        return mergedSchema;
+    }
+}
+
+// from Fusion FusionRequestExecutor.cs
+public class FusionRequestExecutor
+{
+    private async Task<IExecutionResult> ExecuteAsync(
+        IOperationRequest request,
+        int? requestIndex,
+        CancellationToken cancellationToken)
+    {
+        IServiceScope? scope = null;
+        var requestServices = request.Services;
+
+        if (requestServices is null)
+        {
+            scope = request.Features.TryGet(out IServiceScopeFactory? serviceScopeFactory)
+                ? serviceScopeFactory.CreateScope()
+                : _applicationServices.CreateScope();
+            requestServices = scope.ServiceProvider;
+        }
+
+        var context = _contextPool.Get();
+
+        try
+        {
+            context.Initialize(Schema, Version, request, requestIndex ?? -1, requestServices, cancellationToken);
+
+            await _requestDelegate(context).ConfigureAwait(false);
+
+            if (context.Result is null)
+            {
+                throw new InvalidOperationException("The request pipeline is expected to produce an execution result.");
+            }
+
+            if (scope is null)
+            {
+                var localContext = context;
+
+                if (context.Result.IsStreamResult())
+                {
+                    context.Result.RegisterForCleanup(() => _contextPool.Return(localContext));
+                    context = null;
+                }
+
+                return localContext.Result;
+            }
+
+            if (context.Result.IsStreamResult())
+            {
+                var localContext = context;
+                context.Result.RegisterForCleanup(scope);
+                context.Result.RegisterForCleanup(() => _contextPool.Return(localContext));
+                scope = null;
+                context = null;
+                return localContext.Result;
+            }
+
+            return context.Result;
+        }
+        finally
+        {
+            if (context is not null)
+            {
+                _contextPool.Return(context);
+            }
+
+            if (scope is IAsyncDisposable asyncScope)
+            {
+                await asyncScope.DisposeAsync();
+            }
+            else
+            {
+                scope?.Dispose();
+            }
+        }
+    }
+}
+
+// Pattern: Ternary operator simplification from multi-line to single-line
+public class TernarySimplification
+{
+    public void Example()
+    {
+        var result = allowBackwardPagination ? context.ArgumentValue<int?>(Last) : null;
+    }
+}
+
+// Pattern: Method chain breaking with fluent interface
+public class MethodChainBreaking
+{
+    public void Example()
+    {
+        var result = JsonDocument
+            .Parse(jsonString)
+            .RootElement.GetProperty("versions")
+            .EnumerateArray()
+            .Select(x => x.GetString());
+    }
+}
+
+// Pattern: Constructor with base initializer on same line
+public class ConstructorBaseInitializer
+{
+    private ConstructorBaseInitializer(string name, string code, int index) : base(name, code)
+    {
+        Index = index;
+    }
+}
+
+// Pattern: Expression-bodied property condensed to single line
+public class PropertyExpressionBodied
+{
+    public static string CreateConnectionName(string connectionName) => connectionName + "Connection";
+}
+
+// Pattern: Fluent builder chain across multiple lines
+public class FluentBuilderChain
+{
+    public void Example()
+    {
+        var request = OperationRequestBuilder
+            .New()
+            .SetDocument("{ foo }")
+            .AddGlobalState("one", "foo")
+            .SetGlobalState(new Dictionary<string, object?> { { "three", "baz" } })
+            .Build();
+    }
+}
+
+// Pattern: Await foreach with continuation across lines
+public class AwaitForeachContinuation
+{
+    public async Task Example()
+    {
+        await foreach (
+            var item in executable.WithSource(query).ToAsyncEnumerable(cancellationToken).ConfigureAwait(false))
+        {
+            items.Add(item);
+        }
+    }
+}
+
+// Pattern: Collection initializer inline with method call
+public class CollectionInitializerInline
+{
+    public async Task Example()
+    {
+        using var gateway = await CreateCompositeSchemaAsync([("A", serverA)]);
+    }
+}
+
+// Pattern: Static builder method call on separate line
+public class ErrorBuilderMultiLine
+{
+    public void Example()
+    {
+        throw SchemaErrorBuilder.New().SetMessage("Error message").BuildException();
+    }
+}
+
+// Pattern: Parenthesized pattern match with ternary in single line
+public class PatternMatchTernary
+{
+    public void Example()
+    {
+        var result = property is null or { ValueKind: JsonValueKind.Null } ? null : property.Value.GetBoolean();
+    }
+}
+
+// Pattern: Attribute with multi-line string literal
+[GraphQLDescription(
+    """
+        Multi line
+        comment
+        """)]
+public class AttributeWithMultiLineString
+{
+}
+
+// Pattern: String literal prefix on separate line
+public class StringLiteralPrefixSeparateLine
+{
+    public void Example()
+    {
+        const string query =
+            @"
+                query {
+                    field
+                }";
+    }
+}
+
+// Pattern: Generic constraint on same line
+public class DatabaseContext<T> : DbContext where T : class
+{
+    public void Example() { }
+}
+
+// Pattern: Constructor with multiple parameters on single line
+public class UnionTypeConfiguration
+{
+    public UnionTypeConfiguration(string name, string? description = null, Type? runtimeType = null) { }
+}
+
+// Pattern: Multi-line method call chain compressed to single line
+public class CompressedMethodChain
+{
+    public void Example()
+    {
+        var result = await server.PostAsync(new ClientQueryRequest { Query = "{ __typename }" });
+    }
+}
+
+// Pattern: Ternary with null coalescing in middle of expression
+public class TernaryNullCoalescing
+{
+    public void Example()
+    {
+        var connectionName = string.IsNullOrEmpty(_connectionName) ? null! : _connectionName;
+    }
+}
+
+// Pattern: Dictionary initializer with property accessor on single line
+public class DictionaryInitializerCompact
+{
+    public void Example()
+    {
+        var variables = new Dictionary<string, object?>
+        {
+            ["cat"] = new Dictionary<string, object?> { ["cute"] = true }
+        };
+    }
+}
+
+// Pattern: Record struct with all parameters on single line
+public record struct TypeScatterInfo(int TotalFields, int SchemaCount, int MaxCoverage, double ScatterRatio);
+
+// Pattern: ErrorBuilder chain with method split across lines
+public class ErrorBuilderChainSplit
+{
+    public void Example()
+    {
+        var error = ErrorBuilder.New().SetMessage("Error message").Build();
+    }
+}
+
+// Pattern: Expression-bodied method with arrow function remains single line
+public class ExpressionBodiedArrowFunction
+{
+    public override IValueNode OnValueToLiteral(string runtimeValue) => throw new NotImplementedException();
+}
+
+// Pattern: Async lambda split across lines with arrow function continuation
+public class AsyncLambdaWithContinuation
+{
+    public void Example()
+    {
+        var middleware = (_, next) =>
+            async context =>
+            {
+                await next(context);
+            };
+    }
+}
+
+// Pattern: Multi-line if statement with pattern matching and logical or
+public class PatternMatchingWithOr
+{
+    public void Example(object? value)
+    {
+        if (value is not StringValueNode { Value: var stringValue }
+            || string.IsNullOrEmpty(stringValue))
+        {
+            return;
+        }
+    }
+}
+
+// Pattern: Complex builder pattern with nested lambdas
+public class NestedLambdaBuilderPattern
+{
+    public void Example()
+    {
+        var schema = SchemaBuilder
+            .New()
+            .AddDocumentFromString("type Query { a: String }")
+            .Map(
+                new FieldReference("Query", "a"),
+                _ =>
+                    context =>
+                    {
+                        context.Result = "value";
+                        return default;
+                    })
+            .Create();
+    }
+}
+
+// Pattern: String.Create with lambda breaking across lines
+public class StringCreateLambda
+{
+    public string Example(string input)
+    {
+        return string.Create(
+            input.Length,
+            input,
+            (span, str) =>
+            {
+                str.AsSpan().CopyTo(span);
+                span[0] = char.ToLowerInvariant(span[0]);
+            });
+    }
+}
+
+// Pattern: Multi-line typeof and property access chain
+public class TypeOfChainAccess
+{
+    public void Example()
+    {
+        var elementType = ((IArrayTypeSymbol?)constantType)?.ElementType.ToDisplayString(
+            SymbolDisplayFormat.FullyQualifiedFormat);
+    }
+}
+
+// Pattern: Multi-line class inheritance with interface comma placement
+public class ClassInheritanceLineBreak
+{
+    public class VariableValueInsertionTrie
+        : Dictionary<string, IVariableValueInsertionTrieSegment>
+        , IVariableValueInsertionTrieSegment
+    {
+    }
+}
+
+// Pattern: Ternary with complex condition and method chain
+public class TernaryWithMethodChain
+{
+    public string Example(Uri runtimeValue)
+    {
+        var value = runtimeValue.IsAbsoluteUri ? runtimeValue.AbsoluteUri : runtimeValue.ToString();
+        return value;
+    }
+}
+
+// Pattern: Multi-line generic type parameter with where constraint
+public class GenericWithConstraintLineBreak
+{
+    public T GetType<T>(string name) where T : ITypeDefinition
+    {
+        return default!;
+    }
+}
+
+// Pattern: Switch pattern expression with multiple arms breaking to next line
+public class SwitchPatternExpression
+{
+    public string Example(int length)
+    {
+        return length switch
+        {
+            0 => new DataLoaderDiagnosticEventListener(),
+            1 => new ExistingListener(),
+            _ => new AggregateListener()
+        };
+    }
+}

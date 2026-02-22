@@ -1,6 +1,10 @@
-struct BasicStruct { }
+struct BasicStruct
+{
+}
 
-public readonly struct ReadonlyStruct { }
+public readonly struct ReadonlyStruct
+{
+}
 
 public struct NamedItem2(string name1________________________________, string name2________________________________)
 {

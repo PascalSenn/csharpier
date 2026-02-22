@@ -5,7 +5,9 @@ public class Unformatted     { }
 public class Unformatted     { }
 
 // csharpier-ignore-not ignored
-public class Unformatted { }
+public class Unformatted
+{
+}
 
 public class ClassName
 {

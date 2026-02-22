@@ -60,14 +60,14 @@ class ClassName
         var someLongValue_________________ = memberAccessExpression[
             elementAccessExpression].theMember______________________________;
 
-        var someLongValue_________________ =
-            memberAccessExpression[elementAccessExpression].theMember______________________________();
+        var someLongValue_________________ = memberAccessExpression[elementAccessExpression]
+            .theMember______________________________();
 
         var someLongValue_________________ = memberAccessExpression(
             elementAccessExpression).theMember______________________________;
 
-        var someLongValue_________________ =
-            memberAccessExpression(elementAccessExpression).theMember______________________________();
+        var someLongValue_________________ = memberAccessExpression(elementAccessExpression)
+            .theMember______________________________();
 
         var someLongVariable_doesNotBreakArrayRank____________________________ = (ArrayType[])CallMethod();
 
@@ -101,8 +101,9 @@ class ClassName
             @"parenthesizedExpression
 withLineEnding");
 
-        var value = coalesceAssignmentExpression ??=
-            CallMethod(parameter_____________________, parameter_____________________);
+        var value = coalesceAssignmentExpression ??= CallMethod(
+            parameter_____________________,
+            parameter_____________________);
 
         var value =
             coalesceAssignmentExpression =
@@ -117,10 +118,9 @@ withLineEnding");
             someParameter_________________________,
             someParameter_________________________);
 
-        var someValue =
-            SomeObject.CallLongMethod____________________________________________________(
-                someParameter_________________________,
-                someParameter_________________________);
+        var someValue = SomeObject.CallLongMethod____________________________________________________(
+            someParameter_________________________,
+            someParameter_________________________);
 
         var someValue = SomeObject.CallLongMethod____________________________________________________()
             ? someValue

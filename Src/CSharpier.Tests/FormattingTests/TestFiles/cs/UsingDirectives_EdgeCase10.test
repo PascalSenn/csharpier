@@ -2,4 +2,6 @@ using System.Net;
 using Microsoft.Extensions.Logging;
 using SomeProject.Bar;
 
-public class Foo { }
+public class Foo
+{
+}

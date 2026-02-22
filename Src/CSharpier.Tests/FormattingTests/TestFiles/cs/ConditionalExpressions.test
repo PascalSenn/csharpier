@@ -31,19 +31,17 @@ public class ClassName
                 : falseValue_______________________________,
             someCondition_____________________________________ && someOtherCondition__________________________________);
 
-        var fileContents =
-            File.ReadAllText(
-                file,
-                // leading here should break parameters and GetEncoding should still group
-                encoding ? File.GetEncoding________________________________(1252) : encoding_____________________,
-                cancellationToken);
+        var fileContents = File.ReadAllText(
+            file,
+            // leading here should break parameters and GetEncoding should still group
+            encoding ? File.GetEncoding________________________________(1252) : encoding_____________________,
+            cancellationToken);
 
-        var fileContents =
-            File.ReadAllText(
-                file,
-                // leading here should break parameters
-                encoding ? GetEncoding(1252) : encoding,
-                cancellationToken);
+        var fileContents = File.ReadAllText(
+            file,
+            // leading here should break parameters
+            encoding ? GetEncoding(1252) : encoding,
+            cancellationToken);
 
         return someLongCondition___________________________
             ? trueValue________________________________

@@ -8,3 +8,4 @@ public class XmlFormatting : BaseTest
         this.BuildTests<XmlFormatting>(context, "xml");
     }
 }
+

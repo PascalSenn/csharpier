@@ -89,7 +89,7 @@ internal static class InvocationExpression
 
         if (forceOneLine)
         {
-            return Doc.Group(oneLine);
+            return Doc.Group(LineLengthThreshold.ExtraLong, oneLine);
         }
 
         var expanded = Doc.Concat(
@@ -425,7 +425,12 @@ internal static class InvocationExpression
             {
                 var group = groups[index];
                 result.Add(Doc.HardLine);
-                result.Add(Doc.Group(group.Select(p => p.Doc).ToArray()));
+                result.Add(
+                    Doc.Group(
+                        LineLengthThreshold.Long,
+                        group.Select(p => p.Doc).ToArray()
+                    )
+                );
             }
         }
 

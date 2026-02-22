@@ -15,8 +15,13 @@ internal static class ArgumentListLike
     )
     {
         Doc? args;
+        var threshold = LineLengthThreshold.None;
         if (arguments is [{ Expression: SimpleLambdaExpressionSyntax lambda1 }])
         {
+            if (lambda1.Body is InvocationExpressionSyntax)
+            {
+                threshold = LineLengthThreshold.Medium;
+            }
             var groupId = context.GroupFor("LambdaArguments");
             args = Doc.Concat(
                 Doc.GroupWithId(
@@ -70,6 +75,7 @@ internal static class ArgumentListLike
         }
         else if (arguments.Count > 0)
         {
+            threshold = LineLengthThreshold.ExtraLong;
             args = Doc.Indent(
                 Doc.SoftLine,
                 SeparatedSyntaxList.Print(arguments, Argument.Print, Doc.Line, context)
@@ -80,7 +86,8 @@ internal static class ArgumentListLike
             args = Doc.Null;
         }
 
-        return Doc.Concat(
+        return Doc.Group(
+            threshold,
             Token.Print(openParenToken, context),
             args,
             Token.Print(closeParenToken, context)

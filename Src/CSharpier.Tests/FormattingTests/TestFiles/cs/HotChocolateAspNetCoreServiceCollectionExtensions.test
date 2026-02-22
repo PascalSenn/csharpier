@@ -46,13 +46,12 @@ public static partial class HotChocolateAspNetCoreServiceCollectionExtensions
     {
         ArgumentNullException.ThrowIfNull(services);
 
-        var builder =
-            services
-                .AddGraphQL(schemaName)
-                .AddGraphQLServerCore(maxAllowedRequestSize)
-                .AddStartupInitialization()
-                .AddDefaultHttpRequestInterceptor()
-                .AddSubscriptionServices();
+        var builder = services
+            .AddGraphQL(schemaName)
+            .AddGraphQLServerCore(maxAllowedRequestSize)
+            .AddStartupInitialization()
+            .AddDefaultHttpRequestInterceptor()
+            .AddSubscriptionServices();
 
         if (!disableDefaultSecurity)
         {

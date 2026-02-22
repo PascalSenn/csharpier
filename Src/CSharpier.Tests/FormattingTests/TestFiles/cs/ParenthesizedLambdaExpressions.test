@@ -28,10 +28,7 @@ public class ClassName
                 longerParameter_________________________,
                 longerParameter_________________________) => evenLongerParameter);
 
-        CallMethod(() =>
-        {
-            CallOtherMethod();
-        });
+        CallMethod(() => { CallOtherMethod(); });
 
         CallMethod(() => CallOtherMethod___________________________________________________________());
 
@@ -39,11 +36,10 @@ public class ClassName
             CallLongMethod_________________________________().ThenAnotherMethod_____________________________________()
         );
 
-        var task =
-            Task.Factory.StartNew(async () =>
-            {
-                return await new WebClient().DownloadStringTaskAsync____________________("http://example.com");
-            });
+        var task = Task.Factory.StartNew(async () =>
+        {
+            return await new WebClient().DownloadStringTaskAsync____________________("http://example.com");
+        });
 
         Action find = () => EntryPointDiscoverer.FindStaticEntryMethod(typeof(IEnumerable<>).Assembly);
 
@@ -55,14 +51,7 @@ public class ClassName
 
         Parallel.For(0, OuterLoopCount, () => schedulers, _parallelAction, (s) => { });
 
-        var reusedCommand = new Command("reused")
-        {
-            Handler =
-                CommandHandler.Create(() =>
-                {
-                    doSomething();
-                })
-        };
+        var reusedCommand = new Command("reused") { Handler = CommandHandler.Create(() => { doSomething(); }) };
 
         CallSomeMethod(
             () =>

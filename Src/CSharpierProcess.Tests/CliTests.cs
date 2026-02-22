@@ -60,7 +60,7 @@ public class CliTests
     [Arguments("\r\n")]
     public async Task Format_Should_Format_Basic_File(string lineEnding)
     {
-        var formattedContent = "public class ClassName { }" + lineEnding;
+        var formattedContent = $"public class ClassName{lineEnding}{{{lineEnding}}}{lineEnding}";
         var unformattedContent = $"public class ClassName {{{lineEnding}{lineEnding}}}";
 
         await WriteFileAsync("BasicFile.cs", unformattedContent);
@@ -80,7 +80,7 @@ public class CliTests
     [Arguments("./Subdirectory")]
     public async Task Format_Should_Format_Subdirectory(string subdirectory)
     {
-        var formattedContent = "public class ClassName { }\n";
+        var formattedContent = "public class ClassName\n{\n}\n";
         var unformattedContent = "public class ClassName {\n\n}";
 
         await WriteFileAsync("Subdirectory/BasicFile.cs", unformattedContent);
@@ -103,7 +103,7 @@ public class CliTests
             return;
         }
 
-        var formattedContent = "public class ClassName { }\n";
+        var formattedContent = "public class ClassName\n{\n}\n";
         var unformattedContent = "public class ClassName {\n\n}";
 
         await WriteFileAsync(
@@ -327,7 +327,7 @@ public class CliTests
     [Arguments("\r\n")]
     public async Task Format_Should_Format_Piped_File(string lineEnding)
     {
-        var formattedContent1 = "public class ClassName1 { }" + lineEnding;
+        var formattedContent1 = $"public class ClassName1{lineEnding}{{{lineEnding}}}{lineEnding}";
         var unformattedContent1 = $"public class ClassName1 {{{lineEnding}{lineEnding}}}";
 
         var result = await new CsharpierProcess()
@@ -525,8 +525,8 @@ public class CliTests
     [Arguments("\r\n")]
     public async Task PipeFiles_Should_Format_Multiple_Piped_Files(string lineEnding)
     {
-        var formattedContent1 = "public class ClassName1 { }" + lineEnding;
-        var formattedContent2 = "public class ClassName2 { }" + lineEnding;
+        var formattedContent1 = $"public class ClassName1{lineEnding}{{{lineEnding}}}{lineEnding}";
+        var formattedContent2 = $"public class ClassName2{lineEnding}{{{lineEnding}}}{lineEnding}";
         var unformattedContent1 = $"public class ClassName1 {{{lineEnding}{lineEnding}}}";
         var unformattedContent2 = $"public class ClassName2 {{{lineEnding}{lineEnding}}}";
 
@@ -730,7 +730,7 @@ public class CliTests
     public async Task Format_Should_Cache_And_Validate_Too_Many_Things()
     {
         var unformattedContent = "public class ClassName {     }\n";
-        var formattedContent = "public class ClassName { }\n";
+        var formattedContent = "public class ClassName\n{\n}\n";
         var filePath = "Unformatted.cs";
         await WriteFileAsync(filePath, unformattedContent);
 

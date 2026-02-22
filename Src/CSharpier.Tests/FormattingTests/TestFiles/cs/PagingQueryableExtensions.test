@@ -507,15 +507,14 @@ public static class PagingQueryableExtensions
 
             var totalCount = counts?.GetValueOrDefault(item.Key) ?? batchExpression.Cursor?.TotalCount;
             var pageIndex = CreateIndex(arguments, batchExpression.Cursor, totalCount);
-            var page =
-                CreatePage(
-                    builder.ToImmutable(),
-                    arguments,
-                    keys,
-                    item.Items.Count,
-                    pageIndex,
-                    requestedCount,
-                    totalCount);
+            var page = CreatePage(
+                builder.ToImmutable(),
+                arguments,
+                keys,
+                item.Items.Count,
+                pageIndex,
+                requestedCount,
+                totalCount);
             map.Add(item.Key, page);
         }
 
@@ -547,11 +546,10 @@ public static class PagingQueryableExtensions
                     var groupingType = typeof(IGrouping<,>).MakeGenericType(typeof(TKey), typeof(TElement));
                     var param = Expression.Parameter(groupingType, "g");
                     var keyProperty = Expression.Property(param, nameof(IGrouping<TKey, TElement>.Key));
-                    var countMethod =
-                        typeof(Enumerable)
-                            .GetMethods(BindingFlags.Static | BindingFlags.Public)
-                            .First(m => m.Name == nameof(Enumerable.Count) && m.GetParameters().Length == 1)
-                            .MakeGenericMethod(typeof(TElement));
+                    var countMethod = typeof(Enumerable)
+                        .GetMethods(BindingFlags.Static | BindingFlags.Public)
+                        .First(m => m.Name == nameof(Enumerable.Count) && m.GetParameters().Length == 1)
+                        .MakeGenericMethod(typeof(TElement));
                     var countCall = Expression.Call(countMethod, param);
 
                     var resultCtor = typeof(CountResult<TKey>).GetConstructor(Type.EmptyTypes)!;
