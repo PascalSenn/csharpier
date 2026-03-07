@@ -69,5 +69,22 @@ public class ClassName
         CallMethod(() => CallAnotherMethod______________________________________________________123());
 
         CallMethod(CallAnotherMethod_________________(), () => CallAnotherMethod_________________());
+
+        descriptor
+            .During(AwaitingRefund)
+            .OnReply<ProcessRefundResponse>()
+            .Then((state, response) =>
+            {
+                if (response.Success)
+                {
+                    state.RefundId = response.RefundId;
+                    state.RefundedAmount = response.Amount;
+                }
+                else
+                {
+                    state.FailureReason = response.FailureReason ?? "Refund processing failed";
+                }
+            })
+            .TransitionTo(Completed);
     }
 }

@@ -31,6 +31,11 @@ internal static class ParenthesizedLambdaExpression
         {
             if (
                 block.Statements.Count == 1
+                && block.Statements[0]
+                    is ExpressionStatementSyntax
+                        or ReturnStatementSyntax
+                        or ThrowStatementSyntax
+                        or LocalDeclarationStatementSyntax
                 && !Token.HasComments(block.OpenBraceToken)
                 && !Token.HasComments(block.CloseBraceToken)
                 && !block.Statements[0].GetLeadingTrivia().Any(o => o.IsComment())
