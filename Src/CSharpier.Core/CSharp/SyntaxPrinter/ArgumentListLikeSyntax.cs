@@ -69,6 +69,31 @@ internal static class ArgumentListLike
                     : Doc.SoftLine
             );
         }
+        else if (
+            arguments is [{ Expression: ParenthesizedLambdaExpressionSyntax lambda2 }]
+            && lambda2.Body is BlockSyntax
+        )
+        {
+            var groupId = context.GroupFor("LambdaArguments");
+            args = Doc.Concat(
+                Doc.GroupWithId(
+                    groupId,
+                    Doc.Indent(
+                        Doc.SoftLine,
+                        Argument.PrintModifiers(arguments[0], context),
+                        ParenthesizedLambdaExpression.PrintHead(lambda2, context)
+                    )
+                ),
+                Doc.IfBreak(
+                    Doc.Indent(
+                        Doc.Group(ParenthesizedLambdaExpression.PrintBody(lambda2, context))
+                    ),
+                    ParenthesizedLambdaExpression.PrintBody(lambda2, context),
+                    groupId
+                ),
+                Doc.IfBreak(Doc.SoftLine, Doc.Null, groupId)
+            );
+        }
         else if (arguments is [{ Expression: CollectionExpressionSyntax, NameColon: null }])
         {
             args = SeparatedSyntaxList.Print(arguments, Argument.Print, Doc.Line, context);
